@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.css */
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
+
+@import "leaflet/dist/leaflet.css";
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}

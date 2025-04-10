@@ -28,5 +28,9 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "include": [
+    "src/typings.d.ts",  // Ensure Leaflet typings are included
+    "src/**/*.ts"
+  ]
 }
