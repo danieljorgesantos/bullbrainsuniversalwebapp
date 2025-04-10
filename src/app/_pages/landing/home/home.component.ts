@@ -122,7 +122,7 @@ export class HomeComponent {
 
       // Add a tilelayer
       this.leafletService.L.tileLayer(
-        'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+        'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
       ).addTo(this.desktopMap);
     } else {
       console.error('Leaflet is not loaded');
