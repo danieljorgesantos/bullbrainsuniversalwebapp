@@ -17,7 +17,7 @@
   <!-- Logo and Title -->
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <img class="mx-auto h-16 w-auto" src="flo-logo-11.webp" alt="Your Company">
-    <h2 class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account</h2>
+    <h2 class="mt-6 text-center text-md font-bold tracking-tight text-gray-900">Sign in to your account</h2>
   </div>
 
   <!-- Login Form -->
@@ -25,7 +25,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="submit()" class="space-y-6">
       <!-- Email -->
       <div>
-        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Endereço de Email</label>
+        <label for="email" class="block text-sm text-gray-900">Endereço de Email</label>
         <div class="mt-2">
           <input id="email" formControlName="email" type="email" autocomplete="email" required
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -37,7 +37,7 @@
       <!-- Password -->
       <div class="relative">
         <div class="flex items-center justify-between">
-          <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Palavra-passe</label>
+          <label for="password" class="block text-sm text-gray-900">Palavra-passe</label>
           <div class="text-sm">
             <a routerLink="/forgot-password" class="font-semibold text-black hover:text-indigo-500">
               Esqueceu-se da palavra-passe?

@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AuthService } from '../../../_shared/services/auth.service'; // Use AuthService
+// import { AuthService } from '../../../_shared/services/auth.service'; // Use AuthService
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { AuthManagerSignal } from '../../../_signals/authManager.signal';
 // import { FirebaseService } from '../../../_shared/services/firebase.service';
 
 @Component({
   selector: 'app-register',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './register.component.html',
   standalone: true
 })
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService,
+    // private authService: AuthService,
     public authManagerSignal: AuthManagerSignal,
     // private firebaseService: FirebaseService
   ) {
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadGoogleAuth();
+    // this.loadGoogleAuth();
   }
 
   checkPasswordStrength(): void {
@@ -138,16 +138,16 @@ export class RegisterComponent implements OnInit {
 
 
 
-      this.authService.register(userObject).subscribe({
-        next: () => {
-          this.isLoading = false; // Stop loading
-          this.router.navigate(['/register-requester-success']);
-        },
-        error: (err: any) => {
-          this.isLoading = false; // Stop loading on error
-          this.errorMessage = err.error?.message || 'Erro ao registar a conta.';
-        }
-      });
+      // this.authService.register(userObject).subscribe({
+      //   next: () => {
+      //     this.isLoading = false; // Stop loading
+      //     this.router.navigate(['/register-requester-success']);
+      //   },
+      //   error: (err: any) => {
+      //     this.isLoading = false; // Stop loading on error
+      //     this.errorMessage = err.error?.message || 'Erro ao registar a conta.';
+      //   }
+      // });
     }
   }
 
@@ -162,80 +162,80 @@ export class RegisterComponent implements OnInit {
 
   loadGoogleAuth() {
 
-    const checkGoogleLoaded = () => {
-      if ((window as any).google && (window as any).google.accounts) {
+    // const checkGoogleLoaded = () => {
+    //   if ((window as any).google && (window as any).google.accounts) {
 
-        (window as any).google.accounts.id.initialize({
-          client_id: '273478331479-pmld2ebi9ah730jbo4r433r8atg4bo8p.apps.googleusercontent.com',
-          callback: this.handleCredentialResponse.bind(this)
-        });
+    //     (window as any).google.accounts.id.initialize({
+    //       client_id: '273478331479-pmld2ebi9ah730jbo4r433r8atg4bo8p.apps.googleusercontent.com',
+    //       callback: this.handleCredentialResponse.bind(this)
+    //     });
 
-        setTimeout(() => {
-          const buttonContainer = document.getElementById('google-signin-btn');
-          if (buttonContainer) {
+    //     setTimeout(() => {
+    //       const buttonContainer = document.getElementById('google-signin-btn');
+    //       if (buttonContainer) {
 
-            // Clear the div before rendering in case of duplicate buttons
-            buttonContainer.innerHTML = "";
+    //         // Clear the div before rendering in case of duplicate buttons
+    //         buttonContainer.innerHTML = "";
 
-            (window as any).google.accounts.id.renderButton(
-              buttonContainer,
-              { theme: 'outline', size: 'large' }
-            );
+    //         (window as any).google.accounts.id.renderButton(
+    //           buttonContainer,
+    //           { theme: 'outline', size: 'large' }
+    //         );
 
-          } else {
-            console.error("Google Sign-In button container not found!");
-          }
-        }, 0);
-      } else {
-        setTimeout(checkGoogleLoaded, 500);
-      }
-    };
+    //       } else {
+    //         console.error("Google Sign-In button container not found!");
+    //       }
+    //     }, 0);
+    //   } else {
+    //     setTimeout(checkGoogleLoaded, 500);
+    //   }
+    // };
 
-    checkGoogleLoaded();
+    // checkGoogleLoaded();
   }
 
   handleCredentialResponse(response: any) {
-    const token = response.credential;
+    // const token = response.credential;
 
-    // Convert JWT token into a JS object
-    const userData = this.parseJwt(token);
+    // // Convert JWT token into a JS object
+    // const userData = this.parseJwt(token);
 
-    if (!userData) {
-      return;
-    }
+    // if (!userData) {
+    //   return;
+    // }
 
-    // Call AuthManagerSignal's new method to handle the user login
-    this.authManagerSignal.handleGoogleLogin(userData);
+    // // Call AuthManagerSignal's new method to handle the user login
+    // this.authManagerSignal.handleGoogleLogin(userData);
   }
 
   // ✅ Helper function to convert Google JWT to a JS object
   parseJwt(token: string): any {
-    try {
-      const base64Url = token.split('.')[1]; // Extract payload
-      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      const jsonPayload = decodeURIComponent(
-        atob(base64)
-          .split('')
-          .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-          .join('')
-      );
-      return JSON.parse(jsonPayload); // ✅ Convert to JavaScript object
-    } catch (error) {
-      console.error("🚨 Failed to parse JWT:", error);
-      return null;
-    }
+    // try {
+    //   const base64Url = token.split('.')[1]; // Extract payload
+    //   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    //   const jsonPayload = decodeURIComponent(
+    //     atob(base64)
+    //       .split('')
+    //       .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+    //       .join('')
+    //   );
+    //   return JSON.parse(jsonPayload); // ✅ Convert to JavaScript object
+    // } catch (error) {
+    //   console.error("🚨 Failed to parse JWT:", error);
+    //   return null;
+    // }
   }
 
   decodeJwtToken(token: string) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split('')
-        .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-        .join('')
-    );
-    this.user = JSON.parse(jsonPayload);
-    return jsonPayload
+    // const base64Url = token.split('.')[1];
+    // const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    // const jsonPayload = decodeURIComponent(
+    //   atob(base64)
+    //     .split('')
+    //     .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+    //     .join('')
+    // );
+    // this.user = JSON.parse(jsonPayload);
+    // return jsonPayload
   }
 }

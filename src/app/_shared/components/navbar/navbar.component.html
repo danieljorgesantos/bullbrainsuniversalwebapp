@@ -23,7 +23,7 @@
                     <img class="h-12 w-auto" src="flo-logo-11.webp" alt="flo and go logo">
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a href="/" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900">
+                    <a href="{{ currentLanguage === 'pt-PT' ? '/' : '/' + currentLanguage }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900">
                         {{ getTranslation('link_pagina_inicial') }}
                     </a>
                     <a href="#"

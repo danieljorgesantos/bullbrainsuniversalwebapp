@@ -21,6 +21,13 @@ export class AvailableAnytimeMovingServicesComponent {
   ) { }
 
   ngOnInit(): void {
+    // Get the "lang" route param
+    const langParam = this.route.snapshot.paramMap.get('lang');
+
+    if (langParam) {
+      this.currentLanguage = langParam;
+    }
+
     this.setInitialPageConfiguration();
   }
 

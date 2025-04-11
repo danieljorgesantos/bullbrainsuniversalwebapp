@@ -14,12 +14,11 @@
         <span>Voltar</span>
     </a>
 
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm flex flex-col items-center text-center">
-        <div class="text-indigo-700 font-bold text-xl">
-            <a href="#">Flo Transportes</a>
-        </div>
-        <h2 class="mt-4 text-2xl font-bold leading-9 tracking-tight text-gray-900">Registe a sua conta</h2>
-    </div>
+  <!-- Logo and Title -->
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <img class="mx-auto h-16 w-auto" src="flo-logo-11.webp" alt="Your Company">
+    <h2 class="mt-6 text-center text-md font-bold tracking-tight text-gray-900">Registo de Conta</h2>
+  </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form [formGroup]="registerForm" (ngSubmit)="submit()" class="space-y-6">
@@ -169,7 +168,7 @@
 
         <p class="mt-10 text-center text-sm text-gray-500">
             Já tem uma conta?
-            <a routerLink="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+            <a routerLink="/login" class="font-semibold leading-6 text-black hover:text-gray-900">
                 Inicie sessão aqui!
             </a>
         </p>
