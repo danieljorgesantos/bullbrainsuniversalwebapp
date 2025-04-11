@@ -184,14 +184,14 @@
                             id="user-menu-item-2">Sign out</a>
                     </div> -->
                     <div class="relative ml-3 flex space-x-4">
-                        <button
+                        <a [href]="'/' + currentLanguage + '/register'"
                             class="bg-black text-white inline-flex items-center px-4 py-2 text-sm font-bold rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">
                             {{ getTranslation('button_registar_se') }}
-                        </button>
-                        <button
+                        </a>
+                        <a [href]="'/' + currentLanguage + '/login'"
                             class="bg-white text-black inline-flex items-center px-4 py-2 text-sm font-bold border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50">
                             {{ getTranslation('button_iniciar_sessao') }}
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

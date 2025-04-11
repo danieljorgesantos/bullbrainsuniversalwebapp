@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule, Router, NavigationEnd } from '@angular/router';
 import { navTranslations } from './translations';
 import { filter, map } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [CommonModule, RouterModule ],
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {

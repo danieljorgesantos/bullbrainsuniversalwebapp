@@ -64,12 +64,12 @@ import { Injectable, Injector, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../_shared/services/auth.service';
 import { firstValueFrom } from 'rxjs';
-import { RequesterTransportsSignal } from './requesterTransports.signal';
+// import { RequesterTransportsSignal } from './requesterTransports.signal';
 
 @Injectable({ providedIn: 'root' })
 export class AuthManagerSignal {
-    private authService!: AuthService;
-    private requesterTransportsSignal!: RequesterTransportsSignal;
+    // private authService!: AuthService;
+    // private requesterTransportsSignal!: RequesterTransportsSignal;
 
     // ⬤ Authentication state signals
     private user = signal<any | null>(null);
@@ -81,8 +81,8 @@ export class AuthManagerSignal {
         private router: Router
     ) {
         setTimeout(() => {
-            this.authService = this.injector.get(AuthService);
-            this.requesterTransportsSignal = this.injector.get(RequesterTransportsSignal);
+            // this.authService = this.injector.get(AuthService);
+            // this.requesterTransportsSignal = this.injector.get(RequesterTransportsSignal);
         });
     }
 
@@ -117,15 +117,15 @@ export class AuthManagerSignal {
         this.errorMessage.set(''); // Reset error message
 
         try {
-            const response = await firstValueFrom(this.authService.login(credentials));
-            if (!response) {
-                console.warn("No response received from login.");
-                return;
-            }
-            this.user.set(response);
-            this.persistUserToLocalStorage();
-            this.loadAccountData(response.type);
-            this.redirectUser(response.type);
+            // const response = await firstValueFrom(this.authService.login(credentials));
+            // if (!response) {
+            //     console.warn("No response received from login.");
+            //     return;
+            // }
+            // this.user.set(response);
+            // this.persistUserToLocalStorage();
+            // this.loadAccountData(response.type);
+            // this.redirectUser(response.type);
         } catch (err: any) {
             const errorMsg = err.error?.message || 'Credenciais inválidas. Tente novamente.';
             this.errorMessage.set(errorMsg);
@@ -152,91 +152,91 @@ export class AuthManagerSignal {
         }
     
         try {
-            console.log("🔄 Attempting to log in user...");
+            // console.log("🔄 Attempting to log in user...");
     
-            // Try logging in the user
-            const loginResponse = await firstValueFrom(this.authService.login({
-                email: googleUser.email.trim(),
-                password: googleUser.sub // Using Google User ID as a pseudo-password
-            }));
+            // // Try logging in the user
+            // const loginResponse = await firstValueFrom(this.authService.login({
+            //     email: googleUser.email.trim(),
+            //     password: googleUser.sub // Using Google User ID as a pseudo-password
+            // }));
     
-            console.log("✅ User logged in successfully:", loginResponse);
+            // console.log("✅ User logged in successfully:", loginResponse);
     
-            // Store user data
-            this.user.set(loginResponse);
-            this.persistUserToLocalStorage();
+            // // Store user data
+            // this.user.set(loginResponse);
+            // this.persistUserToLocalStorage();
     
-            // ✅ Redirect user to /requester-home after login
-            this.router.navigate(['/requester-home']);
+            // // ✅ Redirect user to /requester-home after login
+            // this.router.navigate(['/requester-home']);
     
         } catch (loginError: any) {
             console.warn("⚠️ User not found, attempting to register...");
             console.error("🔴 Login Error:", loginError);
     
-            // If login fails, register the user
-            try {
+            // // If login fails, register the user
+            // try {
 
-                console.log('      try {      try {      try {      try {      try {      try {', googleUser )
-                const userRegistrationData = {
-                    fullName: googleUser.name?.trim() || "Google User", // ✅ Ensure name is defined
-                    email: googleUser.email.trim(),
-                    userPhoto: googleUser.picture,
-                    phone: "", // Google does not provide phone numbers
-                    password: googleUser.sub, // Using Google ID as password for simplicity
-                    type: 1, // Default user role (Requester)
-                    dateOfBirth: "",
-                    placeOfBirth: "",
-                    nationality: "",
-                    emergencyContactName: "",
-                    emergencyContactPhone: "",
-                    idCardNumber: "",
-                    idCardExpiration: "",
-                    taxId: "",
-                    socialSecurityNumber: "",
-                    licenseNumber: "",
-                    licenseCategory: "",
-                    licenseIssueDate: "",
-                    licenseExpirationDate: "",
-                    issuingCountry: "",
-                    professionalDriverCertificate: "",
-                    adrCertificate: "",
-                    vehiclePlateNumber: "",
-                    vehicleMakeModel: "",
-                    vehicleVIN: "",
-                    vehicleInsuranceCompany: "",
-                    vehicleInsurancePolicy: "",
-                    vehicleInspectionExpiry: "",
-                    vehicleOwnership: "",
-                    licenseFront: null,
-                    licenseBack: null,
-                    idCardFront: null,
-                    idCardBack: null
-                };
+            //     console.log('      try {      try {      try {      try {      try {      try {', googleUser )
+            //     const userRegistrationData = {
+            //         fullName: googleUser.name?.trim() || "Google User", // ✅ Ensure name is defined
+            //         email: googleUser.email.trim(),
+            //         userPhoto: googleUser.picture,
+            //         phone: "", // Google does not provide phone numbers
+            //         password: googleUser.sub, // Using Google ID as password for simplicity
+            //         type: 1, // Default user role (Requester)
+            //         dateOfBirth: "",
+            //         placeOfBirth: "",
+            //         nationality: "",
+            //         emergencyContactName: "",
+            //         emergencyContactPhone: "",
+            //         idCardNumber: "",
+            //         idCardExpiration: "",
+            //         taxId: "",
+            //         socialSecurityNumber: "",
+            //         licenseNumber: "",
+            //         licenseCategory: "",
+            //         licenseIssueDate: "",
+            //         licenseExpirationDate: "",
+            //         issuingCountry: "",
+            //         professionalDriverCertificate: "",
+            //         adrCertificate: "",
+            //         vehiclePlateNumber: "",
+            //         vehicleMakeModel: "",
+            //         vehicleVIN: "",
+            //         vehicleInsuranceCompany: "",
+            //         vehicleInsurancePolicy: "",
+            //         vehicleInspectionExpiry: "",
+            //         vehicleOwnership: "",
+            //         licenseFront: null,
+            //         licenseBack: null,
+            //         idCardFront: null,
+            //         idCardBack: null
+            //     };
     
-                console.log("🔹 Registering new user with:", userRegistrationData);
+            //     console.log("🔹 Registering new user with:", userRegistrationData);
     
-                const registerResponse = await firstValueFrom(this.authService.register(userRegistrationData));
-                console.log("✅ User registered successfully:", registerResponse);
+            //     const registerResponse = await firstValueFrom(this.authService.register(userRegistrationData));
+            //     console.log("✅ User registered successfully:", registerResponse);
     
-                // Now log in the user after successful registration
-                const loginAfterRegister = await firstValueFrom(this.authService.login({
-                    email: googleUser.email.trim(),
-                    password: googleUser.sub
-                }));
+            //     // Now log in the user after successful registration
+            //     const loginAfterRegister = await firstValueFrom(this.authService.login({
+            //         email: googleUser.email.trim(),
+            //         password: googleUser.sub
+            //     }));
     
-                console.log("✅ User logged in after registration:", loginAfterRegister);
+                // console.log("✅ User logged in after registration:", loginAfterRegister);
     
-                // Store user data
-                this.user.set(loginAfterRegister);
-                this.persistUserToLocalStorage();
+                // // Store user data
+                // this.user.set(loginAfterRegister);
+                // this.persistUserToLocalStorage();
     
-                // ✅ Redirect user to /requester-home after successful login
-                this.router.navigate(['/requester-home']);
+                // // ✅ Redirect user to /requester-home after successful login
+                // this.router.navigate(['/requester-home']);
     
-            } catch (registrationError: any) {
-                console.error("🚨 Registration failed:", registrationError);
-                this.errorMessage.set("Google registration failed. Please try again.");
-            }
+            // } catch (registrationError: any) {
+            //     console.error("🚨 Registration failed:", registrationError);
+            //     this.errorMessage.set("Google registration failed. Please try again.");
+            // }
         } finally {
             this.isLoading.set(false);
         }
@@ -250,9 +250,9 @@ export class AuthManagerSignal {
         this.errorMessage.set(null);
 
         try {
-            const user = await this.authService.register(userData);
-            this.user.set(user);
-            this.router.navigate(['/dashboard']); // Redirect after registration
+            // const user = await this.authService.register(userData);
+            // this.user.set(user);
+            // this.router.navigate(['/dashboard']); // Redirect after registration
         } catch (error: any) {
             this.errorMessage.set(error.message || 'Registration failed');
         } finally {
@@ -318,7 +318,7 @@ export class AuthManagerSignal {
     async loadRequesterAccount() {
         try {
             console.log('🚀 Loading Requester Account Data...');
-            await this.requesterTransportsSignal.loadRequesterTransports();
+            // await this.requesterTransportsSignal.loadRequesterTransports();
         } catch (error) {
             console.error('🚨 Error loading requester account:', error);
         }

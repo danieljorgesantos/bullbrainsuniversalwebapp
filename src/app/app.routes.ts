@@ -9,6 +9,7 @@ import { LowCostCheapTransportComponent } from './_pages/landing/low-cost-cheap-
 import { OfficeChangesComponent } from './_pages/landing/office-changes/office-changes.component';
 import { SmallChangesComponent } from './_pages/landing/small-changes/small-changes.component';
 import { RegisterComponent } from './_pages/auth/register/register.component';
+import { LoginComponent } from './_pages/auth/login/login.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -43,7 +44,7 @@ export const routes: Routes = [
 
     // Auth
     { path: ':lang/register', component: RegisterComponent, pathMatch: 'full' },
-    { path: ':lang/login', component: RegisterComponent, pathMatch: 'full' },
+    { path: ':lang/login', component: LoginComponent, pathMatch: 'full' },
 
 
 
