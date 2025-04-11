@@ -1,83 +1,74 @@
 <div class="overflow-hidden dark:bg-black pt-24 max-w-3xl mx-auto flex" aria-label="Breadcrumb">
     <ol role="list" class="flex items-center space-x-4 pl-6 lg:pl-8">
-        <li>
-            <div>
-                <a href="/" class="text-gray-400 hover:text-gray-500">
-                    <svg class="size-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                        data-slot="icon">
-                        <path fill-rule="evenodd"
-                            d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <span class="sr-only">Home</span>
-                </a>
-            </div>
-        </li>
-        <li>
-            <div class="flex items-center">
-                <svg class="size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                    data-slot="icon">
-                    <path fill-rule="evenodd"
-                        d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd" />
-                </svg>
-                <a class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Mudanças de Última Hora</a>
-            </div>
-        </li>
+      <li>
+        <div>
+          <a href="/" class="text-gray-400 hover:text-gray-500">
+            <svg class="size-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd"
+                d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">{{ getTranslation('home') }}</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+            data-slot="icon">
+            <path fill-rule="evenodd"
+              d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd" />
+          </svg>
+          <a class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">{{ getTranslation('mudancas_de_ultima') }}</a>
+        </div>
+      </li>
     </ol>
-</div>
-
-<section class="overflow-hidden pb-8 dark:bg-black max-w-3xl mx-auto">
+  </div>
+  
+  <section class="overflow-hidden pb-8 dark:bg-black max-w-3xl mx-auto">
     <div class="bg-white dark:bg-neutral-900 rounded-2xl">
-        <div class="grid grid-cols-1 lg:grid-cols-2 items-center p-6 lg:p-8">
-            <div class="order-2 lg:order-1 text-center lg:text-left">
-                <h1 class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
-                    Mudanças de Última Hora
-                </h1>
-                <h2
-                    class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-3 leading-snug">
-                    Serviço de Mudanças Urgentes e Rápidas em Lisboa
-                </h2>
-                <p class="text-sm text-gray-700 dark:text-gray-300 font-normal leading-relaxed mb-4">
-                    Precisa de uma mudança urgente em Lisboa? Oferecemos transporte rápido e sem complicações para a sua nova morada.
-                </p>
-            </div>
-
-            <div class="order-1 lg:order-2 flex justify-center lg:justify-end mb-4 lg:mb-0">
-                <img src="last-minute-moving-lisbon.webp"
-                    alt="Serviço de mudanças de última hora e transporte urgente em Lisboa"
-                    class="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[320px] xl:max-w-[320px] rounded-xl" />
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center p-6 lg:p-8">
+        <div class="order-2 lg:order-1 text-center lg:text-left">
+          <h1 class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+            {{ getTranslation('mudancas_de_ultima') }}
+          </h1>
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-3 leading-snug">
+            {{ getTranslation('servico_de_mudancas') }}
+          </h2>
+          <p class="text-sm text-gray-700 dark:text-gray-300 font-normal leading-relaxed mb-4">
+            {{ getTranslation('precisa_de_uma') }}
+          </p>
         </div>
-
-        <div class="p-6 lg:p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-6 text-sm text-gray-700 dark:text-gray-300">
-                <div>
-                    <p class="leading-relaxed"><strong>Mudanças Urgentes em Lisboa com Resposta Imediata:</strong>
-                        Imprevistos acontecem. Conte com a nossa equipa para uma solução de mudança rápida e eficiente.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Transporte Rápido para Mudanças de Emergência em Lisboa:</strong>
-                        Necessita de se mudar com urgência? A nossa prioridade é garantir um transporte ágil para a sua nova
-                        casa.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Serviço de Mudanças de Última Hora Sem Complicações em Lisboa:</strong>
-                        Simplificamos o processo para que a sua mudança urgente seja o mais tranquila possível.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Agendamento Rápido para Mudanças de Emergência em Lisboa:</strong>
-                        Entre em contacto e trataremos da sua mudança urgente com a máxima brevidade.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Solução Eficaz para Mudanças de Última Hora em Lisboa:</strong>
-                        Mesmo em situações de emergência, garantimos um serviço profissional e organizado.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Porquê Escolher-nos para Mudanças de Última Hora em Lisboa?</strong>
-                        Disponibilidade imediata, resposta rápida, equipa experiente e foco em soluções urgentes.</p>
-                </div>
-            </div>
+        <div class="order-1 lg:order-2 flex justify-center lg:justify-end mb-4 lg:mb-0">
+          <img src="last-minute-moving-lisbon.webp"
+            alt="Serviço de mudanças de última hora e transporte urgente em Lisboa"
+            class="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[320px] xl:max-w-[320px] rounded-xl" />
         </div>
+      </div>
+  
+      <div class="p-6 lg:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-6 text-sm text-gray-700 dark:text-gray-300">
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('mudancas_urgentes_em') }}</strong> {{ getTranslation('imprevistos_acontecem_conte') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('transporte_rapido_para') }}</strong> {{ getTranslation('necessita_de_se') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('servico_de_mudancas') }}</strong> {{ getTranslation('simplificamos_o_processo') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('agendamento_rapido_para') }}</strong> {{ getTranslation('entre_em_contacto') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('solucao_eficaz_para') }}</strong> {{ getTranslation('mesmo_em_situacoes') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('porque_escolher_nos') }}</strong> {{ getTranslation('disponibilidade_imediata_resposta') }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
+  

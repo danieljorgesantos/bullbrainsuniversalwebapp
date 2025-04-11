@@ -12,7 +12,7 @@ import { localChangesTranslations } from './translations';
   templateUrl: './local-changes.component.html'
 })
 export class LocalChangesComponent {
-// Language
+  // Language
   currentLanguage: any = 'pt-PT';
 
   constructor(
@@ -22,6 +22,13 @@ export class LocalChangesComponent {
   ) { }
 
   ngOnInit(): void {
+    // Get the "lang" route param
+    const langParam = this.route.snapshot.paramMap.get('lang');
+
+    if (langParam) {
+      this.currentLanguage = langParam;
+    }
+
     this.setInitialPageConfiguration();
   }
 

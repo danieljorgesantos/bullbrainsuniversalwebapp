@@ -22,7 +22,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "Como Funciona?",
         transporte_em_tempo_real: "Transporte em Tempo Real",
         como_a_uber: "Como a Uber, mas para Mudanças e Transportes",
-
         mudancas_em_lisboa: "Mudanças em Lisboa Quando Precisar – Dia e Noite:",
         nao_importa_se: "Não importa se é madrugada, fim de semana ou feriado – estamos sempre disponíveis. A nossa equipa responde de imediato para que não tenha de esperar.",
         ideal_para_mudancas: "Ideal para Mudanças de Última Hora:",
@@ -58,7 +57,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "How it Works?",
         transporte_em_tempo_real: "Real-Time Transport",
         como_a_uber: "Like Uber, but for Moving and Transport",
-
         mudancas_em_lisboa: "Moves in Lisbon Whenever You Need – Day or Night:",
         nao_importa_se: "It doesn’t matter if it’s midnight, a weekend, or a holiday – we’re always available. Our team responds immediately so you never have to wait.",
         ideal_para_mudancas: "Ideal for Last-Minute Moves:",
@@ -94,7 +92,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "Comment ça marche ?",
         transporte_em_tempo_real: "Transport en temps réel",
         como_a_uber: "Comme Uber, mais pour les déménagements",
-
         mudancas_em_lisboa: "Déménagements à Lisbonne Quand Vous en Avez Besoin – Jour et Nuit :",
         nao_importa_se: "Peu importe s’il est minuit, le week-end ou un jour férié – nous sommes toujours disponibles. Notre équipe répond immédiatement pour que vous n’ayez pas à attendre.",
         ideal_para_mudancas: "Idéal pour les Déménagements de Dernière Minute :",
@@ -130,7 +127,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "¿Cómo funciona?",
         transporte_em_tempo_real: "Transporte en tiempo real",
         como_a_uber: "Como Uber, pero para mudanzas y transporte",
-
         mudancas_em_lisboa: "Mudanzas en Lisboa Cuando las Necesites – Día y Noche:",
         nao_importa_se: "No importa si es medianoche, fin de semana o festivo – siempre estamos disponibles. Nuestro equipo responde de inmediato para que no tengas que esperar.",
         ideal_para_mudancas: "Ideal para Mudanzas de Última Hora:",
@@ -166,7 +162,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "Wie funktioniert es?",
         transporte_em_tempo_real: "Echtzeit-Transport",
         como_a_uber: "Wie Uber, aber für Umzüge und Transporte",
-
         mudancas_em_lisboa: "Umzüge in Lissabon Wann Immer Sie Wollen – Tag und Nacht:",
         nao_importa_se: "Egal ob Mitternacht, Wochenende oder Feiertag – wir sind immer verfügbar. Unser Team reagiert sofort, damit Sie nicht warten müssen.",
         ideal_para_mudancas: "Ideal für Umzüge in Letzter Minute:",
@@ -202,7 +197,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "Come funziona?",
         transporte_em_tempo_real: "Trasporto in tempo reale",
         como_a_uber: "Come Uber, ma per Traslochi e Trasporti",
-
         mudancas_em_lisboa: "Traslochi a Lisbona Quando Vuoi – Giorno e Notte:",
         nao_importa_se: "Non importa se è mezzanotte, fine settimana o giorno festivo – siamo sempre disponibili. Il nostro team risponde immediatamente così non devi aspettare.",
         ideal_para_mudancas: "Ideale per Traslochi Last Minute:",
@@ -238,7 +232,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "如何运作？",
         transporte_em_tempo_real: "实时运输",
         como_a_uber: "像 Uber 一样，但专为搬家和运输而设",
-
         mudancas_em_lisboa: "里斯本搬家服务，随时为您服务 – 白天或夜晚：",
         nao_importa_se: "无论是午夜、周末还是节假日，我们始终在线。我们的团队会立即响应，无需等待。",
         ideal_para_mudancas: "适合紧急搬家：",
@@ -274,7 +267,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "यह कैसे काम करता है?",
         transporte_em_tempo_real: "रीयल-टाइम ट्रांसपोर्ट",
         como_a_uber: "Uber की तरह, लेकिन मूविंग और ट्रांसपोर्ट के लिए",
-
         mudancas_em_lisboa: "लिस्बन में जब चाहें तब मूविंग सेवा – दिन या रात:",
         nao_importa_se: "चाहे आधी रात हो, सप्ताहांत हो या छुट्टी – हम हमेशा उपलब्ध हैं। हमारी टीम तुरंत प्रतिक्रिया देती है ताकि आपको इंतज़ार न करना पड़े।",
         ideal_para_mudancas: "आख़िरी समय की मूविंग के लिए आदर्श:",
@@ -311,7 +303,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "Jak to działa?",
         transporte_em_tempo_real: "Transport w czasie rzeczywistym",
         como_a_uber: "Jak Uber, ale do przeprowadzek i transportu",
-
         mudancas_em_lisboa: "Przeprowadzki w Lizbonie Kiedy Tylko Potrzebujesz – Dzień i Noc:",
         nao_importa_se: "Nie ma znaczenia, czy to północ, weekend czy święto – jesteśmy zawsze dostępni. Nasz zespół reaguje natychmiast, abyś nie musiał czekać.",
         ideal_para_mudancas: "Idealne na Nagłe Przeprowadzki:",
@@ -347,7 +338,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "Hur fungerar det?",
         transporte_em_tempo_real: "Transport i realtid",
         como_a_uber: "Som Uber, men för flytt och transport",
-
         mudancas_em_lisboa: "Flytt i Lissabon När Du Behöver – Dag och Natt:",
         nao_importa_se: "Det spelar ingen roll om det är mitt i natten, helg eller helgdag – vi är alltid tillgängliga. Vårt team svarar direkt så att du slipper vänta.",
         ideal_para_mudancas: "Perfekt för Sista Minuten-flyttar:",
@@ -383,7 +373,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "Hvordan virker det?",
         transporte_em_tempo_real: "Transport i realtid",
         como_a_uber: "Som Uber, men til flytning og transport",
-
         mudancas_em_lisboa: "Flytninger i Lissabon Når Du Har Brug for Det – Dag og Nat:",
         nao_importa_se: "Det er lige meget, om det er midnat, weekend eller helligdag – vi er altid til rådighed. Vores team reagerer med det samme, så du ikke behøver at vente.",
         ideal_para_mudancas: "Perfekt til Sidste Øjebliks-Flytninger:",
@@ -419,7 +408,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "Miten se toimii?",
         transporte_em_tempo_real: "Reaaliaikainen kuljetus",
         como_a_uber: "Kuin Uber, mutta muuttoihin ja kuljetuksiin",
-
         mudancas_em_lisboa: "Muutot Lissabonissa Tarpeen Mukaan – Päivällä ja Yöllä:",
         nao_importa_se: "Ei ole väliä onko keskiyö, viikonloppu tai pyhäpäivä – olemme aina käytettävissä. Tiimimme reagoi välittömästi, joten sinun ei tarvitse odottaa.",
         ideal_para_mudancas: "Täydellinen Viime Hetken Muuttoihin:",
@@ -455,7 +443,6 @@ export const avaiableAnytimeTranslations: any = {
         como_funciona: "使い方は？",
         transporte_em_tempo_real: "リアルタイム輸送",
         como_a_uber: "Uberのように、でも引っ越しと輸送のためのサービス",
-
         mudancas_em_lisboa: "リスボンでの引っ越しサービス、いつでも対応 – 昼も夜も：",
         nao_importa_se: "深夜でも週末でも祝日でも関係ありません – 私たちは常に対応可能です。チームが即座に対応し、お待たせしません。",
         ideal_para_mudancas: "急な引っ越しに最適：",

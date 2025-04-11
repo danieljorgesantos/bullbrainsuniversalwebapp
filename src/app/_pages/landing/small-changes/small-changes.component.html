@@ -1,84 +1,74 @@
 <div class="overflow-hidden dark:bg-black pt-24 max-w-3xl mx-auto flex" aria-label="Breadcrumb">
     <ol role="list" class="flex items-center space-x-4 pl-6 lg:pl-8">
-        <li>
-            <div>
-                <a href="/" class="text-gray-400 hover:text-gray-500">
-                    <svg class="size-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                        data-slot="icon">
-                        <path fill-rule="evenodd"
-                            d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z"
-                            clip-rule="evenodd" />
-                    </svg>
-                    <span class="sr-only">Home</span>
-                </a>
-            </div>
-        </li>
-        <li>
-            <div class="flex items-center">
-                <svg class="size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                    data-slot="icon">
-                    <path fill-rule="evenodd"
-                        d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd" />
-                </svg>
-                <a class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Pequenas Mudanças</a>
-            </div>
-        </li>
+      <li>
+        <div>
+          <a href="/" class="text-gray-400 hover:text-gray-500">
+            <svg class="size-5 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+              <path fill-rule="evenodd"
+                d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z"
+                clip-rule="evenodd" />
+            </svg>
+            <span class="sr-only">{{ getTranslation('home') }}</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+            data-slot="icon">
+            <path fill-rule="evenodd"
+              d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+              clip-rule="evenodd" />
+          </svg>
+          <a class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">{{ getTranslation('pequenas_mudanas') }}</a>
+        </div>
+      </li>
     </ol>
-</div>
-
-<section class="overflow-hidden pb-8 dark:bg-black max-w-3xl mx-auto">
+  </div>
+  
+  <section class="overflow-hidden pb-8 dark:bg-black max-w-3xl mx-auto">
     <div class="bg-white dark:bg-neutral-900 rounded-2xl">
-        <div class="grid grid-cols-1 lg:grid-cols-2 items-center p-6 lg:p-8">
-            <div class="order-2 lg:order-1 text-center lg:text-left">
-                <h1 class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
-                    Pequenas Mudanças
-                </h1>
-                <h2
-                    class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-3 leading-snug">
-                    Serviço Simples e Rápido para Pequenas Mudanças em Lisboa
-                </h2>
-                <p class="text-sm text-gray-700 dark:text-gray-300 font-normal leading-relaxed mb-4">
-                    Transporte fácil e descomplicado de objetos individuais ou mudanças menores em Lisboa e arredores.
-                </p>
-            </div>
-
-            <div class="order-1 lg:order-2 flex justify-center lg:justify-end mb-4 lg:mb-0">
-                <img src="small-moving-services-lisbon.webp"
-                    alt="Serviço de pequenas mudanças e transporte de objetos em Lisboa"
-                    class="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[320px] xl:max-w-[320px] rounded-xl" />
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center p-6 lg:p-8">
+        <div class="order-2 lg:order-1 text-center lg:text-left">
+          <h1 class="block text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+            {{ getTranslation('pequenas_mudanas_1') }}
+          </h1>
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-3 leading-snug">
+            {{ getTranslation('servio_simples_e') }}
+          </h2>
+          <p class="text-sm text-gray-700 dark:text-gray-300 font-normal leading-relaxed mb-4">
+            {{ getTranslation('transporte_fcil_e') }}
+          </p>
         </div>
-
-        <div class="p-6 lg:p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-6 text-sm text-gray-700 dark:text-gray-300">
-                <div>
-                    <p class="leading-relaxed"><strong>Transporte Fácil de Objetos Individuais em Lisboa:</strong> Precisa
-                        de mover um sofá, uma máquina de lavar ou outros itens avulsos? Oferecemos um serviço simples e
-                        rápido.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Pequenas Mudanças Residenciais sem Complicações em Lisboa:</strong>
-                        Ideal para estudantes, mudanças de apartamentos pequenos ou transporte de poucos móveis.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Serviço Ágil para Mudanças Menores em Lisboa e Arredores:</strong>
-                        Cobertura para pequenas mudanças dentro de Lisboa e nas áreas circundantes, com flexibilidade de
-                        horários.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Solução Prática para Transporte de Pequena Carga em Lisboa:</strong>
-                        Seja uma encomenda grande ou alguns pertences, temos a solução de transporte sob medida.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Agendamento Simplificado para Pequenas Mudanças em Lisboa:</strong>
-                        Solicite o seu serviço de forma rápida e fácil através da nossa plataforma ou contacto direto.</p>
-                </div>
-                <div>
-                    <p class="leading-relaxed"><strong>Porquê Escolher-nos para Pequenas Mudanças em Lisboa?</strong>
-                        Serviço eficiente, preços competitivos, agilidade no atendimento e foco na sua conveniência.</p>
-                </div>
-            </div>
+        <div class="order-1 lg:order-2 flex justify-center lg:justify-end mb-4 lg:mb-0">
+          <img src="small-moving-services-lisbon.webp"
+            alt="Serviço de pequenas mudanças e transporte de objetos em Lisboa"
+            class="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[320px] xl:max-w-[320px] rounded-xl" />
         </div>
+      </div>
+  
+      <div class="p-6 lg:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-6 text-sm text-gray-700 dark:text-gray-300">
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('transporte_fcil_de') }}</strong> {{ getTranslation('precisa_de_mover') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('pequenas_mudanas_residenciais') }}</strong> {{ getTranslation('ideal_para_estudantes') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('servio_gil_para') }}</strong> {{ getTranslation('cobertura_para_pequenas') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('soluo_prtica_para') }}</strong> {{ getTranslation('seja_uma_encomenda') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('agendamento_simplificado_para') }}</strong> {{ getTranslation('solicite_o_seu') }}</p>
+          </div>
+          <div>
+            <p class="leading-relaxed"><strong>{{ getTranslation('porqu_escolher_nos') }}</strong> {{ getTranslation('servio_eficiente_preos') }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
+  
