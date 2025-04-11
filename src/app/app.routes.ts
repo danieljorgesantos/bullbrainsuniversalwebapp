@@ -8,6 +8,7 @@ import { LongDistanceComponent } from './_pages/landing/long-distance/long-dista
 import { LowCostCheapTransportComponent } from './_pages/landing/low-cost-cheap-transport/low-cost-cheap-transport.component';
 import { OfficeChangesComponent } from './_pages/landing/office-changes/office-changes.component';
 import { SmallChangesComponent } from './_pages/landing/small-changes/small-changes.component';
+import { RegisterComponent } from './_pages/auth/register/register.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -28,6 +29,8 @@ export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: ':lang', component: HomeComponent, pathMatch: 'full' },
 
+
+    // landing
     { path: ':lang/available-anytime-moving-services', component: AvailableAnytimeMovingServicesComponent, pathMatch: 'full' },
     { path: ':lang/house-removals', component: HouseRemovalsComponent, pathMatch: 'full' },
     { path: ':lang/last-minute-changes', component: LastMinuteChangesComponent, pathMatch: 'full' },
@@ -36,6 +39,12 @@ export const routes: Routes = [
     { path: ':lang/low-cost-cheap-transport', component: LowCostCheapTransportComponent, pathMatch: 'full' },
     { path: ':lang/office-changes', component: OfficeChangesComponent, pathMatch: 'full' },
     { path: ':lang/small-changes', component: SmallChangesComponent, pathMatch: 'full' },
+
+
+    // Auth
+    { path: ':lang/register', component: RegisterComponent, pathMatch: 'full' },
+    { path: ':lang/login', component: RegisterComponent, pathMatch: 'full' },
+
 
 
 
