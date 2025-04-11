@@ -120,13 +120,12 @@
             <div class="w-full pt-8 pb-10 text-left lg:max-w-5xl lg:mx-auto">
                 <h1
                     class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4 leading-snug">
-                    Os melhores transportadores em Lisboa <br />
-                    com as melhores avaliações.
+                    {{ getTranslation('headline_melhores_transportadores') }} <br />
+                    {{ getTranslation('headline_melhores_avaliacoes') }}
                 </h1>
 
                 <p class="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
-                    Facilitamos a sua vida com serviços de mudanças, transporte de cargas e recolha de equipamentos
-                    pesados.
+                    {{ getTranslation('paragraph_facilitamos_vida_1') }}
                 </p>
             </div>
 
@@ -134,12 +133,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <h2 class="text-lg font-bold text-gray-900">Solicitar Transporte Pesado</h2>
-                    <span class="text-sm text-gray-600">Até 1000 kilos</span>
+                    <h2 class="text-lg font-bold text-gray-900">{{
+                        getTranslation('headline_solicitar_transporte_pesado') }}</h2>
+                    <span class="text-sm text-gray-600">{{ getTranslation('subtitle_ate_1000_kilos') }}</span>
 
                     <div class="relative dropdown-container mt-4 mb-2">
                         <input class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
-                            type="text" autocomplete="off" placeholder="Digite o Local de Recolha"
+                            type="text" autocomplete="off"
+                            placeholder="{{ getTranslation('placeholder_digite_local_recolha') }}"
                             formControlName="pickupLocation">
 
                         <!-- (click)="selectGooglePickupLocation(prediction)" -->
@@ -165,14 +166,15 @@
                                     d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
                                     clip-rule="evenodd" />
                             </svg>
-                            Usar Localização atual para Recolha
+                            {{ getTranslation('button_usar_localizacao_atual_recolha') }}
                         </button>
                     </div>
 
                     <!-- (click)="selectGoogleDeliveryLocation(prediction)" -->
                     <div class="relative dropdown-container mt-4 mb-2">
                         <input class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
-                            type="text" placeholder="Digite o Local de Entrega" formControlName="destinationLocation">
+                            type="text" placeholder="{{ getTranslation('placeholder_digite_local_entrega') }}"
+                            formControlName="destinationLocation">
                         <div *ngIf="googleDeliveryPredictions.length > 0"
                             class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg">
                             <div *ngFor="let prediction of googleDeliveryPredictions"
@@ -192,15 +194,15 @@
                                     d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
                                     clip-rule="evenodd" />
                             </svg>
-                            Usar Localização atual para Entrega
+                            {{ getTranslation('button_usar_localizacao_atual_entrega') }}
                         </button>
                     </div>
 
 
 
                     <button
-                        class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-150 flex items-center justify-center gap-2 mt-4">
-                        Ver Preços
+                        class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition duration-150 flex items-center justify-center gap-2 mt-4">
+                        {{ getTranslation('button_ver_precos') }}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
                             <path fill-rule="evenodd"
                                 d="M8.25 3.75H19.5a.75.75 0 0 1 .75.75v11.25a.75.75 0 0 1-1.5 0V6.31L5.03 20.03a.75.75 0 0 1-1.06-1.06L17.69 5.25H8.25a.75.75 0 0 1 0-1.5Z"
@@ -280,9 +282,7 @@
             </h2>
 
             <p class="text-sm text-gray-700 dark:text-gray-300 font-normal leading-relaxed mb-6">
-                Conecte-se com motoristas disponíveis em segundos. Peça, acompanhe e comunique – tudo pela web
-                app
-                da Flo.
+                {{ getTranslation('paragraph_conecte_se_motoristas_1') }}
             </p>
 
             <ul class="space-y-4 mb-6 text-sm text-gray-700 dark:text-gray-300">
@@ -292,8 +292,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                     </svg>
                     <div>
-                        <span class="font-semibold text-gray-900 dark:text-white">Pedido Instantâneo:</span>
-                        Encontre motoristas prontos para ajudar na hora.
+                        <span class="font-semibold text-gray-900 dark:text-white">{{
+                            getTranslation('feature_pedido_instantaneo_title') }}:</span>
+                        {{ getTranslation('feature_pedido_instantaneo_description') }}
                     </div>
                 </li>
                 <li class="flex items-start">
@@ -303,9 +304,9 @@
                             d="M17.657 16.657L13.414 12.414a4 4 0 10-1.414 1.414l4.243 4.243a1 1 0 001.414-1.414z" />
                     </svg>
                     <div>
-                        <span class="font-semibold text-gray-900 dark:text-white">Localização em Tempo
-                            Real:</span>
-                        Acompanhe cada movimento do seu transporte.
+                        <span class="font-semibold text-gray-900 dark:text-white">{{
+                            getTranslation('feature_localizacao_tempo_real_title') }}:</span>
+                        {{ getTranslation('feature_localizacao_tempo_real_description') }}
                     </div>
                 </li>
                 <li class="flex items-start">
@@ -315,8 +316,9 @@
                             d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
                     </svg>
                     <div>
-                        <span class="font-semibold text-gray-900 dark:text-white">Comunicação Direta:</span>
-                        Fale com o motorista por chat ou chamada.
+                        <span class="font-semibold text-gray-900 dark:text-white">{{
+                            getTranslation('feature_comunicacao_direta_title') }}:</span>
+                        {{ getTranslation('feature_comunicacao_direta_description') }}
                     </div>
                 </li>
                 <li class="flex items-start">
@@ -326,8 +328,9 @@
                             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5-5.917V5a1 1 0 10-2 0v.083A6 6 0 006 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1h6z" />
                     </svg>
                     <div>
-                        <span class="font-semibold text-gray-900 dark:text-white">Notificações ao Vivo:</span>
-                        Saiba exatamente quando chegam, partem e entregam.
+                        <span class="font-semibold text-gray-900 dark:text-white">{{
+                            getTranslation('feature_notificacoes_vivo_title') }}:</span>
+                        {{ getTranslation('feature_notificacoes_vivo_description') }}
                     </div>
                 </li>
             </ul>
@@ -347,24 +350,21 @@
     <div class="flex flex-col lg:flex-row items-center gap-10 pb-8">
         <div class="w-full lg:w-1/2 text-left">
             <span class="block text-xs font-medium uppercase text-gray-500 tracking-widest mb-3">
-                Mude-se sem esforço com a Flo
+                {{ getTranslation('section_mudese_sem_esforco') }}
             </span>
 
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white leading-snug mb-4">
-                O que quer que precise transportar do ponto A ao ponto B,<br class="hidden sm:inline" />
-                nós levamos em segurança.
+                {{ getTranslation('headline_o_que_precisa_transportar_1') }}<br class="hidden sm:inline" />
+                {{ getTranslation('headline_o_que_precisa_transportar_2') }}
             </h2>
 
             <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
-                Em poucas horas, a nossa equipa de especialistas terá tudo no seu novo lar, organizado e no lugar
-                certo.
-                Trabalhe de forma mais inteligente, sem stress – com a Flo, a sua mudança acontece de forma fluida e
-                eficiente.
+                {{ getTranslation('paragraph_em_poucas_horas_1') }}
             </p>
         </div>
 
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <img src="moving-a-sofa-with-laughing-people.webp" alt="moving a sofa with laughing people"
+            <img src="moving-a-sofa-with-laughing-people.webp" alt="{{ getTranslation('alt_imagem_mudanca_pessoas') }}"
                 class="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-lg" />
         </div>
     </div>
@@ -372,124 +372,122 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
         <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="fast-deliveries.webp" alt="Serviço de Mudanças 24/7/365"
+            <img src="fast-deliveries.webp" alt="{{ getTranslation('alt_servico_mudancas_24_7') }}"
                 class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Serviço de Mudanças 24/7/365
+                {{ getTranslation('headline_servico_mudancas_24_7') }}
             </h4>
             <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                A única empresa de mudanças em Lisboa que opera a qualquer dia e hora. Não importa o tamanho da sua
-                mudança.
+                {{ getTranslation('paragraph_empresa_mudancas_qualquer_hora') }}
             </p>
             <a [href]="'/' + currentLanguage + '/available-anytime-moving-services'"
                 class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                Ver Mais
+                {{ getTranslation('button_ver_mais') }}
             </a>
         </div>
 
         <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="women-recieving-delivery.webp" alt="Mudanças Residenciais Locais"
+            <img src="women-recieving-delivery.webp" alt="{{ getTranslation('alt_mudancas_residenciais_locais') }}"
                 class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Mudanças Residenciais Locais
+                {{ getTranslation('headline_mudancas_residenciais_locais') }}
             </h4>
             <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                Especializados em mudanças locais em Lisboa e arredores, garantindo um serviço seguro e eficiente.
+                {{ getTranslation('paragraph_especializados_mudancas_locais') }}
             </p>
             <a [href]="'/' + currentLanguage + '/local-changes'"
                 class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                Ver Mais
+                {{ getTranslation('button_ver_mais') }}
             </a>
         </div>
 
         <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="long-distance-transport.webp" alt="Mudanças de Longa Distância"
+            <img src="long-distance-transport.webp" alt="{{ getTranslation('alt_mudancas_longa_distancia') }}"
                 class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Mudanças de Longa Distância
+                {{ getTranslation('headline_mudancas_longa_distancia') }}
             </h4>
             <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                De Lisboa para qualquer cidade de Portugal ou da Europa, com transporte seguro e prazos confiáveis.
+                {{ getTranslation('paragraph_lisboa_qualquer_cidade') }}
             </p>
             <a [href]="'/' + currentLanguage + '/long-distance'"
                 class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                Ver Mais
+                {{ getTranslation('button_ver_mais') }}
             </a>
         </div>
 
         <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="office-moving.webp" alt="Mudanças de Escritórios"
+            <img src="office-moving.webp" alt="{{ getTranslation('alt_mudancas_escritorios') }}"
                 class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Mudanças de Escritórios
+                {{ getTranslation('headline_mudancas_escritorios') }}
             </h4>
             <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                Mudamos escritórios durante a noite e fins de semana para minimizar interrupções no seu negócio.
+                {{ getTranslation('paragraph_mudamos_escritorios') }}
             </p>
             <a [href]="'/' + currentLanguage + '/office-changes'"
                 class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                Ver Mais
+                {{ getTranslation('button_ver_mais') }}
             </a>
         </div>
 
         <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="small-moving.webp" alt="Pequenas Mudanças"
+            <img src="small-moving.webp" alt="{{ getTranslation('alt_pequenas_mudancas') }}"
                 class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Pequenas Mudanças
+                {{ getTranslation('headline_pequenas_mudancas') }}
             </h4>
             <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                Serviço para transportar objetos individuais ou mudanças menores sem complicação.
+                {{ getTranslation('paragraph_servico_transportar_objetos') }}
             </p>
             <a [href]="'/' + currentLanguage + '/small-changes'"
                 class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                Ver Mais
+                {{ getTranslation('button_ver_mais') }}
             </a>
         </div>
 
         <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="last-minute-changes.webp" alt="Mudanças de Última Hora"
+            <img src="last-minute-changes.webp" alt="{{ getTranslation('alt_mudancas_ultima_hora') }}"
                 class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Mudanças de Última Hora
+                {{ getTranslation('headline_mudancas_ultima_hora') }}
             </h4>
             <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                Mudanças urgentes sem complicações. Transporte rápido para a sua nova morada.
+                {{ getTranslation('paragraph_mudancas_urgentes_sem_complicacoes') }}
             </p>
             <a [href]="'/' + currentLanguage + '/last-minute-changes'"
                 class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                Ver Mais
+                {{ getTranslation('button_ver_mais') }}
             </a>
         </div>
 
         <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="cleaning-house.webp" alt="Despejos de casas e armazéns"
+            <img src="cleaning-house.webp" alt="{{ getTranslation('alt_despejos_casas_armazens') }}"
                 class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Despejos de casas e armazéns
+                {{ getTranslation('headline_despejos_casas_armazens') }}
             </h4>
             <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                Realizamos despejos rápidos e seguros de casas e armazéns, com total profissionalismo e discrição.
+                {{ getTranslation('paragraph_realizamos_despejos_rapidos') }}
             </p>
             <a [href]="'/' + currentLanguage + '/house-removals'"
                 class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                Ver Mais
+                {{ getTranslation('button_ver_mais') }}
             </a>
         </div>
 
         <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="moving-low-cost.webp" alt="Transporte low cost – qualidade ao melhor preço."
+            <img src="moving-low-cost.webp" alt="{{ getTranslation('alt_transporte_low_cost') }}"
                 class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Transporte low cost e barato
+                {{ getTranslation('headline_transporte_low_cost_barato') }}
             </h4>
             <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                Oferecemos um serviço de transporte low cost, combinando preços acessíveis com qualidade. A escolha
-                ideal para quem procura poupar.
+                {{ getTranslation('paragraph_oferecemos_transporte_low_cost') }}
             </p>
             <a [href]="'/' + currentLanguage + '/low-cost-cheap-transport'"
                 class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                Ver Mais
+                {{ getTranslation('button_ver_mais') }}
             </a>
         </div>
 
@@ -504,31 +502,29 @@
         <div class="flex flex-wrap items-center lg:flex-nowrap gap-10">
 
             <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
-                <img src="moving-furniture.webp" alt="moving furniture"
+                <img src="moving-furniture.webp" alt="{{ getTranslation('alt_moving_furniture') }}"
                     class="w-full max-w-xs sm:max-w-sm lg:max-w-md rounded-lg" />
             </div>
 
             <div class="w-full lg:w-1/2 text-center lg:text-left">
                 <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white leading-tight">
-                    Mudanças Simplificadas
+                    {{ getTranslation('headline_mudancas_simplificadas') }}
                 </h2>
 
                 <h3 class="text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300 mt-3">
-                    O que está incluído em <span class="text-black dark:text-white font-semibold">cada
-                        mudança</span>
+                    {{ getTranslation('headline_o_que_esta_incluido_1') }} <span
+                        class="text-black dark:text-white font-semibold">{{
+                        getTranslation('headline_o_que_esta_incluido_2') }}</span>
                 </h3>
 
                 <p class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Com presença em Lisboa, Cascais, Oeiras, Sintra, Almada e outras zonas da Grande Lisboa,
-                    realizamos
-                    mudanças
-                    para qualquer destino em Portugal e no estrangeiro.
+                    {{ getTranslation('paragraph_com_presenca_em') }}
                 </p>
 
                 <div class="mt-6">
                     <a routerLink="/login"
                         class="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-900">
-                        Obtenha um orçamento gratuito
+                        {{ getTranslation('button_obtenha_orcamento_gratuito') }}
                     </a>
                 </div>
             </div>
@@ -909,6 +905,6 @@
 
 <section class="pb-12 bg-transparent dark:bg-black">
     <div class="max-w-3xl mx-auto rounded-xl">
-        <p class="text-sm">v0.0.5</p>
+        <p class="text-sm">v0.0.6</p>
     </div>
 </section>
