@@ -10,6 +10,7 @@ import { OfficeChangesComponent } from './_pages/landing/office-changes/office-c
 import { SmallChangesComponent } from './_pages/landing/small-changes/small-changes.component';
 import { RegisterComponent } from './_pages/auth/register/register.component';
 import { LoginComponent } from './_pages/auth/login/login.component';
+import { RequesterHomeComponent } from './_pages/requester/requester-home/requester-home.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -45,6 +46,10 @@ export const routes: Routes = [
     // Auth
     { path: ':lang/register', component: RegisterComponent, pathMatch: 'full' },
     { path: ':lang/login', component: LoginComponent, pathMatch: 'full' },
+
+
+    // User
+    { path: ':lang/requester-home', component: RequesterHomeComponent, pathMatch: 'full' },
 
 
 

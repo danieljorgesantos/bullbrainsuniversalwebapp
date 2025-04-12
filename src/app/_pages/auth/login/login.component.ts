@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { AuthManagerSignal } from '../../../_signals/authManager.signal';
 import { AuthService } from '../../../_shared/services/auth.service';
@@ -14,6 +14,8 @@ import { AuthService } from '../../../_shared/services/auth.service';
   // providers: [AuthManagerSignal, AuthService],
 })
 export class LoginComponent {
+  private route = inject(ActivatedRoute);
+
   // Language
   currentLanguage: any = 'pt-PT';
 
@@ -33,15 +35,23 @@ export class LoginComponent {
     });
   }
 
-  // ngOnInit(): void {
-  //   this.loadGoogleAuth();
-  // }
+  ngOnInit() {
+    // Get the "lang" route param
+    const langParam = this.route.snapshot.paramMap.get('lang');
+
+    if (langParam) {
+      this.currentLanguage = langParam;
+    }
+    //   this.loadGoogleAuth();
+  }
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
 
   submit() {
+    this.router.navigate(['/', this.currentLanguage, 'requester-home']);
+
     // if (this.loginForm.valid) {
     //   this.authManagerSignal.signIn(this.loginForm.value);
     // }
