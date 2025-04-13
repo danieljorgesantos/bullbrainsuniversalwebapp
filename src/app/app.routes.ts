@@ -11,6 +11,8 @@ import { SmallChangesComponent } from './_pages/landing/small-changes/small-chan
 import { RegisterComponent } from './_pages/auth/register/register.component';
 import { LoginComponent } from './_pages/auth/login/login.component';
 import { RequesterHomeComponent } from './_pages/requester/requester-home/requester-home.component';
+import { LandingChooseVanComponent } from './_pages/landing/landing-choose-van/landing-choose-van.component';
+import { RequesterChooseVanComponent } from './_pages/requester/requester-choose-van/requester-choose-van.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -41,6 +43,8 @@ export const routes: Routes = [
     { path: ':lang/low-cost-cheap-transport', component: LowCostCheapTransportComponent, pathMatch: 'full' },
     { path: ':lang/office-changes', component: OfficeChangesComponent, pathMatch: 'full' },
     { path: ':lang/small-changes', component: SmallChangesComponent, pathMatch: 'full' },
+    { path: ':lang/choose-van', component: LandingChooseVanComponent, pathMatch: 'full' },
+
 
 
     // Auth
@@ -50,6 +54,10 @@ export const routes: Routes = [
 
     // User
     { path: ':lang/requester-home', component: RequesterHomeComponent, pathMatch: 'full' },
+
+
+
+    { path: ':lang/requester-choose-van', component: RequesterChooseVanComponent, pathMatch: 'full' },
 
 
 
