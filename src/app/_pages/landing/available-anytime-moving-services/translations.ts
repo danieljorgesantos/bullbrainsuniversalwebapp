@@ -1,6 +1,9 @@
 
 export const avaiableAnytimeTranslations: any = {
     "pt-PT": {
+        meta_title: 'Mudanças 24h em Lisboa – Rápidas e Seguras | Flo and Go',
+        meta_description: 'Mudanças residenciais e comerciais em Lisboa, a qualquer hora. Serviço 24h com equipa profissional. Peça já o seu orçamento gratuito!',
+
         mudancas_24_7_365: "Mudanças 24/7/365",
         a_unica_empresa: "A única empresa de mudanças em Lisboa sempre disponível",
         estamos_ao_seu: "Estamos ao seu dispor todos os dias do ano, a qualquer hora. Mudanças pequenas ou grandes, em Lisboa ou arredores, com um simples clique no seu telemóvel.",
@@ -13,8 +16,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Conecte-se com motoristas confiáveis em segundos",
         solicite_um_transporte: "Solicite um Transporte",
         comece_agora: "Comece Agora",
-        meta_title: "Mudanças Lisboa - Escritórios e Residenciais a qualquer hora! | Flo and Go",
-        meta_description: "Mudanças em Lisboa com orçamento grátis! Peça as suas mudanças residenciais e de escritórios de forma fácil, com a Flo Mudanças!",
         serviços_de_mudanca: "Serviços de Mudança",
         transporte_seguro: "Transporte seguro e eficiente do ponto A ao ponto B",
         ligue_se_a_motoristas: "Ligue-se a motoristas especializados para mudanças, móveis, eletrodomésticos e materiais. Para empresas e particulares com atendimento rápido e transparente.",
@@ -36,6 +37,10 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "Atendimento 24/7, operação em Lisboa, preços transparentes, aplicação fácil de usar e equipa experiente. Mais de 95% de clientes satisfeitos."
     },
     "en": {
+        meta_title: '24/7 Moving Services in Lisbon – Fast and Reliable | Flo and Go',
+        meta_description: 'Residential and commercial moves in Lisbon, anytime. 24/7 service with a professional team. Request your free quote now!',
+        
+
         mudancas_24_7_365: "Moves 24/7/365",
         a_unica_empresa: "The only moving company in Lisbon always available",
         estamos_ao_seu: "We are available every day of the year, at any time. Small or large moves, in Lisbon or surrounding areas, just a click away.",
@@ -48,8 +53,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Connect with trusted drivers in seconds",
         solicite_um_transporte: "Request a Transport",
         comece_agora: "Start Now",
-        meta_title: "Lisbon Moves - Office & Residential Anytime | Flo and Go",
-        meta_description: "Moving services in Lisbon with a free quote! Request your residential and office moves easily with Flo Moving!",
         serviços_de_mudanca: "Moving Services",
         transporte_seguro: "Safe and efficient transport from point A to point B",
         ligue_se_a_motoristas: "Connect with specialized drivers for moves, furniture, appliances, and materials. For businesses and individuals, with fast and transparent service.",
@@ -71,6 +74,10 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "24/7 support, operating in Lisbon, transparent pricing, easy-to-use app, and an experienced team. Over 95% customer satisfaction."
     },
     "fr-FR": {
+        meta_title: 'Déménagements 24h/24 à Lisbonne – Rapides et Fiables | Flo and Go',
+        meta_description: 'Déménagements résidentiels et professionnels à Lisbonne, à toute heure. Service 24h/24 avec une équipe pro. Demandez votre devis gratuit !',
+        
+
         mudancas_24_7_365: "Déménagements 24h/24 et 7j/7",
         a_unica_empresa: "La seule entreprise de déménagement toujours disponible à Lisbonne",
         estamos_ao_seu: "Nous sommes disponibles tous les jours de l'année, à tout moment. Petits ou grands déménagements, à Lisbonne ou dans les environs, en un clic.",
@@ -83,8 +90,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Connectez-vous à des chauffeurs de confiance en quelques secondes",
         solicite_um_transporte: "Demander un Transport",
         comece_agora: "Commencez maintenant",
-        meta_title: "Déménagements à Lisbonne - Bureaux et Résidences à tout moment | Flo and Go",
-        meta_description: "Déménagements à Lisbonne avec devis gratuit ! Réservez facilement vos déménagements résidentiels et professionnels avec Flo Déménagements !",
         serviços_de_mudanca: "Services de Déménagement",
         transporte_seguro: "Transport sûr et efficace du point A au point B",
         ligue_se_a_motoristas: "Contactez des chauffeurs spécialisés pour les déménagements, meubles, appareils et matériaux. Pour les entreprises et les particuliers avec un service rapide et transparent.",
@@ -106,6 +111,10 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "Assistance 24/7, activité à Lisbonne, tarifs transparents, application facile à utiliser et équipe expérimentée. Plus de 95 % de clients satisfaits."
     },
     "es-ES": {
+        meta_title: 'Mudanzas 24h en Lisboa – Rápidas y Fiables | Flo and Go',
+        meta_description: 'Mudanzas residenciales y comerciales en Lisboa, a cualquier hora. Servicio 24h con equipo profesional. ¡Solicita tu presupuesto gratis!',
+        
+
         mudancas_24_7_365: "Mudanzas 24/7/365",
         a_unica_empresa: "La única empresa de mudanzas siempre disponible en Lisboa",
         estamos_ao_seu: "Estamos a tu disposición todos los días del año, a cualquier hora. Mudanzas grandes o pequeñas, en Lisboa o alrededores, con solo un clic.",
@@ -118,8 +127,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Conéctate con conductores de confianza en segundos",
         solicite_um_transporte: "Solicita un Transporte",
         comece_agora: "Empieza ahora",
-        meta_title: "Mudanzas Lisboa - Oficinas y Residencias a cualquier hora | Flo and Go",
-        meta_description: "Mudanzas en Lisboa con presupuesto gratis. Solicita fácilmente mudanzas residenciales y de oficina con Flo Mudanzas.",
         serviços_de_mudanca: "Servicios de Mudanza",
         transporte_seguro: "Transporte seguro y eficiente del punto A al punto B",
         ligue_se_a_motoristas: "Conéctate con conductores especializados para mudanzas, muebles, electrodomésticos y materiales. Para empresas y particulares con servicio rápido y transparente.",
@@ -141,6 +148,9 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "Atención 24/7, operamos en Lisboa, precios transparentes, app fácil de usar y equipo con experiencia. Más del 95% de clientes satisfechos."
     },
     "de-DE": {
+meta_title: '24/7 Umzugsservice in Lissabon – Schnell und Zuverlässig | Flo and Go',
+  meta_description: 'Wohnungs- und Büroumzüge in Lissabon, jederzeit. 24/7-Service mit professionellem Team. Jetzt kostenloses Angebot anfordern!',
+
         mudancas_24_7_365: "Umzüge 24/7/365",
         a_unica_empresa: "Das einzige Umzugsunternehmen in Lissabon, das immer verfügbar ist",
         estamos_ao_seu: "Wir stehen Ihnen das ganze Jahr über, rund um die Uhr zur Verfügung. Kleine oder große Umzüge, in Lissabon oder Umgebung – mit nur einem Klick auf Ihrem Handy.",
@@ -153,8 +163,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Verbinden Sie sich in Sekundenschnelle mit zuverlässigen Fahrern",
         solicite_um_transporte: "Transport anfordern",
         comece_agora: "Jetzt starten",
-        meta_title: "Umzüge in Lissabon – Büro- und Wohnumzüge jederzeit | Flo and Go",
-        meta_description: "Umzüge in Lissabon mit kostenloser Angebotserstellung! Buchen Sie Ihre Wohn- und Büro-Umzüge ganz einfach mit Flo Umzüge!",
         serviços_de_mudanca: "Umzugsdienste",
         transporte_seguro: "Sicherer und effizienter Transport von Punkt A nach Punkt B",
         ligue_se_a_motoristas: "Verbinden Sie sich mit spezialisierten Fahrern für Umzüge, Möbel, Haushaltsgeräte und Materialien. Für Unternehmen und Privatpersonen mit schnellem und transparentem Service.",
@@ -176,6 +184,9 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "24/7 Kundenservice, Betrieb in Lissabon, transparente Preise, benutzerfreundliche App und erfahrenes Team. Über 95 % zufriedene Kunden."
     },
     "it-IT": {
+  meta_title: 'Traslochi 24/7 a Lisbona – Veloci e Affidabili | Flo and Go',
+  meta_description: 'Traslochi residenziali e commerciali a Lisbona, a qualsiasi ora. Servizio 24/7 con team professionale. Richiedi subito un preventivo gratuito!',
+
         mudancas_24_7_365: "Traslochi 24/7/365",
         a_unica_empresa: "L'unica azienda di traslochi a Lisbona sempre disponibile",
         estamos_ao_seu: "Siamo a tua disposizione tutti i giorni dell'anno, a qualsiasi ora. Traslochi piccoli o grandi, a Lisbona o nei dintorni, con un semplice clic sul tuo telefono.",
@@ -188,8 +199,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Collegati con autisti affidabili in pochi secondi",
         solicite_um_transporte: "Richiedi un Trasporto",
         comece_agora: "Inizia ora",
-        meta_title: "Traslochi a Lisbona – Uffici e abitazioni a qualsiasi ora | Flo and Go",
-        meta_description: "Traslochi a Lisbona con preventivo gratuito! Prenota facilmente i tuoi traslochi residenziali e d’ufficio con Flo Traslochi!",
         serviços_de_mudanca: "Servizi di Trasloco",
         transporte_seguro: "Trasporto sicuro ed efficiente dal punto A al punto B",
         ligue_se_a_motoristas: "Collegati con autisti specializzati per traslochi, mobili, elettrodomestici e materiali. Per aziende e privati, con servizio rapido e trasparente.",
@@ -211,6 +220,9 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "Assistenza 24/7, operativi a Lisbona, prezzi trasparenti, app facile da usare e team esperto. Oltre il 95% di clienti soddisfatti."
     },
     "zh-CN": {
+  meta_title: '里斯本 24/7 搬家服务 – 快速可靠 | Flo and Go',
+  meta_description: '在里斯本随时提供住宅和商业搬家服务。24/7 专业团队服务。立即获取免费报价！',
+
         mudancas_24_7_365: "全天候搬家服务 24/7/365",
         a_unica_empresa: "里斯本唯一全天候提供服务的搬家公司",
         estamos_ao_seu: "我们全年无休、全天候为您服务。无论是大搬家还是小搬家，无论在里斯本市区还是周边，只需在手机上一键预约。",
@@ -223,8 +235,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "几秒内连接可靠司机",
         solicite_um_transporte: "请求运输服务",
         comece_agora: "立即开始",
-        meta_title: "里斯本搬家服务 - 办公与住宅随时可用 | Flo and Go",
-        meta_description: "在里斯本提供免费报价的搬家服务！使用 Flo 搬家公司轻松安排住宅或办公室搬家。",
         serviços_de_mudanca: "搬家服务",
         transporte_seguro: "从起点到终点的安全高效运输",
         ligue_se_a_motoristas: "联系专业司机，搬家、家具、电器、建材运输皆可。适用于企业与个人，服务快速透明。",
@@ -246,6 +256,9 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "全天候服务，覆盖里斯本，价格透明，应用易用，团队专业。超过95%的客户满意度。"
     },
     "hi-IN": {
+        meta_title: 'लिस्बन में 24/7 मूविंग सेवा – तेज़ और भरोसेमंद | Flo and Go',
+        meta_description: 'लिस्बन में कभी भी रेसिडेंशियल और कमर्शियल मूव्स। 24/7 प्रोफेशनल टीम सेवा। अभी अपना मुफ्त कोटेशन पाएं!',
+
         mudancas_24_7_365: "24/7/365 मूविंग सेवा",
         a_unica_empresa: "लिस्बन में हमेशा उपलब्ध एकमात्र मूविंग कंपनी",
         estamos_ao_seu: "हम साल के हर दिन, किसी भी समय आपके लिए उपलब्ध हैं। लिस्बन और आसपास के क्षेत्रों में छोटे या बड़े मूव, बस एक क्लिक में।",
@@ -258,8 +271,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "कुछ ही सेकंड में भरोसेमंद ड्राइवरों से जुड़ें",
         solicite_um_transporte: "ट्रांसपोर्ट सेवा का अनुरोध करें",
         comece_agora: "अभी शुरू करें",
-        meta_title: "लिस्बन मूविंग - ऑफिस और रेजिडेंशियल सेवाएं कभी भी | Flo and Go",
-        meta_description: "लिस्बन में मुफ्त कोटेशन के साथ मूविंग सेवाएं! Flo मूविंग के साथ अपने घर और ऑफिस की मूविंग आसानी से बुक करें!",
         serviços_de_mudanca: "मूविंग सेवाएं",
         transporte_seguro: "बिंदु A से बिंदु B तक सुरक्षित और कुशल परिवहन",
         ligue_se_a_motoristas: "मूविंग, फर्नीचर, उपकरण और सामग्री के लिए विशेषज्ञ ड्राइवरों से जुड़ें। कंपनियों और व्यक्तियों के लिए तेज़ और पारदर्शी सेवा।",
@@ -282,6 +293,9 @@ export const avaiableAnytimeTranslations: any = {
 
     },
     "pl-PL": {
+        meta_title: 'Przeprowadzki 24/7 w Lizbonie – Szybko i Bezpiecznie | Flo and Go',
+        meta_description: 'Przeprowadzki mieszkań i firm w Lizbonie o każdej porze. Usługa 24/7 z profesjonalnym zespołem. Zamów darmową wycenę już teraz!',
+
         mudancas_24_7_365: "Przeprowadzki 24/7/365",
         a_unica_empresa: "Jedyna firma przeprowadzkowa w Lizbonie dostępna o każdej porze",
         estamos_ao_seu: "Jesteśmy do Twojej dyspozycji każdego dnia w roku, o każdej porze. Małe lub duże przeprowadzki w Lizbonie i okolicach – wystarczy jedno kliknięcie w telefonie.",
@@ -294,8 +308,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Połącz się z zaufanymi kierowcami w kilka sekund",
         solicite_um_transporte: "Zamów transport",
         comece_agora: "Zacznij teraz",
-        meta_title: "Przeprowadzki w Lizbonie – biura i domy o każdej porze | Flo and Go",
-        meta_description: "Przeprowadzki w Lizbonie z darmową wyceną! Zamów przeprowadzkę biura lub domu łatwo z Flo Przeprowadzki!",
         serviços_de_mudanca: "Usługi przeprowadzkowe",
         transporte_seguro: "Bezpieczny i wydajny transport z punktu A do punktu B",
         ligue_se_a_motoristas: "Połącz się ze specjalistycznymi kierowcami do przeprowadzek, mebli, sprzętu AGD i materiałów. Dla firm i osób prywatnych – szybko i przejrzyście.",
@@ -317,6 +329,9 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "Dostępność 24/7, działamy w Lizbonie, przejrzyste ceny, łatwa w użyciu aplikacja i doświadczony zespół. Ponad 95% zadowolonych klientów."
     },
     "sv-SE": {
+        meta_title: 'Flyttjänst 24/7 i Lissabon – Snabbt och Pålitligt | Flo and Go',
+        meta_description: 'Bostads- och företagsflytt i Lissabon, när som helst. 24/7-service med professionellt team. Få din kostnadsfria offert nu!',
+
         mudancas_24_7_365: "Flytt 24/7/365",
         a_unica_empresa: "Det enda flyttföretaget i Lissabon som alltid är tillgängligt",
         estamos_ao_seu: "Vi finns tillgängliga alla dagar på året, dygnet runt. Små eller stora flyttar, i Lissabon eller i närheten – med ett enkelt klick på din mobil.",
@@ -329,8 +344,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Anslut med pålitliga förare på några sekunder",
         solicite_um_transporte: "Begär transport",
         comece_agora: "Börja nu",
-        meta_title: "Flytt i Lissabon – Kontor och bostäder när som helst | Flo and Go",
-        meta_description: "Flyttjänster i Lissabon med gratis offert! Boka enkelt din kontors- eller bostadsflytt med Flo Flytt!",
         servicos_de_mudanca: "Flyttjänster",
         transporte_seguro: "Säker och effektiv transport från punkt A till punkt B",
         ligue_se_a_motoristas: "Anslut till specialiserade förare för flytt, möbler, vitvaror och material. För företag och privatpersoner med snabb och transparent service.",
@@ -352,6 +365,9 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "Support dygnet runt, verksamhet i Lissabon, transparenta priser, användarvänlig app och erfaret team. Över 95 % nöjda kunder."
     },
     "da-DK": {
+        meta_title: 'Flytteservice 24/7 i Lissabon – Hurtig og Pålidelig | Flo and Go',
+        meta_description: 'Bolig- og erhvervsflytning i Lissabon, når som helst. 24/7 service med professionelt team. Få et gratis tilbud nu!',
+
         mudancas_24_7_365: "Flytninger 24/7/365",
         a_unica_empresa: "Det eneste flyttefirma i Lissabon, der altid er tilgængeligt",
         estamos_ao_seu: "Vi er til rådighed alle årets dage, når som helst. Store eller små flytninger, i Lissabon eller omegn – med et enkelt klik på din telefon.",
@@ -364,8 +380,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Forbind med pålidelige chauffører på få sekunder",
         solicite_um_transporte: "Anmod om transport",
         comece_agora: "Kom i gang",
-        meta_title: "Flytninger i Lissabon – Kontorer og boliger når som helst | Flo and Go",
-        meta_description: "Flyttetjenester i Lissabon med gratis tilbud! Book nemt din bolig- eller kontorflytning med Flo Flyt!",
         servicos_de_mudanca: "Flyttetjenester",
         transporte_seguro: "Sikker og effektiv transport fra punkt A til punkt B",
         ligue_se_a_motoristas: "Forbind med specialiserede chauffører til flytninger, møbler, apparater og materialer. Til virksomheder og private med hurtig og gennemsigtig service.",
@@ -387,6 +401,9 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "24/7 support, drift i Lissabon, gennemsigtige priser, brugervenlig app og erfarent team. Over 95 % tilfredse kunder."
     },
     "fi-FI": {
+        meta_title: 'Muuttopalvelu 24/7 Lissabonissa – Nopea ja Luotettava | Flo and Go',
+        meta_description: 'Asunto- ja yritysmuutot Lissabonissa milloin tahansa. 24/7 palvelu ammattitiimiltä. Pyydä ilmainen tarjous nyt!',
+
         mudancas_24_7_365: "Muutto 24/7/365",
         a_unica_empresa: "Ainoa muuttofirma Lissabonissa, joka on aina saatavilla",
         estamos_ao_seu: "Olemme käytettävissäsi vuoden jokaisena päivänä, mihin aikaan tahansa. Pienet tai suuret muutot Lissabonissa tai sen lähialueilla – helposti puhelimestasi.",
@@ -399,8 +416,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "Yhdistä luotettaviin kuljettajiin sekunneissa",
         solicite_um_transporte: "Pyydä kuljetusta",
         comece_agora: "Aloita nyt",
-        meta_title: "Muuttoja Lissabonissa – Toimistot ja kodit mihin aikaan tahansa | Flo and Go",
-        meta_description: "Muuttopalvelut Lissabonissa ilmaisella tarjouksella! Varaa helposti kotisi tai toimistosi muutto Flo Muutot -palvelun avulla!",
         servicos_de_mudanca: "Muuttopalvelut",
         transporte_seguro: "Turvallinen ja tehokas kuljetus pisteestä A pisteeseen B",
         ligue_se_a_motoristas: "Yhdistä erikoistuneisiin kuljettajiin muuttoihin, huonekaluihin, kodinkoneisiin ja materiaaleihin. Yrityksille ja yksityishenkilöille – nopea ja läpinäkyvä palvelu.",
@@ -422,6 +437,9 @@ export const avaiableAnytimeTranslations: any = {
         atendimento_24_7: "24/7 asiakastuki, toiminta Lissabonissa, läpinäkyvä hinnoittelu, helppokäyttöinen sovellus ja kokenut tiimi. Yli 95 % tyytyväisiä asiakkaita."
     },
     "ja-JP": {
+        meta_title: 'リスボンの24時間引越しサービス – 迅速かつ信頼 | Flo and Go',
+        meta_description: 'リスボンでいつでも対応の住宅・商業引越し。24時間対応のプロフェッショナルチーム。今すぐ無料見積もりを！',
+
         mudancas_24_7_365: "年中無休の引っ越しサービス 24/7/365",
         a_unica_empresa: "リスボンで常時利用可能な唯一の引っ越し会社",
         estamos_ao_seu: "年中無休・24時間対応。リスボン市内やその周辺の小さな引っ越しから大規模な移動まで、スマホで簡単に依頼可能です。",
@@ -434,8 +452,6 @@ export const avaiableAnytimeTranslations: any = {
         conecte_se_com: "信頼できるドライバーと数秒で接続",
         solicite_um_transporte: "輸送を依頼する",
         comece_agora: "今すぐ開始",
-        meta_title: "リスボンの引っ越し - オフィスも住居もいつでも対応 | Flo and Go",
-        meta_description: "リスボンの引っ越しサービス。無料見積もり付き！Flo Movingで住宅やオフィスの引っ越しを簡単予約。",
         serviços_de_mudanca: "引っ越しサービス",
         transporte_seguro: "A地点からB地点まで安全かつ効率的な輸送",
         ligue_se_a_motoristas: "引っ越し、家具、家電、資材の輸送に特化したドライバーと接続。個人・法人問わず迅速かつ透明な対応。",
