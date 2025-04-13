@@ -1,1 +1,121 @@
-<p>requester-map works!</p>
+<form [formGroup]="form">
+    <!-- TABLET & DESKTOP ONLY -->
+    <div class="hidden md:block pt-14">
+        <div class="max-w-3xl mx-auto p-6 bg-white rounded-lg">
+
+            <div class="w-full pt-8 pb-10 text-left lg:max-w-5xl lg:mx-auto">
+                <!-- Back Button -->
+                <button 
+                    class="flex items-center text-sm text-gray-500 hover:text-black transition mb-4">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Voltar à página inicial
+                </button>
+
+                <!-- Headline and Subtext -->
+                <h1 class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2">
+                    Inicie o seu pedido de transporte
+                </h1>
+                <p class="text-base sm:text-lg text-gray-600 max-w-3xl">
+                    Preencha os detalhes abaixo para encontrar o transporte ideal para si.
+                </p>
+            </div>
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm h-full flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-lg font-bold text-gray-900">{{
+                            getTranslation('headline_solicitar_transporte_pesado') }}</h2>
+                        <span class="text-sm text-gray-600">{{ getTranslation('subtitle_ate_1000_kilos') }}</span>
+
+                        <div class="relative dropdown-container mt-4 mb-2">
+                            <input
+                                class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
+                                type="text" autocomplete="off"
+                                placeholder="{{ getTranslation('placeholder_digite_local_recolha') }}"
+                                formControlName="pickupLocation">
+
+                            <!-- (click)="selectGooglePickupLocation(prediction)" -->
+                            <div *ngIf="googlePickupPredictions.length > 0"
+                                class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg">
+                                <div (click)="selectGooglePickupLocation(prediction)"
+                                    *ngFor="let prediction of googlePickupPredictions"
+                                    class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100">
+                                    {{ prediction.description }}
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="mb-2 flex items-center justify-start">
+                            <button (click)="useCurrentLocationForPickup()"
+                                class="flex items-center bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
+                                <svg class="w-4 h-4 mr-1 text-green-800 dark:text-green-300" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                {{ getTranslation('button_usar_localizacao_atual_recolha') }}
+                            </button>
+                        </div>
+
+                        <!-- (click)="selectGoogleDeliveryLocation(prediction)" -->
+                        <div class="relative dropdown-container mt-4 mb-2">
+                            <input
+                                class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
+                                type="text" placeholder="{{ getTranslation('placeholder_digite_local_entrega') }}"
+                                formControlName="destinationLocation">
+                            <div *ngIf="googleDeliveryPredictions.length > 0"
+                                class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg">
+                                <div *ngFor="let prediction of googleDeliveryPredictions"
+                                    class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100">
+                                    {{ prediction.description }}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 
+                    (click)="useCurrentLocationForDelivery()" -->
+                        <div class="mb-2 flex items-center justify-start mb-4">
+                            <button
+                                class="flex items-center bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
+                                <svg class="w-4 h-4 mr-1 text-green-800 dark:text-green-300" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                {{ getTranslation('button_usar_localizacao_atual_entrega') }}
+                            </button>
+                        </div>
+                    </div>
+
+
+
+                    <a [href]="'/' + currentLanguage + '/requester-choose-van'"
+                        class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition duration-150 flex items-center justify-center gap-2 mt-6">
+                        {{ getTranslation('button_ver_precos') }}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path fill-rule="evenodd"
+                                d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </a>
+                </div>
+
+                <div class="bg-gray-500 w-full h-64 md:h-full rounded-lg shadow-sm">
+                    <div id="leaflet-map-desktop" style="height: 400px;" class="w-full h-full rounded-lg z-0"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<!-- TABLET & DESKTOP ONLY END -->
