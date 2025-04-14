@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 // import { HttpClient } from '@angular/common/http';
-// import { priceSignal } from '../../../_signals/price.signal';
+import { priceSignal } from '../../../_signals/price.signal';
 import { Router, RouterModule } from '@angular/router';
 // import { ConfigSignal } from '../../../_signals/config';
 // import { TransportRequestService } from '../../../_shared/services/transport-request.service';
@@ -30,6 +30,18 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   templateUrl: './landing-choose-van.component.html',
 })
 export class LandingChooseVanComponent {
+  public priceSignal = inject(priceSignal);
+
+
+
+
+
+
+
+
+
+
+
   private apiUrl = `${environment.apiBaseUrl}`;
 
   // public stripe!: StripeInstance;
@@ -118,9 +130,7 @@ export class LandingChooseVanComponent {
     const fareParams: any = {
       baseFare: 3.00,           // Tarifa base ajustada
       costPerKm: 1.05,          // Custo por km ajustado
-      // distanceKm: this.priceSignal.state.distance,           // Distância da viagem
-      distanceKm: 2.00,           // Distância da viagem
-
+      distanceKm: this.priceSignal.state.distance,           // Distância da viagem
       costPerMinute: 0.18,      // Custo por minuto rodado ajustado
       averageSpeedKmh: 60,      // Velocidade média assumida (km/h)
       costPerWaitMinute: 0.30,  // Custo por minuto de espera

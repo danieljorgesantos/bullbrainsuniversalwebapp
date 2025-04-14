@@ -36,6 +36,7 @@ export class HomeComponent {
   private platformId = inject(PLATFORM_ID);
   private router = inject(Router);
   private priceSignal = inject(priceSignal);
+  private http = inject(HttpClient);
 
   // Variables
   private desktopMap!: any;
@@ -99,6 +100,19 @@ export class HomeComponent {
       // this.testPickupLocationControlResponse = response;
     });
 
+    // Watch for changes in the pickupLocation input and call the service
+    this.form.get('destinationLocation')?.valueChanges.pipe(
+      debounceTime(500), // Wait 500ms after the user stops typing
+      distinctUntilChanged(), // Only trigger the service if the value changes
+      switchMap((inputValue: string) => this.googleAutocompleteService.testMethod(inputValue)) // Call the service with the current input value
+    ).subscribe((response: any) => {
+      this.googleDeliveryPredictions = response;
+      console.log('response in the component delivery delivery')
+      this.cd.detectChanges();
+      // console.log('Service response:', response);
+      // this.testPickupLocationControlResponse = response;
+    });
+
     // this.googleIniPickupAutocomplete();
     // this.googleInitDeliveryAutocomplete();
 
@@ -112,11 +126,17 @@ export class HomeComponent {
     // this.googleAutocompleteService.googlePredictions$.subscribe(predictions => {
     //   this.googlePredictions = predictions;
     // });
+
+
+
     this.setInitialPageConfiguration();
 
   }
 
   setInitialPageConfiguration() {
+    // // 🆕 Set the lang attribute on <html>
+    // document.documentElement.lang = this.currentLanguage;
+
     const titleToSet = homeTranslations[this.currentLanguage]?.meta_title || homeTranslations['en']?.meta_title;
     const descriptionToSet = homeTranslations[this.currentLanguage]?.meta_description || homeTranslations['en']?.meta_description;
     const shareImage = 'https://www.floand-go.com/flo-logo-11.jpg';
@@ -160,24 +180,6 @@ export class HomeComponent {
       console.error('Leaflet is not loaded');
       // Optionally show an error message to the user or retry logic here
     }
-  }
-
-  ngAfterViewInit(): void {
-    // if (!isPlatformBrowser(this.platformId) || !this.leaflet.L) return;
-
-    // this.desktopMap = this.leafletService.L.map('leaflet-map-desktop').setView([51.505, -0.09], 13);
-
-    // requestAnimationFrame(() => {
-    //   setTimeout(() => {
-    //   this.desktopMap?.remove();
-    //   this.desktopMap = this.initializeMap('leaflet-map-desktop');
-    // }, 0);
-    // });
-  }
-
-  ngOnDestroy(): void {
-    this.desktopMap?.remove();
-    this.mobileMap?.remove();
   }
 
   // /** ✅ Initialize Google Autocomplete for Pickup Point */
@@ -266,12 +268,12 @@ export class HomeComponent {
       pickupLongitude: lon,
     });
 
-    // this.mobileMap.setView([lat, lon], 14);
 
-    // // ✅ 🚨 Only calculate route if dropoff already exists
-    // if (this.destinationMarker) {
-    //   // this.getRoute();
-    // }
+    // ✅ 🚨 Only calculate route if dropoff already exists
+    if (this.destinationMarker) {
+      console.log('destination marker exists!!!!!!!!!!!')
+      // this.getRoute();
+    }
 
     // const placesService = new google.maps.places.PlacesService(document.createElement('div'));
     // placesService.getDetails({ placeId: prediction.place_id }, (place: any, status: any) => {
@@ -319,57 +321,95 @@ export class HomeComponent {
   }
 
 
-  // /** ✅ Select a Delivery Location & Update Map */
-  // selectGoogleDeliveryLocation(prediction: any): void {
-  //   console.log('selectGoogleDeliveryLocation')
+  /** ✅ Select a Delivery Location & Update Map */
+  selectGoogleDeliveryLocation(prediction: any): void {
+    const lat = prediction.lat;
+    const lon = prediction.lng;
 
-  //   // ✅ Google Places Service to get details
-  //   const placesService = new google.maps.places.PlacesService(document.createElement('div'));
-  //   placesService.getDetails({ placeId: prediction.place_id }, (place: any, status: any) => {
-  //     if (status === google.maps.places.PlacesServiceStatus.OK && place.geometry) {
-  //       const lat = place.geometry.location.lat();
-  //       const lon = place.geometry.location.lng();
+    // Clear predictions
+    this.googleDeliveryPredictions = [];
 
-  //       // ✅ Update the input field without triggering valueChanges
-  //       this.googleDeliveryControl.setValue(prediction.description, { emitEvent: false });
-  //       this.googleDeliveryPredictions = []; // ✅ Hide dropdown
-  //       this.cdr.detectChanges();
-  //       this.currentDeliveryRequest++;
+    // Update input field without triggering valueChanges again
+    this.form.get('destinationLocation')?.setValue(prediction.description, { emitEvent: false });
 
-  //       // ✅ If marker doesn't exist, create it
-  //       if (!this.destinationMarker) {
-  //         this.destinationMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getRedMarker() })
-  //           .addTo(this.mobileMap)
-  //           .bindPopup('Ponto de Entrega')
-  //           .on('dragend', () => this.getRoute());
+    // ✅ If marker doesn't exist, create it
+    if (!this.destinationMarker) {
+      this.destinationMarker = this.leafletService.L.marker([lat, lon], {
+        draggable: true,
+        icon: this.getRedMarker(),
+      })
+        .addTo(this.desktopMap) // or this.mobileMap depending on current view
+        .bindPopup('Ponto de Recolha')
+      // .on('dragend', () => this.getRoute());
+    } else {
+      this.destinationMarker.setLatLng([lat, lon]).openPopup();
+    }
 
-  //         this.destinationMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getRedMarker() })
-  //           .addTo(this.desktopMap)
-  //           .bindPopup('Ponto de Entrega')
-  //           .on('dragend', () => this.getRoute());
-  //       } else {
-  //         this.destinationMarker.setLatLng([lat, lon]).openPopup();
-  //       }
+    // Center the map on the selected location
+    this.desktopMap.setView([lat, lon], 14);
+    // this.mobileMap.setView([lat, lon], 14); // if needed
+
+    // Update app-wide state
+    this.priceSignal.updateState({
+      dropoffLocationText: prediction.description,
+      dropoffLatitude: lat,
+      dropoffLongitude: lon,
+    });
+
+    if (this.pickupMarker) {
+      console.log('pickup marker exsteeee!!!!')
+      // ✅ Update route
+      this.getRoute();
+    }
 
 
-  //       // ✅ Update map
-  //       this.desktopMap.setView([lat, lon], 14);
-  //       this.mobileMap.setView([lat, lon], 14);
+    // // ✅ Google Places Service to get details
+    // const placesService = new google.maps.places.PlacesService(document.createElement('div'));
+    // placesService.getDetails({ placeId: prediction.place_id }, (place: any, status: any) => {
+    //   if (status === google.maps.places.PlacesServiceStatus.OK && place.geometry) {
+    //     const lat = place.geometry.location.lat();
+    //     const lon = place.geometry.location.lng();
 
-  //       // ✅ Update the priceSignal state
-  //       this.priceSignal.updateState({
-  //         dropoffLocationText: prediction.description,
-  //         dropoffLatitude: lat,
-  //         dropoffLongitude: lon,
-  //       });
+    //     // ✅ Update the input field without triggering valueChanges
+    //     this.googleDeliveryControl.setValue(prediction.description, { emitEvent: false });
+    //     this.googleDeliveryPredictions = []; // ✅ Hide dropdown
+    //     this.cdr.detectChanges();
+    //     this.currentDeliveryRequest++;
 
-  //       if (this.pickupMarker) {
-  //         // ✅ Update route
-  //         // this.getRoute();
-  //       }
-  //     }
-  //   });
-  // }
+    //     // ✅ If marker doesn't exist, create it
+    //     if (!this.destinationMarker) {
+    //       this.destinationMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getRedMarker() })
+    //         .addTo(this.mobileMap)
+    //         .bindPopup('Ponto de Entrega')
+    //         .on('dragend', () => this.getRoute());
+
+    //       this.destinationMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getRedMarker() })
+    //         .addTo(this.desktopMap)
+    //         .bindPopup('Ponto de Entrega')
+    //         .on('dragend', () => this.getRoute());
+    //     } else {
+    //       this.destinationMarker.setLatLng([lat, lon]).openPopup();
+    //     }
+
+
+    //     // ✅ Update map
+    //     this.desktopMap.setView([lat, lon], 14);
+    //     this.mobileMap.setView([lat, lon], 14);
+
+    //     // ✅ Update the priceSignal state
+    //     this.priceSignal.updateState({
+    //       dropoffLocationText: prediction.description,
+    //       dropoffLatitude: lat,
+    //       dropoffLongitude: lon,
+    //     });
+
+    //     if (this.pickupMarker) {
+    //       // ✅ Update route
+    //       // this.getRoute();
+    //     }
+    //   }
+    // });
+  }
 
   getBlueMarker() {
     return this.leafletService.L.icon({
@@ -382,16 +422,16 @@ export class HomeComponent {
     });
   }
 
-  // getRedMarker() {
-  //   return this.leafletService.L.icon({
-  //     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-  //     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/marker-shadow.png',
-  //     iconSize: [25, 41],
-  //     iconAnchor: [12, 41],
-  //     popupAnchor: [1, -34],
-  //     shadowSize: [41, 41]
-  //   });
-  // }
+  getRedMarker() {
+    return this.leafletService.L.icon({
+      iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+      shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/marker-shadow.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+  }
 
 
 
@@ -408,68 +448,81 @@ export class HomeComponent {
   //   marker.setLatLng([lat, lon]).bindPopup(label).openPopup();
   // }
 
-  // getRoute() {
-  //   if (!this.pickupMarker || !this.destinationMarker || !this.desktopMap || !this.mobileMap) {
-  //     return;
-  //   }
+  getRoute() {
+    // if (!this.pickupMarker || !this.destinationMarker || !this.desktopMap || !this.mobileMap) {
+    //   return;
+    // }
 
-  //   const pickupCoords = this.pickupMarker.getLatLng();
-  //   const destinationCoords = this.destinationMarker.getLatLng();
+    console.log('got here 1')
 
-  //   const url = `https://router.project-osrm.org/route/v1/driving/${pickupCoords.lng},${pickupCoords.lat};${destinationCoords.lng},${destinationCoords.lat}?overview=full&geometries=geojson`;
+    const pickupCoords = this.pickupMarker?.getLatLng();
+    const destinationCoords = this.destinationMarker?.getLatLng();
 
-  //   this.http.get(url).subscribe((response: any) => {
-  //     if (response && response.routes && response.routes.length > 0) {
-  //       const routeCoords = response.routes[0].geometry.coordinates.map((coord: any) => [coord[1], coord[0]]);
+    const url = `https://router.project-osrm.org/route/v1/driving/${pickupCoords.lng},${pickupCoords.lat};${destinationCoords.lng},${destinationCoords.lat}?overview=full&geometries=geojson`;
 
-  //       // ✅ Ensure maps are ready before adding the route
-  //       if (!this.desktopMap || !this.mobileMap) {
-  //         return;
-  //       }
+    console.log('got here 2')
 
-  //       // ✅ Ensure previous route is removed before adding a new one
-  //       try {
-  //         if (this.routeLayer) {
-  //           this.desktopMap.removeLayer(this.routeLayer);
-  //           this.mobileMap.removeLayer(this.routeLayer);
-  //         }
-  //       } catch (error) {
-  //         console.warn("⚠️ Route layer was already removed or did not exist.", error);
-  //       }
+    this.http.get(url).subscribe((response: any) => {
+      if (response && response.routes && response.routes.length > 0) {
+        const routeCoords = response.routes[0].geometry.coordinates.map((coord: any) => [coord[1], coord[0]]);
 
-  //       // ✅ Store new route in the layer
-  //       this.routeLayer = this.leafletService.L.polyline(routeCoords, { color: 'black', weight: 5, opacity: 0.7 });
+        console.log('got here 3')
 
-  //       // ✅ Add new route to both maps
-  //       this.routeLayer.addTo(this.desktopMap);
-  //       this.routeLayer.addTo(this.mobileMap);
+        // // ✅ Ensure maps are ready before adding the route
+        // if (!this.desktopMap || !this.mobileMap) {
+        //   return;
+        // }
 
-  //       // ✅ Ensure map has the correct size before fitting bounds
-  //       setTimeout(() => {
-  //         try {
-  //           this.desktopMap.fitBounds(this.routeLayer.getBounds());
-  //           this.mobileMap.fitBounds(this.routeLayer.getBounds());
-  //         } catch (error) { }
-  //       }, 500); // Small delay ensures map is ready
+        // // ✅ Ensure previous route is removed before adding a new one
+        // try {
+        //   if (this.routeLayer) {
+        //     this.desktopMap.removeLayer(this.routeLayer);
+        //     // this.mobileMap.removeLayer(this.routeLayer);
+        //   }
+        // } catch (error) {
+        //   console.warn("⚠️ Route layer was already removed or did not exist.", error);
+        // }
 
-  //       const distanceKm = response.routes[0].distance / 1000;
+        // ✅ Store new route in the layer
+        this.routeLayer = this.leafletService.L.polyline(routeCoords, { color: 'black', weight: 5, opacity: 0.7 });
 
-  //       // ✅ Update distance in priceSignal
-  //       this.priceSignal.updateState({
-  //         distance: distanceKm,
-  //         pickupLatitude: pickupCoords.lat,
-  //         pickupLongitude: pickupCoords.lng,
-  //         dropoffLatitude: destinationCoords.lat,
-  //         dropoffLongitude: destinationCoords.lng,
-  //       });
+        // ✅ Add new route to both maps
+        this.routeLayer.addTo(this.desktopMap);
+        // this.routeLayer.addTo(this.mobileMap);
 
-  //     } else {
-  //       console.error("🚨 No routes found from OSRM API.");
-  //     }
-  //   }, (error) => {
-  //     console.error("🚨 Error fetching route:", error);
-  //   });
-  // }
+        console.log('got here 4')
+
+        // ✅ Ensure map has the correct size before fitting bounds
+        setTimeout(() => {
+          try {
+            this.desktopMap.fitBounds(this.routeLayer.getBounds());
+            // this.mobileMap.fitBounds(this.routeLayer.getBounds());
+          } catch (error) { }
+        }, 500); // Small delay ensures map is ready
+
+        const distanceKm = response.routes[0].distance / 1000;
+
+
+        console.log('got here 5')
+
+        // ✅ Update distance in priceSignal
+        this.priceSignal.updateState({
+          distance: distanceKm,
+          pickupLatitude: pickupCoords.lat,
+          pickupLongitude: pickupCoords.lng,
+          dropoffLatitude: destinationCoords.lat,
+          dropoffLongitude: destinationCoords.lng,
+        });
+
+        console.log('console.log(this.priceSignal());', this.priceSignal.state);
+
+      } else {
+        console.error("🚨 No routes found from OSRM API.");
+      }
+    }, (error: any) => {
+      console.error("🚨 Error fetching route:", error);
+    });
+  }
 
 
 
@@ -711,6 +764,10 @@ export class HomeComponent {
 
 
 
+  ngOnDestroy(): void {
+    this.desktopMap?.remove();
+    this.mobileMap?.remove();
+  }
 
 
 

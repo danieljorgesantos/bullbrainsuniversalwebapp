@@ -1,8 +1,9 @@
 // translation.ts
 export const houseRemovalsTranslations: any = {
     "pt-PT": {
-        meta_title: 'Mudanças de Escritórios Imediatas e a qualquer hora! | Flo and Go',
-        meta_description: 'Precisa de mudanças de escritórios rápidas e sem complicações? A Flo and Go realiza mudanças imediatas em qualquer horário, com serviço profissional e mínimo impacto no seu negócio.',
+        meta_title: 'Remoções de Mobiliário e Transporte mobiliario a Qualquer Hora | Flo and Go',
+        meta_description: 'Comprou uma nova casa ou quer livrar-se de móveis antigos? A Flo and Go faz remoções rápidas e seguras de objetos e mobiliário residencial — quando precisar, com total profissionalismo.',
+        
         home: "Home",
         despejos_de_casas: "Despejos de Casas e Armazéns",
         despejos_de_casas_1: "Despejos de Casas e Armazéns",
@@ -22,8 +23,9 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Rapidez, segurança, profissionalismo, discrição e experiência em despejos de casas e armazéns."
     },
     "en": {
-        meta_title: "Immediate Office Moves Anytime! | Flo and Go",
-        meta_description: "Need fast, hassle-free office relocations? Flo and Go provides immediate moves anytime, with professional service and minimal business disruption.",
+        meta_title: 'Furniture Removal and Transport Anytime | Flo and Go',
+        meta_description: 'Bought a new home or want to get rid of old furniture? Flo and Go offers fast and secure residential furniture removal and transport — whenever you need it, with total professionalism.',
+      
         home: "Home",
         despejos_de_casas: "House and Warehouse Clearances",
         despejos_de_casas_1: "House and Warehouse Clearances",
@@ -43,8 +45,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Speed, safety, professionalism, discretion, and experience in home and warehouse clearances."
     },
     "fr-FR": {
-        meta_title: "Déménagements de Bureaux Immédiats à Tout Moment ! | Flo and Go",
-        meta_description: "Besoin d'un déménagement de bureau rapide et sans souci ? Flo and Go propose des déménagements immédiats à toute heure avec un service professionnel et un minimum d'impact sur votre activité.",
+        meta_title: 'Enlèvement et Transport de Meubles à Tout Moment | Flo and Go',
+        meta_description: 'Vous avez acheté une nouvelle maison ou souhaitez vous débarrasser de meubles anciens ? Flo and Go réalise des enlèvements rapides et sécurisés de mobilier résidentiel — quand vous en avez besoin, avec un service professionnel.',
         home: "Accueil",
         despejos_de_casas: "Débarras de Maisons et Entrepôts",
         despejos_de_casas_1: "Débarras de Maisons et Entrepôts",
@@ -64,8 +66,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Rapidité, sécurité, professionnalisme, discrétion et expertise en débarras de maisons et d’entrepôts."
     },
     "es-ES": {
-        meta_title: "Mudanzas de Oficina Inmediatas ¡En Cualquier Momento! | Flo and Go",
-        meta_description: "¿Necesitas una mudanza de oficina rápida y sin complicaciones? Flo and Go ofrece mudanzas inmediatas a cualquier hora, con un servicio profesional y mínimo impacto en tu negocio.",
+        meta_title: 'Retirada y Transporte de Muebles en Cualquier Momento | Flo and Go',
+        meta_description: '¿Has comprado una nueva casa o quieres deshacerte de muebles antiguos? Flo and Go realiza retiradas rápidas y seguras de muebles residenciales — cuando lo necesites, con total profesionalidad.',
         home: "Inicio",
         despejos_de_casas: "Vaciado de Casas y Almacenes",
         despejos_de_casas_1: "Vaciado de Casas y Almacenes",
@@ -85,8 +87,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Rapidez, seguridad, profesionalismo, discreción y experiencia en vaciados de casas y almacenes."
     },
     "de-DE": {
-        meta_title: "Sofortige Büroumzüge – Jederzeit Verfügbar! | Flo and Go",
-        meta_description: "Benötigen Sie einen schnellen, unkomplizierten Büroumzug? Flo and Go bietet professionelle Umzüge rund um die Uhr mit minimalen Auswirkungen auf Ihr Geschäft.",
+        meta_title: 'Möbelentsorgung und -transport jederzeit | Flo and Go',
+        meta_description: 'Neues Zuhause gekauft oder alte Möbel loswerden? Flo and Go bietet schnelle und sichere Entfernung und Transport von Haushaltsmöbeln – wann immer Sie es brauchen, mit absoluter Professionalität.',
         home: "Startseite",
         despejos_de_casas: "Entrümpelung von Häusern und Lagern",
         despejos_de_casas_1: "Entrümpelung von Häusern und Lagern",
@@ -106,8 +108,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Schnelligkeit, Sicherheit, Professionalität, Diskretion und Erfahrung bei Haus- und Lagerentrümpelungen."
     },
     "it-IT": {
-        meta_title: "Traslochi Uffici Immediati a Qualsiasi Ora! | Flo and Go",
-        meta_description: "Hai bisogno di un trasloco d’ufficio rapido e senza stress? Flo and Go offre traslochi immediati a qualsiasi ora, con servizio professionale e minimo impatto sulla tua attività.",
+        meta_title: 'Rimozione e Trasporto Mobili a Qualsiasi Ora | Flo and Go',
+        meta_description: 'Hai comprato una nuova casa o vuoi liberarti dei vecchi mobili? Flo and Go effettua rimozioni e trasporti rapidi e sicuri di mobili residenziali — quando ne hai bisogno, con la massima professionalità.',
         home: "Home",
         despejos_de_casas: "Sgomberi di Case e Magazzini",
         despejos_de_casas_1: "Sgomberi di Case e Magazzini",
@@ -127,8 +129,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Velocità, sicurezza, professionalità, discrezione ed esperienza negli sgomberi di case e magazzini."
     },
     "zh-CN": {
-        meta_title: "办公室搬迁，随时立即响应！| Flo and Go",
-        meta_description: "需要快速、无忧的办公室搬迁？Flo and Go 提供全天候的专业搬迁服务，最大限度减少对您业务的影响。",
+        meta_title: '随时提供家具搬运和运输服务 | Flo and Go',
+        meta_description: '您刚买了新房或想清理旧家具？Flo and Go 提供快捷、安全的家庭家具搬运和运输服务 — 随时为您服务，专业可靠。',
         home: "首页",
         despejos_de_casas: "房屋和仓库清理",
         despejos_de_casas_1: "房屋和仓库清理",
@@ -148,8 +150,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "快速、安全、专业、保密，丰富的房屋与仓库清理经验。"
     },
     "hi-IN": {
-        meta_title: "तत्काल ऑफिस शिफ्टिंग — कभी भी, कहीं भी | Flo and Go",
-        meta_description: "क्या आप तेज़ और बिना झंझट के ऑफिस शिफ्ट करना चाहते हैं? Flo and Go देता है प्रोफेशनल और समय की पाबंदी वाला शिफ्टिंग अनुभव।",
+        meta_title: 'कभी भी फर्नीचर हटाना और परिवहन करना | Flo and Go',
+        meta_description: 'नया घर खरीदा है या पुराने फर्नीचर से छुटकारा पाना चाहते हैं? Flo and Go आपके फर्नीचर को तेज़, सुरक्षित और पेशेवर तरीके से कभी भी हटा और ट्रांसपोर्ट कर सकता है।',
         home: "होम",
         despejos_de_casas: "घर और गोदाम खाली करना",
         despejos_de_casas_1: "घर और गोदाम खाली करना",
@@ -169,8 +171,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "तीव्रता, सुरक्षा, प्रोफेशनलिज़्म, गोपनीयता — घर और गोदाम क्लियरेंस में अनुभवी।"
     },
     "pl-PL": {
-        meta_title: "Natychmiastowe Przeprowadzki Biur — O każdej porze! | Flo and Go",
-        meta_description: "Potrzebujesz szybkiej i bezproblemowej przeprowadzki biura? Flo and Go oferuje natychmiastowe usługi o każdej porze — profesjonalnie i bez zakłóceń dla biznesu.",
+        meta_title: 'Usuwanie i Transport Mebli o Każdej Porze | Flo and Go',
+        meta_description: 'Kupiłeś nowe mieszkanie lub chcesz pozbyć się starych mebli? Flo and Go oferuje szybkie i bezpieczne usługi usuwania i transportu mebli domowych — kiedy tylko potrzebujesz, z pełnym profesjonalizmem.',
         home: "Strona główna",
         despejos_de_casas: "Opróżnianie Domów i Magazynów",
         despejos_de_casas_1: "Opróżnianie Domów i Magazynów",
@@ -190,8 +192,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Szybkość, bezpieczeństwo, profesjonalizm, dyskrecja i doświadczenie w opróżnianiu domów i magazynów."
     },
     "sv-SE": {
-        meta_title: "Snabba Kontorsflyttar När som Helst! | Flo and Go",
-        meta_description: "Behöver du en snabb och smidig kontorsflytt? Flo and Go erbjuder omedelbara flyttar när som helst, med professionell service och minimal påverkan på din verksamhet.",
+        meta_title: 'Möbelborttagning och Transport När Som Helst | Flo and Go',
+        meta_description: 'Har du köpt ett nytt hem eller vill bli av med gamla möbler? Flo and Go erbjuder snabb och säker borttagning och transport av möbler – när du behöver det, med full professionalism.',
         home: "Hem",
         despejos_de_casas: "Utrymning av Hus och Lager",
         despejos_de_casas_1: "Utrymning av Hus och Lager",
@@ -211,8 +213,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Snabbhet, säkerhet, professionalism, diskretion och erfarenhet av utrymning av hus och lager."
     },
     "da-DK": {
-        meta_title: "Kontorflytninger med Det Samme – Når Som Helst! | Flo and Go",
-        meta_description: "Har du brug for en hurtig og problemfri kontorflytning? Flo and Go tilbyder øjeblikkelige flytninger på alle tidspunkter med professionel service og minimal indvirkning på din virksomhed.",
+        meta_title: 'Fjernelse og Transport af Møbler Når Som Helst | Flo and Go',
+        meta_description: 'Har du købt nyt hjem eller vil af med gamle møbler? Flo and Go tilbyder hurtig og sikker fjernelse og transport af møbler — når du har brug for det, med fuld professionalisme.',
         home: "Hjem",
         despejos_de_casas: "Tømning af Huse og Lagre",
         despejos_de_casas_1: "Tømning af Huse og Lagre",
@@ -232,8 +234,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Hurtighed, sikkerhed, professionalisme, diskretion og erfaring med tømning af huse og lagre."
     },
     "fi-FI": {
-        meta_title: "Toimistomuutot Heti – Mihin Kellonaikaan Vain! | Flo and Go",
-        meta_description: "Tarvitsetko nopean ja sujuvan toimistomuuton? Flo and Go tarjoaa välittömän muuttopalvelun milloin tahansa – ammattitaitoisesti ja liiketoimintaasi häiritsemättä.",
+        meta_title: 'Huonekalujen Poisto ja Kuljetus Mihin Aikaan Tahansa | Flo and Go',
+        meta_description: 'Ostitko uuden kodin tai haluatko päästä eroon vanhoista huonekaluista? Flo and Go tarjoaa nopeat ja turvalliset huonekalujen poistot ja kuljetukset — aina kun tarvitset, ammattimaisesti.',
         home: "Etusivu",
         despejos_de_casas: "Kotien ja Varastojen Tyhjennys",
         despejos_de_casas_1: "Kotien ja Varastojen Tyhjennys",
@@ -253,8 +255,8 @@ export const houseRemovalsTranslations: any = {
         rapidez_segurança_profissionalismo: "Nopeus, turvallisuus, ammattitaito, hienotunteisuus ja kokemus kotien ja varastojen tyhjennyksissä."
     },
     "ja-JP": {
-        meta_title: "即日対応オフィス移転 - いつでも対応可能 | Flo and Go",
-        meta_description: "迅速かつスムーズなオフィス移転をご希望ですか？Flo and Goはいつでも即時対応、ビジネスへの影響を最小限に抑えたプロフェッショナルなサービスを提供します。",
+        meta_title: '家具の撤去と輸送はいつでも対応 | Flo and Go',
+        meta_description: '新しい家を購入したり、不要な家具を処分したいですか？Flo and Go は、迅速かつ安全に家具の撤去・輸送を行います — 必要なときに、プロフェッショナルな対応で。',
         home: "ホーム",
         despejos_de_casas: "住宅・倉庫の片付け",
         despejos_de_casas_1: "住宅・倉庫の片付け",

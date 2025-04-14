@@ -132,75 +132,78 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
-                    <h2 class="text-lg font-bold text-gray-900">{{
-                        getTranslation('headline_solicitar_transporte_pesado') }}</h2>
-                    <span class="text-sm text-gray-600">{{ getTranslation('subtitle_ate_1000_kilos') }}</span>
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm h-full flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-lg font-bold text-gray-900">{{
+                            getTranslation('headline_solicitar_transporte_pesado') }}</h2>
+                        <span class="text-sm text-gray-600">{{ getTranslation('subtitle_ate_1000_kilos') }}</span>
 
-                    <div class="relative dropdown-container mt-4 mb-2">
-                        <input class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
-                            type="text" autocomplete="off"
-                            placeholder="{{ getTranslation('placeholder_digite_local_recolha') }}"
-                            formControlName="pickupLocation">
+                        <div class="relative dropdown-container mt-4 mb-2">
+                            <input
+                                class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
+                                type="text" autocomplete="off"
+                                placeholder="{{ getTranslation('placeholder_digite_local_recolha') }}"
+                                formControlName="pickupLocation">
 
-                        <!-- (click)="selectGooglePickupLocation(prediction)" -->
-                        <div *ngIf="googlePickupPredictions.length > 0"
-                            class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg">
-                            <div (click)="selectGooglePickupLocation(prediction)"
-                                *ngFor="let prediction of googlePickupPredictions"
-                                class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100">
-                                {{ prediction.description }}
+                            <div *ngIf="googlePickupPredictions.length > 0"
+                                class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg">
+                                <div (click)="selectGooglePickupLocation(prediction)"
+                                    *ngFor="let prediction of googlePickupPredictions"
+                                    class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100">
+                                    {{ prediction.description }}
+                                </div>
                             </div>
+
                         </div>
 
-                    </div>
 
 
+                        <div class="mb-2 flex items-center justify-start">
+                            <button (click)="useCurrentLocationForPickup()"
+                                class="flex items-center bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
+                                <svg class="w-4 h-4 mr-1 text-green-800 dark:text-green-300" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                {{ getTranslation('button_usar_localizacao_atual_recolha') }}
+                            </button>
+                        </div>
 
-                    <div class="mb-2 flex items-center justify-start">
-                        <button (click)="useCurrentLocationForPickup()"
-                            class="flex items-center bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
-                            <svg class="w-4 h-4 mr-1 text-green-800 dark:text-green-300" fill="currentColor"
-                                viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            {{ getTranslation('button_usar_localizacao_atual_recolha') }}
-                        </button>
-                    </div>
+                        <div class="relative dropdown-container mt-4 mb-2">
+                            <input
+                                class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
+                                type="text" placeholder="{{ getTranslation('placeholder_digite_local_entrega') }}"
+                                formControlName="destinationLocation">
 
-                    <!-- (click)="selectGoogleDeliveryLocation(prediction)" -->
-                    <div class="relative dropdown-container mt-4 mb-2">
-                        <input class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
-                            type="text" placeholder="{{ getTranslation('placeholder_digite_local_entrega') }}"
-                            formControlName="destinationLocation">
-                        <div *ngIf="googleDeliveryPredictions.length > 0"
-                            class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg">
-                            <div *ngFor="let prediction of googleDeliveryPredictions"
-                                class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100">
-                                {{ prediction.description }}
+                            <div *ngIf="googleDeliveryPredictions.length > 0"
+                                class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg">
+                                <div (click)="selectGoogleDeliveryLocation(prediction)"
+                                    *ngFor="let prediction of googleDeliveryPredictions"
+                                    class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100">
+                                    {{ prediction.description }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- 
+                        <!-- 
                     (click)="useCurrentLocationForDelivery()" -->
-                    <div class="mb-2 flex items-center justify-start mb-4">
-                        <button
-                            class="flex items-center bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
-                            <svg class="w-4 h-4 mr-1 text-green-800 dark:text-green-300" fill="currentColor"
-                                viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            {{ getTranslation('button_usar_localizacao_atual_entrega') }}
-                        </button>
+                        <div class="mb-2 flex items-center justify-start mb-4">
+                            <button
+                                class="flex items-center bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
+                                <svg class="w-4 h-4 mr-1 text-green-800 dark:text-green-300" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M10 2a6 6 0 0 0-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 0 0-6-6Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                {{ getTranslation('button_usar_localizacao_atual_entrega') }}
+                            </button>
+                        </div>
+
                     </div>
 
-
-
-                    <a [href]="'/' + currentLanguage + '/choose-van'"
+                    <a [routerLink]="['/', currentLanguage, 'choose-van']"
                         class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition duration-150 flex items-center justify-center gap-2 mt-4">
                         {{ getTranslation('button_ver_precos') }}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -848,8 +851,9 @@
             <a href="https://accounts.google.com/signin"
                 class="inline-flex items-center justify-center bg-white text-black border border-gray-300 text-sm font-medium rounded-full px-6 py-3 transition hover:bg-gray-100 w-full sm:w-auto">
 
-                <svg class="w-4 h-4" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                <svg class="w-4 h-4" height="800px" width="800px" version="1.1" id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                    xml:space="preserve">
                     <path style="fill:#167EE6;"
                         d="M492.668,211.489l-208.84-0.01c-9.222,0-16.697,7.474-16.697,16.696v66.715
 	c0,9.22,7.475,16.696,16.696,16.696h117.606c-12.878,33.421-36.914,61.41-67.58,79.194L384,477.589
@@ -921,10 +925,3 @@
     </div>
 </section>
 <!-- ====== What We Do Section End -->
-
-
-<section class="pb-12 bg-transparent dark:bg-black">
-    <div class="max-w-3xl mx-auto rounded-xl">
-        <p class="text-sm">v0.0.7</p>
-    </div>
-</section>
