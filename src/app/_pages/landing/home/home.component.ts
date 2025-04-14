@@ -14,6 +14,7 @@ import { priceSignal } from '../../../_signals/price.signal';
 import { HttpClient } from '@angular/common/http';
 import { GoogleAutocompleteService } from '../../../_shared/services/google-autocomplete.service';
 import { Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 declare const google: any; // Ensure Google API is loaded
 
@@ -54,7 +55,9 @@ export class HomeComponent {
   constructor(
     private leafletService: LeafletService,
     private fb: FormBuilder,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private titleService: Title,
+    private metaService: Meta,
   ) {
     // Form initialization with controls
     this.form = this.fb.group({
@@ -81,7 +84,7 @@ export class HomeComponent {
     // Map logic
     if (this.leafletService.L) {
       this.setupMap();
-    } 
+    }
 
     // Watch for changes in the pickupLocation input and call the service
     this.form.get('pickupLocation')?.valueChanges.pipe(
@@ -109,7 +112,36 @@ export class HomeComponent {
     // this.googleAutocompleteService.googlePredictions$.subscribe(predictions => {
     //   this.googlePredictions = predictions;
     // });
+    this.setInitialPageConfiguration();
 
+  }
+
+  setInitialPageConfiguration() {
+    const titleToSet = homeTranslations[this.currentLanguage]?.meta_title || homeTranslations['en']?.meta_title;
+    const descriptionToSet = homeTranslations[this.currentLanguage]?.meta_description || homeTranslations['en']?.meta_description;
+    const shareImage = 'https://www.floand-go.com/flo-logo-11.jpg';
+
+    this.titleService.setTitle(titleToSet);
+    this.metaService.updateTag({ name: 'description', content: descriptionToSet });
+    this.metaService.updateTag({ name: 'robots', content: 'index, follow' });
+    this.metaService.updateTag({ name: 'author', content: 'Flo and Go' });
+    this.metaService.updateTag({ httpEquiv: 'content-language', content: this.currentLanguage });
+
+    // Open Graph
+    this.metaService.updateTag({ property: 'og:title', content: titleToSet });
+    this.metaService.updateTag({ property: 'og:description', content: descriptionToSet });
+    this.metaService.updateTag({ property: 'og:url', content: 'https://www.floand-go.com/available-anytime-moving-services' });
+    // this.metaService.updateTag({ property: 'og:type', content: contentType });
+    this.metaService.updateTag({ property: 'og:site_name', content: 'Flo and Go' });
+    this.metaService.updateTag({ property: 'og:locale', content: this.currentLanguage });
+    this.metaService.updateTag({ property: 'og:image', content: shareImage });
+
+    // Twitter
+    // this.metaService.updateTag({ name: 'twitter:card', content: twitterCard });
+    this.metaService.updateTag({ name: 'twitter:title', content: titleToSet });
+    this.metaService.updateTag({ name: 'twitter:description', content: descriptionToSet });
+    this.metaService.updateTag({ name: 'twitter:site', content: '@floandgo' }); // Replace with your Twitter handle
+    this.metaService.updateTag({ name: 'twitter:image', content: shareImage });
   }
 
   private setupMap() {

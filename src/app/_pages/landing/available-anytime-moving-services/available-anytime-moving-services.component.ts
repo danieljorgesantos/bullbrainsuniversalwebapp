@@ -56,13 +56,6 @@ export class AvailableAnytimeMovingServicesComponent {
     // this.metaService.updateTag({ property: 'og:locale', content: this.formatLocale(currentLanguage) });
     this.metaService.updateTag({ property: 'og:image', content: shareImage });
 
-    // if (alternateLocales) {
-    //   alternateLocales.forEach(alt => {
-    //     this.metaService.addTag({ property: 'og:locale:alternate', content: alt.locale });
-    //     // You might need to handle the alternate URL separately if needed by some platforms
-    //   });
-    // }
-
     // Twitter
     // this.metaService.updateTag({ name: 'twitter:card', content: twitterCard });
     this.metaService.updateTag({ name: 'twitter:title', content: titleToSet });
