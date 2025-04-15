@@ -14,6 +14,7 @@ import { RequesterHomeComponent } from './_pages/requester/requester-home/reques
 import { LandingChooseVanComponent } from './_pages/landing/landing-choose-van/landing-choose-van.component';
 import { RequesterChooseVanComponent } from './_pages/requester/requester-choose-van/requester-choose-van.component';
 import { RequesterMapComponent } from './_pages/requester/requester-map/requester-map.component';
+import { RegisterSuccessRequesterComponent } from './_pages/auth/register-success-requester/register-success-requester.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -50,6 +51,8 @@ export const routes: Routes = [
 
     // Auth
     { path: ':lang/register', component: RegisterComponent, pathMatch: 'full' },
+    { path: ':lang/register-requester-success', component: RegisterSuccessRequesterComponent, pathMatch: 'full' },
+
     { path: ':lang/login', component: LoginComponent, pathMatch: 'full' },
 
 

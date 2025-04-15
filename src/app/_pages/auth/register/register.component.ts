@@ -1,60 +1,143 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-// import { AuthService } from '../../../_shared/services/auth.service'; // Use AuthService
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+  FormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-// import { HttpClientModule } from '@angular/common/http';
 import { AuthManagerSignal } from '../../../_signals/authManager.signal';
-// import { FirebaseService } from '../../../_shared/services/firebase.service';
+import { AuthService } from '../../../_shared/services/auth.service';
 
 @Component({
   selector: 'app-register',
+  standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './register.component.html',
-  standalone: true
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  passwordStrengthMessage: string = '';
-  isPasswordValid: boolean = false;
-  errorMessage: string = '';
-  isLoading: boolean = false;
-
+  passwordStrengthMessage = '';
+  isPasswordValid = false;
+  errorMessage = '';
+  isLoading = false;
+  token: any = '';
+  authInstance: any;
+  user: any = null;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
 
-  token: any = "";
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    // private authService: AuthService,
     public authManagerSignal: AuthManagerSignal,
-    // private firebaseService: FirebaseService
+    private authService: AuthService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      type: ['Requester', Validators.required] // Always "Requester"
-    }, { validators: this.passwordMatchValidator });
+    this.registerForm = this.fb.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+        type: ['Requester', Validators.required],
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
 
   ngOnInit(): void {
-    // this.loadGoogleAuth();
+    if (isPlatformBrowser(this.platformId)) {
+      this.loadGoogleAuth();
+    }
   }
 
+  loadGoogleAuth() {
+    // Load Google script dynamically
+    const scriptId = 'google-client-id-script';
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => this.initializeGoogle();
+      document.head.appendChild(script);
+    } else {
+      this.initializeGoogle();
+    }
+  }
+
+  initializeGoogle() {
+    if ((window as any).google && (window as any).google.accounts) {
+      (window as any).google.accounts.id.initialize({
+        client_id:
+          '273478331479-pmld2ebi9ah730jbo4r433r8atg4bo8p.apps.googleusercontent.com',
+        callback: this.handleCredentialResponse.bind(this),
+      });
+
+      const buttonContainer = document.getElementById('google-signin-btn');
+      if (buttonContainer) {
+        buttonContainer.innerHTML = '';
+        (window as any).google.accounts.id.renderButton(buttonContainer, {
+          theme: 'outline',
+          size: 'large',
+        });
+      }
+    } else {
+      console.warn('Google Auth not ready, retrying...');
+      setTimeout(() => this.initializeGoogle(), 500);
+    }
+  }
+
+  handleCredentialResponse(response: any) {
+    const token = response.credential;
+    const userData = this.parseJwt(token);
+    if (userData) {
+      this.authManagerSignal.handleGoogleLogin(userData);
+    }
+  }
+
+  parseJwt(token: string): any {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+      return JSON.parse(jsonPayload);
+    } catch (error) {
+      console.error('Failed to parse JWT:', error);
+      return null;
+    }
+  }
+
+  // Other form-related code unchanged...
   checkPasswordStrength(): void {
     const password = this.registerForm.get('password')?.value || '';
     if (password.length < 6) {
-      this.passwordStrengthMessage = 'A palavra-passe deve ter pelo menos 6 caracteres.';
+      this.passwordStrengthMessage =
+        'A palavra-passe deve ter pelo menos 6 caracteres.';
       this.isPasswordValid = false;
     } else if (!/[A-Z]/.test(password)) {
-      this.passwordStrengthMessage = 'A palavra-passe deve conter pelo menos uma letra maiúscula.';
+      this.passwordStrengthMessage =
+        'A palavra-passe deve conter pelo menos uma letra maiúscula.';
       this.isPasswordValid = false;
     } else if (!/[0-9]/.test(password)) {
-      this.passwordStrengthMessage = 'A palavra-passe deve conter pelo menos um número.';
+      this.passwordStrengthMessage =
+        'A palavra-passe deve conter pelo menos um número.';
       this.isPasswordValid = false;
     } else {
       this.passwordStrengthMessage = '';
@@ -76,13 +159,18 @@ export class RegisterComponent implements OnInit {
     this.showConfirmPassword = !this.showConfirmPassword;
   }
 
-
   async submit() {
     if (this.registerForm.valid) {
+
+
+
+
+
+
       // Request permission and retrieve FCM token
       // const token = await this.firebaseService.requestPermission();
-      const token = '';
-      this.token = token;
+      // this.token = token;
+      this.token = "";
 
       this.errorMessage = '';
       this.isLoading = true;
@@ -138,104 +226,16 @@ export class RegisterComponent implements OnInit {
 
 
 
-      // this.authService.register(userObject).subscribe({
-      //   next: () => {
-      //     this.isLoading = false; // Stop loading
-      //     this.router.navigate(['/register-requester-success']);
-      //   },
-      //   error: (err: any) => {
-      //     this.isLoading = false; // Stop loading on error
-      //     this.errorMessage = err.error?.message || 'Erro ao registar a conta.';
-      //   }
-      // });
+      this.authService.register(userObject).subscribe({
+        next: () => {
+          this.isLoading = false; // Stop loading
+          this.router.navigate(['/pt-PT/register-requester-success']);
+        },
+        error: (err: any) => {
+          this.isLoading = false; // Stop loading on error
+          this.errorMessage = err.error?.message || 'Erro ao registar a conta.';
+        }
+      });
     }
-  }
-
-  // google auth -------------------------------------------------------------------------------------------------------
-
-
-
-  authInstance: any;
-  user: any = null;
-
-
-
-  loadGoogleAuth() {
-
-    // const checkGoogleLoaded = () => {
-    //   if ((window as any).google && (window as any).google.accounts) {
-
-    //     (window as any).google.accounts.id.initialize({
-    //       client_id: '273478331479-pmld2ebi9ah730jbo4r433r8atg4bo8p.apps.googleusercontent.com',
-    //       callback: this.handleCredentialResponse.bind(this)
-    //     });
-
-    //     setTimeout(() => {
-    //       const buttonContainer = document.getElementById('google-signin-btn');
-    //       if (buttonContainer) {
-
-    //         // Clear the div before rendering in case of duplicate buttons
-    //         buttonContainer.innerHTML = "";
-
-    //         (window as any).google.accounts.id.renderButton(
-    //           buttonContainer,
-    //           { theme: 'outline', size: 'large' }
-    //         );
-
-    //       } else {
-    //         console.error("Google Sign-In button container not found!");
-    //       }
-    //     }, 0);
-    //   } else {
-    //     setTimeout(checkGoogleLoaded, 500);
-    //   }
-    // };
-
-    // checkGoogleLoaded();
-  }
-
-  handleCredentialResponse(response: any) {
-    // const token = response.credential;
-
-    // // Convert JWT token into a JS object
-    // const userData = this.parseJwt(token);
-
-    // if (!userData) {
-    //   return;
-    // }
-
-    // // Call AuthManagerSignal's new method to handle the user login
-    // this.authManagerSignal.handleGoogleLogin(userData);
-  }
-
-  // ✅ Helper function to convert Google JWT to a JS object
-  parseJwt(token: string): any {
-    // try {
-    //   const base64Url = token.split('.')[1]; // Extract payload
-    //   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    //   const jsonPayload = decodeURIComponent(
-    //     atob(base64)
-    //       .split('')
-    //       .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-    //       .join('')
-    //   );
-    //   return JSON.parse(jsonPayload); // ✅ Convert to JavaScript object
-    // } catch (error) {
-    //   console.error("🚨 Failed to parse JWT:", error);
-    //   return null;
-    // }
-  }
-
-  decodeJwtToken(token: string) {
-    // const base64Url = token.split('.')[1];
-    // const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    // const jsonPayload = decodeURIComponent(
-    //   atob(base64)
-    //     .split('')
-    //     .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-    //     .join('')
-    // );
-    // this.user = JSON.parse(jsonPayload);
-    // return jsonPayload
   }
 }
