@@ -20,10 +20,41 @@
             </div>
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex shrink-0 items-center">
-                    <img class="h-12 w-auto" src="flo-logo-11.webp" alt="flo and go logo">
+                    <img class="hidden md:block h-12 w-auto" src="flo-logo-11.webp" alt="flo and go logo">
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a href="{{ currentLanguage === 'pt-PT' ? '/' : '/' + currentLanguage }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900">
+
+
+
+
+
+                    @if (authManagerSignal.currentUser?.type === 2) {
+                    // DRIVER layout logic
+                    }
+                    @else if (authManagerSignal.currentUser?.type === 1) {
+                    <a href="{{ currentLanguage === 'pt-PT' ? '/' : '/' + currentLanguage }}"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900">
+                        Página Inicial
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        Pedir transporte
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        O meu Histórico
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        Configurações
+                    </a>
+                    }
+                    @else if (authManagerSignal.currentUser?.type === 0) {
+                    // ADMIN layout logic
+                    }
+                    @else {
+                    <a href="{{ currentLanguage === 'pt-PT' ? '/' : '/' + currentLanguage }}"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900">
                         {{ getTranslation('link_pagina_inicial') }}
                     </a>
                     <a href="#"
@@ -148,6 +179,8 @@
                             </ul>
                         </div>
                     </div>
+                    }
+
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -183,16 +216,77 @@
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                             id="user-menu-item-2">Sign out</a>
                     </div> -->
-                    <div class="relative ml-3 flex space-x-4">
-                        <a [href]="'/' + currentLanguage + '/register'"
-                            class="bg-black text-white inline-flex items-center px-4 py-2 text-sm font-bold rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">
-                            {{ getTranslation('button_registar_se') }}
-                        </a>
-                        <a [href]="'/' + currentLanguage + '/login'"
-                            class="bg-white text-black inline-flex items-center px-4 py-2 text-sm font-bold border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50">
-                            {{ getTranslation('button_iniciar_sessao') }}
-                        </a>
+                    <div class="relative ml-3 flex items-center space-x-4 max-w-full">
+
+                        <!-- Show if NOT logged in -->
+                        <div *ngIf="!user" class="flex items-center space-x-3">
+                            <a [href]="'/' + currentLanguage + '/register'"
+                                class="bg-black text-white inline-flex items-center px-4 py-2 text-sm font-bold rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">
+                                {{ getTranslation('button_registar_se') }}
+                            </a>
+                            <a [href]="'/' + currentLanguage + '/login'"
+                                class="bg-white text-black inline-flex items-center px-4 py-2 text-sm font-bold border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50">
+                                {{ getTranslation('button_iniciar_sessao') }}
+                            </a>
+                        </div>
+
+                        <!-- Show if logged in -->
+                        <div *ngIf="user" class="flex items-center gap-3 max-w-full">
+
+                            <!-- Avatar -->
+                            <div class="shrink-0">
+                                <span
+                                    class="inline-block size-10 overflow-hidden rounded-full bg-white flex items-center justify-center">
+                                    <!-- Google avatar -->
+                                    <img *ngIf="user?.userPhoto && user.userPhoto.startsWith('https://lh3.googleusercontent.com/')"
+                                        [src]="user.userPhoto" alt="User Avatar"
+                                        class="size-full rounded-full object-cover" />
+
+                                    <!-- Base64 image -->
+                                    <img *ngIf="user?.userPhoto && user.userPhoto.startsWith('data:image/')"
+                                        [src]="user.userPhoto" alt="User Avatar"
+                                        class="size-full rounded-full object-cover" />
+
+                                    <!-- Fallback -->
+                                    <span *ngIf="!user?.userPhoto"
+                                        class="inline-flex size-full items-center justify-center rounded-full bg-indigo-400">
+                                        <span class="text-sm font-medium text-white">
+                                            {{ user?.email?.charAt(0).toUpperCase() || '?' }}
+                                        </span>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <!-- Info -->
+                            <div class="min-w-0">
+                                <p
+                                    class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white capitalize truncate">
+                                    {{ user?.fullName || 'Guest' }}
+                                </p>
+                                <p class="text-xs sm:text-sm text-gray-500 truncate max-w-[180px]">
+                                    {{ user?.email || 'Not logged in' }}
+                                </p>
+                            </div>
+
+                            <!-- Desktop Only Log Out Button -->
+                            <div class="hidden md:block">
+                                <button (click)="logout()"
+                                    class="ml-4 inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gray-100 text-sm font-semibold text-gray-700 hover:bg-gray-200 hover:text-black focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-6">
+                                        <path fill-rule="evenodd"
+                                            d="M7.5 3.75A1.5 1.5 0 0 0 6 5.25v13.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V15a.75.75 0 0 1 1.5 0v3.75a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V5.25a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3V9A.75.75 0 0 1 15 9V5.25a1.5 1.5 0 0 0-1.5-1.5h-6Zm5.03 4.72a.75.75 0 0 1 0 1.06l-1.72 1.72h10.94a.75.75 0 0 1 0 1.5H10.81l1.72 1.72a.75.75 0 1 1-1.06 1.06l-3-3a.75.75 0 0 1 0-1.06l3-3a.75.75 0 0 1 1.06 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+
+                                    <span>Log out</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -200,6 +294,46 @@
 
     <div [class.hidden]="!menuOpen" class="sm:hidden" id="mobile-menu">
         <div class="space-y-1 pt-2 pb-4">
+
+
+
+
+            @if (authManagerSignal.currentUser?.type === 2) {
+            // DRIVER layout logic
+            }
+            @else if (authManagerSignal.currentUser?.type === 1) {
+            <a href="/"
+                class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pr-4 pl-3 text-base font-medium text-indigo-700">
+                Tipooooooo 111111111
+            </a>
+            <a href="#"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                {{getTranslation('link_pedir_transporte') }}
+            </a>
+            <a href="#"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                O meu Historico
+            </a>
+            <a href="#"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                Configurações
+            </a>
+            }
+            @else if (authManagerSignal.currentUser?.type === 0) {
+            // ADMIN layout logic
+            }
+            @else {
+            // UNKNOWN or no user type — fallback UI
+            // You could show a message like:
+            // "User type not recognized. Please log in again."
+            <a href="/"
+                class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pr-4 pl-3 text-base font-medium text-indigo-700">
+                tipo elseeeeeeeeeeeeeee
+            </a>
+
+
+
+
             <a href="/"
                 class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pr-4 pl-3 text-base font-medium text-indigo-700">{{
                 getTranslation('link_pagina_inicial') }}</a>
@@ -212,6 +346,26 @@
             <a href="#"
                 class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">{{
                 getTranslation('link_paginas') }}</a>
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     </div>
 </nav>
