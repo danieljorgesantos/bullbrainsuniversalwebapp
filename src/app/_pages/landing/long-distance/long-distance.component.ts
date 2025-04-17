@@ -1,7 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import {
+  DOCUMENT,
+  isPlatformBrowser,
+  isPlatformServer,
+  PlatformLocation
+} from '@angular/common';
 import { longDistanceTranslations } from './translations';
 
 @Component({
@@ -10,20 +15,20 @@ import { longDistanceTranslations } from './translations';
   imports: [],
   templateUrl: './long-distance.component.html'
 })
-export class LongDistanceComponent {
- // Language
-  currentLanguage: any = 'pt-PT';
+export class LongDistanceComponent implements OnInit, OnDestroy {
+  currentLanguage: string = 'pt-PT';
 
   constructor(
     private titleService: Title,
     private metaService: Meta,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private platformLocation: PlatformLocation
+  ) {}
 
   ngOnInit(): void {
-    // Get the "lang" route param
     const langParam = this.route.snapshot.paramMap.get('lang');
-
     if (langParam) {
       this.currentLanguage = langParam;
     }
@@ -31,49 +36,146 @@ export class LongDistanceComponent {
     this.setInitialPageConfiguration();
   }
 
-  // Get a specific translation by key
-  getTranslation(key: string) {
+  getTranslation(key: string): string {
     return longDistanceTranslations[this.currentLanguage]?.[key] || longDistanceTranslations['en']?.[key];
   }
 
-  setInitialPageConfiguration() {
-    const titleToSet = longDistanceTranslations[this.currentLanguage]?.meta_title || longDistanceTranslations['en']?.meta_title;
-    const descriptionToSet = longDistanceTranslations[this.currentLanguage]?.meta_description || longDistanceTranslations['en']?.meta_description;
+  setInitialPageConfiguration(): void {
+    const titleToSet = this.getTranslation('meta_title');
+    const descriptionToSet = this.getTranslation('meta_description');
     const shareImage = 'https://www.floand-go.com/flo-logo-11.jpg';
+    const canonicalUrl = `https://www.floand-go.com/${this.currentLanguage}/long-distance`;
 
+    // Meta tags
     this.titleService.setTitle(titleToSet);
-    this.metaService.updateTag({ name: 'description', content: descriptionToSet });
-    this.metaService.updateTag({ name: 'robots', content: 'index, follow' });
-    this.metaService.updateTag({ name: 'author', content: 'Flo and Go' });
+    this.updateMetaTag('description', descriptionToSet);
+    this.updateMetaTag('robots', 'index, follow');
+    this.updateMetaTag('author', 'Flo and Go');
+    this.updateMetaTag('keywords', 'mudanças longas distâncias, mudanças internacionais, Flo and Go');
+    this.updateMetaTag('theme-color', '#ff6600');
     this.metaService.updateTag({ httpEquiv: 'content-language', content: this.currentLanguage });
 
     // Open Graph
-    this.metaService.updateTag({ property: 'og:title', content: titleToSet });
-    this.metaService.updateTag({ property: 'og:description', content: descriptionToSet });
-    this.metaService.updateTag({ property: 'og:url', content: 'https://www.floand-go.com/available-anytime-moving-services' });
-    // this.metaService.updateTag({ property: 'og:type', content: contentType });
-    this.metaService.updateTag({ property: 'og:site_name', content: 'Flo and Go' });
-    // this.metaService.updateTag({ property: 'og:locale', content: this.formatLocale(currentLanguage) });
-    this.metaService.updateTag({ property: 'og:image', content: shareImage });
-
-    // if (alternateLocales) {
-    //   alternateLocales.forEach(alt => {
-    //     this.metaService.addTag({ property: 'og:locale:alternate', content: alt.locale });
-    //     // You might need to handle the alternate URL separately if needed by some platforms
-    //   });
-    // }
+    this.updateMetaProperty('og:title', titleToSet);
+    this.updateMetaProperty('og:description', descriptionToSet);
+    this.updateMetaProperty('og:url', canonicalUrl);
+    this.updateMetaProperty('og:site_name', 'Flo and Go');
+    this.updateMetaProperty('og:image', shareImage);
+    this.updateMetaProperty('og:image:alt', 'Logo da empresa Flo and Go - mudanças de longa distância');
 
     // Twitter
-    // this.metaService.updateTag({ name: 'twitter:card', content: twitterCard });
-    this.metaService.updateTag({ name: 'twitter:title', content: titleToSet });
-    this.metaService.updateTag({ name: 'twitter:description', content: descriptionToSet });
-    this.metaService.updateTag({ name: 'twitter:site', content: '@floandgo' }); // Replace with your Twitter handle
-    this.metaService.updateTag({ name: 'twitter:image', content: shareImage });
+    this.updateMetaTag('twitter:title', titleToSet);
+    this.updateMetaTag('twitter:description', descriptionToSet);
+    this.updateMetaTag('twitter:site', '@floandgo');
+    this.updateMetaTag('twitter:image', shareImage);
+
+    // Canonical
+    this.setCanonicalURL(canonicalUrl);
+
+    // Hreflangs
+    this.setHreflangTags();
+
+    // OG locale alternates
+    this.setOgLocaleAlternates();
+
+    // JSON-LD Structured Data
+    this.injectJsonLdSchema(titleToSet, descriptionToSet, shareImage);
   }
 
-  ngOnDestroy(): void {
-    // Optional: Reset title and description to default values if this component might be navigated away from frequently
-    // this.titleService.setTitle('Default Title | Flo and Go');
-    // this.metaService.updateTag({ name: 'description', content: 'Default Description' });
+  updateMetaTag(name: string, content: string): void {
+    this.metaService.updateTag({ name, content });
   }
+
+  updateMetaProperty(property: string, content: string): void {
+    this.metaService.updateTag({ property, content });
+  }
+
+  setCanonicalURL(url: string): void {
+    if (isPlatformBrowser(this.platformId) || isPlatformServer(this.platformId)) {
+      let link: HTMLLinkElement = this.document.querySelector("link[rel='canonical']") || this.document.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      link.setAttribute('href', url);
+      if (!link.parentElement) {
+        this.document.head.appendChild(link);
+      }
+    }
+  }
+
+  setHreflangTags(): void {
+    if (isPlatformBrowser(this.platformId) || isPlatformServer(this.platformId)) {
+      const pageSlug = 'long-distance';
+      const baseUrl = 'https://www.floand-go.com';
+
+      const languages = [
+        'fr-FR', 'es-ES', 'de-DE', 'it-IT', 'zh-CN', 'hi-IN', 'en',
+        'pl-PL', 'sv-SE', 'da-DK', 'fi-FI', 'ja-JP', 'pt-PT'
+      ];
+
+      // Remove existing alternate links
+      const existingLinks = this.document.querySelectorAll("link[rel='alternate']");
+      existingLinks.forEach(link => link.remove());
+
+      // Add new ones
+      languages.forEach(lang => {
+        const href = `${baseUrl}/${lang}/${pageSlug}`;
+        this.addLinkTag('alternate', href, lang);
+      });
+
+      // x-default
+      const defaultHref = `${baseUrl}/en/${pageSlug}`;
+      this.addLinkTag('alternate', defaultHref, 'x-default');
+    }
+  }
+
+  setOgLocaleAlternates(): void {
+    const ogLocales = [
+      'fr_FR', 'es_ES', 'de_DE', 'it_IT', 'zh_CN', 'hi_IN', 'en_US',
+      'pl_PL', 'sv_SE', 'da_DK', 'fi_FI', 'ja_JP', 'pt_PT'
+    ];
+
+    ogLocales.forEach(locale => {
+      this.updateMetaProperty('og:locale:alternate', locale);
+    });
+  }
+
+  injectJsonLdSchema(title: string, description: string, imageUrl: string): void {
+    if (isPlatformBrowser(this.platformId) || isPlatformServer(this.platformId)) {
+      const script = this.document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: title,
+        description: description,
+        image: imageUrl,
+        areaServed: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Lisboa',
+            addressCountry: 'PT'
+          }
+        },
+        provider: {
+          '@type': 'Organization',
+          name: 'Flo and Go',
+          url: 'https://www.floand-go.com',
+          logo: imageUrl
+        }
+      });
+      this.document.head.appendChild(script);
+    }
+  }
+
+  addLinkTag(rel: string, href: string, hreflang?: string): void {
+    const link: HTMLLinkElement = this.document.createElement('link');
+    link.setAttribute('rel', rel);
+    link.setAttribute('href', href);
+    if (hreflang) {
+      link.setAttribute('hreflang', hreflang);
+    }
+    this.document.head.appendChild(link);
+  }
+
+  ngOnDestroy(): void {}
 }
