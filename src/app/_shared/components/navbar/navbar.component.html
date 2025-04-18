@@ -19,9 +19,10 @@
                 </button>
             </div>
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div class="flex shrink-0 items-center">
+                <a [routerLink]="['/', currentLanguage]" class="flex shrink-0 items-center">
                     <img class="hidden md:block h-12 w-auto" src="flo-logo-11.webp" alt="flo and go logo">
-                </div>
+                </a>
+
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
 
 
@@ -233,40 +234,45 @@
                         <!-- Show if logged in -->
                         <div *ngIf="user" class="flex items-center gap-3 max-w-full">
 
-                            <!-- Avatar -->
-                            <div class="shrink-0">
-                                <span
-                                    class="inline-block size-10 overflow-hidden rounded-full bg-white flex items-center justify-center">
-                                    <!-- Google avatar -->
-                                    <img *ngIf="user?.userPhoto && user.userPhoto.startsWith('https://lh3.googleusercontent.com/')"
-                                        [src]="user.userPhoto" alt="User Avatar"
-                                        class="size-full rounded-full object-cover" />
+                            <!-- Avatar + Info clickable block with red background -->
+                            <div class="flex items-center gap-2 cursor-pointer px-3 py-1.5 rounded-md"
+                                [routerLink]="['/', currentLanguage, 'requester-home']">
 
-                                    <!-- Base64 image -->
-                                    <img *ngIf="user?.userPhoto && user.userPhoto.startsWith('data:image/')"
-                                        [src]="user.userPhoto" alt="User Avatar"
-                                        class="size-full rounded-full object-cover" />
+                                <!-- Avatar -->
+                                <div class="shrink-0">
+                                    <span
+                                        class="inline-block size-8 overflow-hidden rounded-full bg-white flex items-center justify-center">
+                                        <!-- Google avatar -->
+                                        <img *ngIf="user?.userPhoto && user.userPhoto.startsWith('https://lh3.googleusercontent.com/')"
+                                            [src]="user.userPhoto" alt="User Avatar"
+                                            class="size-full rounded-full object-cover" />
 
-                                    <!-- Fallback -->
-                                    <span *ngIf="!user?.userPhoto"
-                                        class="inline-flex size-full items-center justify-center rounded-full bg-indigo-400">
-                                        <span class="text-sm font-medium text-white">
-                                            {{ user?.email?.charAt(0).toUpperCase() || '?' }}
+                                        <!-- Base64 image -->
+                                        <img *ngIf="user?.userPhoto && user.userPhoto.startsWith('data:image/')"
+                                            [src]="user.userPhoto" alt="User Avatar"
+                                            class="size-full rounded-full object-cover" />
+
+                                        <!-- Fallback -->
+                                        <span *ngIf="!user?.userPhoto"
+                                            class="inline-flex size-full items-center justify-center rounded-full bg-indigo-400">
+                                            <span class="text-xs font-medium text-white">
+                                                {{ user?.email?.charAt(0).toUpperCase() || '?' }}
+                                            </span>
                                         </span>
                                     </span>
-                                </span>
+                                </div>
+
+                                <!-- Info -->
+                                <div class="min-w-0">
+                                    <p class="text-xs sm:text-sm font-semibold text-black capitalize truncate">
+                                        {{ user?.fullName || 'User' }}
+                                    </p>
+                                    <p class="text-[11px] sm:text-xs text-gray-900 truncate max-w-[160px]">
+                                        {{ user?.email || 'Not logged in' }}
+                                    </p>
+                                </div>
                             </div>
 
-                            <!-- Info -->
-                            <div class="min-w-0">
-                                <p
-                                    class="text-sm sm:text-base font-semibold text-gray-900 dark:text-white capitalize truncate">
-                                    {{ user?.fullName || 'Guest' }}
-                                </p>
-                                <p class="text-xs sm:text-sm text-gray-500 truncate max-w-[180px]">
-                                    {{ user?.email || 'Not logged in' }}
-                                </p>
-                            </div>
 
                             <!-- Desktop Only Log Out Button -->
                             <div class="hidden md:block">
@@ -283,6 +289,8 @@
                                 </button>
                             </div>
                         </div>
+
+
                     </div>
 
 

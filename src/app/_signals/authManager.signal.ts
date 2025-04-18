@@ -31,6 +31,10 @@ export class AuthManagerSignal {
     return this.user();
   }
 
+  get currentUser2() {
+    return this.user; // return the SIGNAL, not its value
+  }
+
   get authToken(): string | null {
     return this.currentUser?.authToken || null;
   }

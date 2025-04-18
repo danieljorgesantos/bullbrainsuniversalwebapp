@@ -5,8 +5,7 @@
 
             <div class="w-full pt-8 pb-10 text-left lg:max-w-5xl lg:mx-auto">
                 <!-- Back Button -->
-                <button 
-                    class="flex items-center text-sm text-gray-500 hover:text-black transition mb-4">
+                <button class="flex items-center text-sm text-gray-500 hover:text-black transition mb-4">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
@@ -66,21 +65,24 @@
                             </button>
                         </div>
 
-                        <!-- (click)="selectGoogleDeliveryLocation(prediction)" -->
+                        <!-- Delivery Location Autocomplete -->
                         <div class="relative dropdown-container mt-4 mb-2">
                             <input
                                 class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500"
                                 type="text" placeholder="{{ getTranslation('placeholder_digite_local_entrega') }}"
                                 formControlName="destinationLocation">
+
                             <div *ngIf="googleDeliveryPredictions.length > 0"
                                 class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg">
                                 <div *ngFor="let prediction of googleDeliveryPredictions"
+                                    (click)="selectGoogleDeliveryLocation(prediction)"
                                     class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100">
                                     {{ prediction.description }}
                                 </div>
                             </div>
                         </div>
-                        
+
+
                         <!-- 
                     (click)="useCurrentLocationForDelivery()" -->
                         <div class="mb-2 flex items-center justify-start mb-4">
@@ -99,7 +101,7 @@
 
 
 
-                    <a [href]="'/' + currentLanguage + '/requester-choose-van'"
+                    <a [routerLink]="['/', currentLanguage, 'requester-choose-van']"
                         class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition duration-150 flex items-center justify-center gap-2 mt-6">
                         {{ getTranslation('button_ver_precos') }}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">

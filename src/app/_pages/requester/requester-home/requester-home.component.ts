@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { Router } from 'express';
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterModule, ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { homeTranslations } from './translations';
+import { filter, map } from 'rxjs/operators';
+import { AuthManagerSignal } from '../../../_signals/authManager.signal';
 
 @Component({
   selector: 'app-requester-home',
@@ -10,28 +11,44 @@ import { homeTranslations } from './translations';
   imports: [CommonModule, RouterModule],
   templateUrl: './requester-home.component.html'
 })
-export class RequesterHomeComponent {
-  user: any | null = null;
+export class RequesterHomeComponent implements OnInit {
+  currentLanguage: string = 'pt-PT';
 
-  // Language
-  currentLanguage: any = 'pt-PT';
+  // ✅ Inject the signal (Angular v14+ way)
+  authManagerSignal = inject(AuthManagerSignal);
 
-  constructor(
-    // private router: Router,
-    // private configSignal: ConfigSignal,
-    // public authManagerSignal: AuthManagerSignal,
-  ) { }
-
-  // Get a specific translation by key
-  getTranslation(key: string) {
-    return homeTranslations[this.currentLanguage]?.[key] || homeTranslations['en']?.[key];
+  // ✅ Reactive getter (stays in sync automatically)
+  get user() {
+    return this.authManagerSignal.currentUser;
   }
 
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
   ngOnInit(): void {
+    this.extractLanguageFromPath();
 
-    // This puts the user object into the variable
-    // this.user = this.authManagerSignal.currentUser ?? null;
+    // React to route language changes
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.getFirstPathSegment())
+    ).subscribe(lang => {
+      if (lang) this.currentLanguage = lang;
+    });
+  }
 
-    this.user = null;
+  private getFirstPathSegment(): string | null {
+    const pathSegments = this.router.url.split('/').filter(Boolean);
+    return pathSegments.length > 0 ? pathSegments[0] : null;
+  }
+
+  private extractLanguageFromPath(): void {
+    const lang = this.route.snapshot.paramMap.get('lang');
+    if (lang) {
+      this.currentLanguage = lang;
+    }
+  }
+
+  getTranslation(key: string): string {
+    return homeTranslations[this.currentLanguage]?.[key] || homeTranslations['en']?.[key] || key;
   }
 }
