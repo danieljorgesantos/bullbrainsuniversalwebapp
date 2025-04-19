@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-requester-transport-history',
   standalone: true,
   imports: [],
-  templateUrl: './requester-transport-history.component.html',
-  styleUrl: './requester-transport-history.component.scss'
+  templateUrl: './requester-transport-history.component.html'
 })
 export class RequesterTransportHistoryComponent {
 

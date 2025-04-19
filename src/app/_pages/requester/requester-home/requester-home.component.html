@@ -1,23 +1,22 @@
-<section class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 pt-24 pb-12">
+<!-- Welcome Section -->
+<section class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 pt-20 pb-4">
     <div class="flex flex-row items-center justify-between gap-6 sm:gap-10">
-
         <!-- Left Side: Welcome Text -->
         <div class="text-left flex-1">
-            <h1 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white leading-snug">
+            <h1 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white leading-snug">
                 <span class="block">Bem-vindo(a),</span>
                 <span class="block text-black dark:text-white font-bold capitalize">
                     {{ user?.email }}!
                 </span>
             </h1>
-            <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p class="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                 O teu sucesso começa aqui! Aceita novas viagens, acompanha os teus ganhos e maximiza a tua experiência.
             </p>
         </div>
 
         <!-- Right Side: Clickable User Avatar -->
         <a [routerLink]="['/', currentLanguage, 'requester-home']"
-            class="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 cursor-pointer block group transition hover:opacity-90">
-
+            class="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 cursor-pointer block group transition hover:opacity-90">
             <span
                 class="inline-block size-full overflow-hidden rounded-full bg-white flex items-center justify-center shadow-md">
 
@@ -32,7 +31,7 @@
                 <!-- Initials Fallback -->
                 <span *ngIf="!user?.userPhoto"
                     class="inline-flex size-full items-center justify-center rounded-full bg-black">
-                    <span class="text-lg font-bold text-white">
+                    <span class="text-base font-bold text-white">
                         {{ user?.email ? user.email.charAt(0).toUpperCase() : '?' }}
                     </span>
                 </span>
@@ -40,6 +39,55 @@
         </a>
     </div>
 </section>
+
+<!-- Secção do Painel de Controlo -->
+<section class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 pt-6 pb-16">
+    <!-- Cartões de Estatísticas -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+        <div class="bg-white p-4 rounded-lg shadow text-center flex flex-col justify-between h-28">
+            <p class="text-sm font-semibold text-gray-600">Os Meus Transportes</p>
+            <p class="text-3xl font-bold text-gray-900 mt-auto">12</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow text-center flex flex-col justify-between h-28">
+            <p class="text-sm font-semibold text-gray-600">Agendados</p>
+            <p class="text-3xl font-bold text-gray-900 mt-auto">3</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow text-center flex flex-col justify-between h-28">
+            <p class="text-sm font-semibold text-gray-600">Concluídos</p>
+            <p class="text-3xl font-bold text-gray-900 mt-auto">8</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow text-center flex flex-col justify-between h-28">
+            <p class="text-sm font-semibold text-gray-600">Cancelados</p>
+            <p class="text-3xl font-bold text-gray-900 mt-auto">1</p>
+        </div>
+    </div>
+
+
+
+    <!-- Secção Em Transporte -->
+    <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <div class="flex justify-between items-center mb-2">
+            <h3 class="text-lg font-medium">Em Transporte</h3>
+            <button class="bg-black text-white text-sm px-3 py-1.5 rounded hover:bg-blue-700 transition">
+                Ver Detalhes
+            </button>
+        </div>
+        <p class="text-sm text-gray-600">20 de abril de 2025</p>
+        <p class="text-sm text-gray-700 mt-1"><strong>De:</strong> 123 Maple St, Springfield</p>
+        <p class="text-sm text-gray-700"><strong>Para:</strong> 789 Oak Ave, Capital City</p>
+    </div>
+
+    <!-- Transportes Agendados -->
+    <div>
+        <h3 class="text-lg font-medium mb-3">Transportes Agendados</h3>
+        <div class="bg-white rounded-lg p-4 shadow">
+            <p class="text-sm text-gray-600">25 de abril de 2025</p>
+            <p class="text-sm text-gray-700 mt-1"><strong>De:</strong> 456 Elm St, Shelbyville</p>
+            <p class="text-sm text-gray-700"><strong>Para:</strong> 321 Pine Rd, Ogdenville</p>
+        </div>
+    </div>
+</section>
+
 
 
 

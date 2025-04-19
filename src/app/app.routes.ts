@@ -15,6 +15,7 @@ import { LandingChooseVanComponent } from './_pages/landing/landing-choose-van/l
 import { RequesterChooseVanComponent } from './_pages/requester/requester-choose-van/requester-choose-van.component';
 import { RequesterMapComponent } from './_pages/requester/requester-map/requester-map.component';
 import { RegisterSuccessRequesterComponent } from './_pages/auth/register-success-requester/register-success-requester.component';
+import { RequesterMyTransportsComponent } from './_pages/requester/requester-my-transports/requester-my-transports.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -58,11 +59,9 @@ export const routes: Routes = [
 
     // User
     { path: ':lang/requester-home', component: RequesterHomeComponent, pathMatch: 'full' },
-
-
-
     { path: ':lang/requester-map', component: RequesterMapComponent, pathMatch: 'full' },
     { path: ':lang/requester-choose-van', component: RequesterChooseVanComponent, pathMatch: 'full' },
+    { path: ':lang/requester-my-transports', component: RequesterMyTransportsComponent },
 
 
 

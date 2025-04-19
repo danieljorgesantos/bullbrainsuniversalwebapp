@@ -1,0 +1,457 @@
+<!-- <section class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 pt-24 pb-12">
+  <div class="flex flex-row items-center justify-between gap-6 sm:gap-10">
+
+    @if (requesterTransportsSignal.loadingStatus) {
+    <div class="fixed inset-0 flex items-center justify-center bg-white z-50">
+      <div class="flex flex-col items-center">
+        <div class="h-12 w-12 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin">
+        </div>
+
+        <span class="mt-4 text-lg text-gray-600">A carregar pedidos...</span>
+      </div>
+    </div>
+
+    } @else if(!requesterTransportsSignal.loadingStatus) {
+
+    <div class="hidden md:block">
+      <div class="px-4 sm:px-6 lg:px-8 ">
+        <div>
+          <nav class="sm:hidden" aria-label="Back">
+            <a href="#" class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
+              <svg class="mr-1 -ml-1 size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                  clip-rule="evenodd" />
+              </svg>
+              Voltar
+            </a>
+          </nav>
+          <nav class="hidden sm:flex" aria-label="Breadcrumb">
+            <ol role="list" class="flex items-center space-x-4">
+              <li>
+                <div class="flex">
+                  <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-700">Transportes</a>
+                </div>
+              </li>
+              <li>
+                <div class="flex items-center">
+                  <svg class="size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <a href="#" aria-current="page" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Os
+                    Meus
+                    Pedidos</a>
+                </div>
+              </li>
+            </ol>
+          </nav>
+          <div class="mt-2 md:flex md:items-center md:justify-between">
+            <div class="min-w-0 flex-1">
+              <h2 class="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Os Meus
+                Transportes
+              </h2>
+            </div>
+            <div class="mt-4 flex shrink-0 md:mt-0 md:ml-4">
+              <button *ngIf="transportRequests.length > 0" [routerLink]="['/', currentLanguage, 'requester-map']"
+                type="button"
+                class="ml-3 inline-flex items-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800">
+                Pedir Novo Transporte
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div id="transport-requests-container" class="w-full max-w-7xl mx-auto">
+          <ng-container *ngIf="transportRequests.length > 0; else noTransportsDesktop">
+            <div class="mt-8">
+              <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                  <table class="min-w-full divide-y divide-gray-300 table-fixed">
+                    <thead>
+                      <tr>
+                        <th class="w-12 py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">ID</th>
+                        <th class="w-48 px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Descrição</th>
+                        <th class="w-56 px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Origem</th>
+                        <th class="w-56 px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Destino</th>
+                        <th class="w-24 px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Preço (€)</th>
+                        <th class="w-32 px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
+                        <th class="w-20 relative py-3.5 pr-4 pl-3 sm:pr-0">
+                          <span class="sr-only">Ações</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                      <tr *ngFor="let request of transportRequests">
+                        <td class="w-12 py-4 pr-3 pl-4 text-sm font-medium text-gray-900 sm:pl-0">{{ request.id }}</td>
+                        <td class="w-48 px-3 py-4 text-sm text-gray-500 truncate-text">{{ request.description }}</td>
+                        <td class="w-56 px-3 py-4 text-sm text-gray-500 truncate-text">{{ request.pickupLocationText }}
+                        </td>
+                        <td class="w-56 px-3 py-4 text-sm text-gray-500 truncate-text">{{ request.dropoffLocationText }}
+                        </td>
+                        <td class="w-24 px-3 py-4 text-sm text-gray-500">{{ request.price | currency:'EUR' }}</td>
+                        <td class="w-32 px-3 py-4 text-sm">
+                          <span [ngClass]="getBadgeClass(request.status)"
+                            class="text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm">
+                            {{ getStatusText(request.status) }}
+                          </span>
+                        </td>
+                        <td class="w-20 relative py-4 pr-4 pl-3 text-right text-sm font-medium sm:pr-0">
+                          <a [routerLink]="['/requester-my-transport-detail', request.id]"
+                            class="text-indigo-600 hover:text-indigo-900">
+                            Detalhes
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-template #noTransportsDesktop>
+            <div class="flex flex-col lg:flex-row justify-center items-center h-[calc(100vh-100px)] w-full px-6">
+
+              <div class="w-full lg:w-1/2 text-center lg:text-left px-4">
+                <div class="mx-auto max-w-[510px]">
+                  <span class="mb-4 block text-lg font-semibold text-primary">
+                    O meu Primeiro Pedido
+                  </span>
+                  <h2 class="mb-6 text-2xl font-bold leading-[1.2] text-dark dark:text-white">
+                    Você ainda não fez nenhum pedido de transporte.
+                  </h2>
+                  <p class="text-base text-body-color dark:text-dark-6">
+                    Aqui você pode acompanhar seus transportes. Como ainda não tem nenhum pedido, que tal criar o
+                    primeiro
+                    agora?
+                  </p>
+                  <a [routerLink]="'/requester-map'"
+                    class="mt-6 inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg px-6 py-3 text-sm md:text-base">
+                    Criar Meu Primeiro Pedido
+                  </a>
+
+                </div>
+              </div>
+
+              <div class="w-1/2 flex justify-center">
+                <img src="./large_package.webp" alt="Mudança sem esforço" class="w-3/5 max-w-[400px]">
+              </div>
+
+            </div>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="block md:hidden pb-24 bg-gray-100 min-h-screen">
+      <div class="p-4">
+        <nav class="sm:hidden flex justify-end p-4" aria-label="Back">
+          <a routerLink="/requester-home"
+            class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
+            <svg class="mr-1 -ml-1 size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
+              aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                clip-rule="evenodd" />
+            </svg>
+            Voltar
+          </a>
+        </nav>
+
+        <nav class="hidden sm:flex" aria-label="Breadcrumb">
+          <ol role="list" class="flex items-center space-x-4">
+            <li>
+              <div class="flex">
+                <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-700">Transportes</a>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <svg class="size-5 shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd" />
+                </svg>
+                <a href="#" aria-current="page" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">Os
+                  Meus
+                  Pedidos</a>
+              </div>
+            </li>
+          </ol>
+        </nav>
+        <div class="mt-2 md:flex md:items-center md:justify-between">
+          <div class="min-w-0 flex-1">
+            <h2 class="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Os Meus Transportes
+            </h2>
+          </div>
+          <div class="mt-4 w-full md:mt-0 md:ml-4">
+            <button *ngIf="transportRequests.length > 0" [routerLink]="'/requester-map'" type="button"
+              class="w-full text-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              Pedir Novo Transporte
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mt-4 2xl:mb-5">
+        <div class="grid xl:grid-cols-4 sm:grid-cols-2 gap-6">
+          <ng-container *ngIf="transportRequests.length > 0; else noTransports">
+            <ng-container *ngFor="let request of transportRequests; let i = index">
+              <div class="bg-white shadow rounded-md p-7">
+                <div class="flex items-center justify-between gap-3 w-full">
+
+                  <div class="flex items-center gap-3">
+                    <img src="./Delivery_Location.webp" alt="" class="rounded-full h-12">
+                    <h3 class="text-xl font-bold mb-0.5">Pedido {{ request.id }}</h3>
+                  </div>
+
+                  <span [ngClass]="getBadgeClass(request.status)"
+                    class="text-xs font-medium px-2.5 py-0.5 rounded-sm flex items-center justify-center text-center flex-nowrap">
+
+                    <span *ngIf="isLiveStatus(request.status)" class="w-2 h-2 me-1 rounded-full animate-pulse"
+                      [ngClass]="getPulseColor(request.status)"></span>
+
+                    <ng-container *ngIf="getStatusText(request.status) === 'A aguardar condutor'; else normalStatus">
+                      A aguardar condutor
+                      <span class="inline-block w-4 min-h-[1rem] text-left">{{ dots }}</span>
+                    </ng-container>
+
+                    <ng-template #normalStatus>
+                      {{ getStatusText(request.status) }}
+                    </ng-template>
+
+                  </span>
+                </div>
+
+
+                <div class="mt-7">
+                  <div>
+                    <span class="text-gray-500 mb-0.5 text-sm">De:</span>
+                    <h6 class="text-sm"> {{ request.pickupLocationText }}
+                    </h6>
+                  </div>
+
+                  <div class="mt-2">
+                    <span class="text-gray-500 mb-0.5 text-sm">Para:</span>
+                    <h6 class="text-sm"> {{ request.dropoffLocationText }} </h6>
+                  </div>
+
+                  <div *ngIf="!request.designatedDriverId"
+                    class="bg-indigo-100 border-t-4 border-indigo-500 rounded-b text-indigo-900 px-4 py-3 shadow-md mt-4 mb-4 text-sm"
+                    role="alert">
+                    <div class="flex">
+                      <div class="py-1"><svg class="fill-current h-6 w-6 text-indigo-500 mr-4"
+                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                          <path
+                            d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z" />
+                        </svg></div>
+                      <div>
+                        <p class="font-bold">Aguardando atribuição de condutor</p>
+                        <p class="text-sm">Assim que um condutor aceitar, suas informações aparecerão aqui. O tempo
+                          médio de
+                          atribuição é de aproximadamente 5 a 15 minutos.</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div *ngIf="request.designatedDriverId"
+                    class="rounded-b px-4 py-3 mt-4 mb-4 text-sm flex flex-col items-center text-center" role="alert"
+                    [ngClass]="getAlertClass(request.status)">
+
+                    <div class="flex items-center justify-center gap-3 w-full">
+                      <div class="py-1 flex justify-between"></div>
+
+                      <div class="flex items-center gap-2">
+                        <span *ngIf="isLiveStatus(request.status)" class="w-4 h-4 rounded-full animate-pulse"
+                          [ngClass]="getPulseColor(request.status)">
+                        </span>
+                        <p class="text-sm">{{ getStatusText(request.status) }}</p>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                  <div *ngIf="request.designatedDriverId" class="bg-gray-200 shadow rounded-lg p-5 mt-4 text-sm">
+                    <div class="flex items-center gap-4">
+                      <img [src]="request.designatedDriverPhoto" alt="Foto do motorista"
+                        class="rounded-lg h-24 w-24 object-cover border border-gray-300 shadow-sm">
+                      <div>
+                        <h2 class="text-sm font-semibold text-gray-800">{{ request.designatedDriverName }}</h2>
+                        <p class="text-sm text-indigo-400 font-bold">Motorista designado</p>
+
+
+                        <p class="text-sm text-gray-600"> {{ request.designatedDriverVanModel }} - {{
+                          request.designatedDriverVanColor }}</p>
+                        <p class="text-sm text-gray-600">Matrícula: {{ request.designatedDriverLicencePlate }}</p>
+
+                        <div class="flex items-center gap-3 mt-4 text-white">
+                          <a *ngIf="request.designatedDriverPhone" [href]="'tel:' + request.designatedDriverPhone"
+                            class="bg-indigo-500 border border-gray-300 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-indigo-700 hover:fill-white h-8 w-8"
+                            title="Ligar para o condutor" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                              class="size-5">
+                              <path fill-rule="evenodd"
+                                d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                                clip-rule="evenodd" />
+                            </svg>
+                          </a>
+
+                          <a *ngIf="request.designatedDriverEmail" [href]="'mailto:' + request.designatedDriverEmail"
+                            class="bg-indigo-500 border border-gray-300 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-indigo-700 hover:fill-white h-8 w-8"
+                            title="Enviar email para o condutor" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                              class="size-5">
+                              <path
+                                d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                              <path
+                                d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                            </svg>
+                          </a>
+
+
+                          <a href="#"
+                            class="bg-indigo-500 border border-gray-300 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-blue-700 hover:fill-white h-8 w-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                              class="size-5">
+                              <path fill-rule="evenodd"
+                                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                clip-rule="evenodd" />
+                            </svg>
+                          </a>
+
+                          <a href="#"
+                            class="bg-indigo-500 border border-gray-300 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-blue-700 hover:fill-white h-8 w-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                              class="size-5">
+                              <path fill-rule="evenodd"
+                                d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                                clip-rule="evenodd" />
+                            </svg>
+
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-4 mt-7 text-white">
+
+                    <button [routerLink]="['/requester-my-transport-detail', request.id]"
+                      class="bg-indigo-700 shadow rounded-full flex items-center justify-center h-8 px-8 text-white text-sm font-medium gap-2 whitespace-nowrap">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                        <path fill-rule="evenodd"
+                          d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      Ver Detalhes
+                    </button>
+
+                    <a routerLink="/requester-my-payments"
+                      class="bg-blue-700 shadow rounded-full flex items-center justify-center h-8 w-8">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                        <path d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
+                        <path fill-rule="evenodd"
+                          d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z"
+                          clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+
+
+
+                </div>
+              </div>
+            </ng-container>
+
+          </ng-container>
+
+
+          <ng-template #noTransports>
+            <div class="flex flex-col items-center justify-center h-4/5 w-full max-w-3xl mx-auto text-center pt-4">
+
+              <img src="./large_package.webp" alt="Nenhum transporte disponível" class="w-60 md:w-72 lg:w-96 mb-6">
+
+              <div class="px-4">
+                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-2xl font-semibold">
+                  Você ainda não fez nenhum pedido de transporte.
+                </p>
+                <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base mt-2">
+                  Aqui é onde você pode acompanhar todos os seus transportes solicitados. Como ainda não tem nenhum
+                  pedido,
+                  que tal criar o primeiro agora?
+                </p>
+
+                <a [routerLink]="'/requester-map'"
+                  class="mt-6 inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg px-6 py-3 text-sm md:text-base">
+                  Criar Meu Primeiro Pedido
+                </a>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+
+    </div>
+    }
+
+  </div>
+</section> -->
+
+
+
+<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-24">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-xl font-semibold text-gray-900">Os Meus Transportes</h2>
+    <button class="text-xs sm:text-sm px-4 py-2 bg-black text-white rounded-md hover:bg-blue-700 transition">
+      Novo Pedido
+    </button>
+  </div>
+
+
+  <!-- Filter Buttons -->
+  <div class="flex gap-3 mb-6">
+    <button class="text-xs font-medium px-3 py-1 rounded-full bg-gray-200 text-gray-800">Todos</button>
+    <button class="text-xs font-medium px-3 py-1 rounded-full hover:bg-gray-100 text-gray-600">Agendados</button>
+    <button class="text-xs font-medium px-3 py-1 rounded-full hover:bg-gray-100 text-gray-600">Concluídos</button>
+    <button class="text-xs font-medium px-3 py-1 rounded-full hover:bg-gray-100 text-gray-600">Cancelados</button>
+  </div>
+
+  <!-- Transport List -->
+  <div class="space-y-4">
+    <!-- Transport card -->
+    <div *ngFor="let request of transportRequests"
+      class="bg-white rounded-lg shadow-sm px-4 py-3 flex justify-between items-start text-sm text-gray-700">
+      <div class="w-full">
+        <span class="inline-block mb-1 px-2 py-0.5 rounded-full text-xs font-medium" [ngClass]="{
+          'bg-yellow-100 text-yellow-700': request.status === 'Pending',
+          'bg-blue-100 text-blue-700': request.status === 'Going to Pickup',
+          'bg-indigo-100 text-indigo-700': request.status === 'Going to Dropoff',
+          'bg-green-100 text-green-700': request.status === 'Delivered'
+        }">
+          {{ getStatusText(request.status) }}
+        </span>
+
+        <p class="font-semibold text-gray-900 truncate">{{ request.description }}</p>
+        <p class="mt-1 text-gray-600 truncate"><strong>De:</strong> {{ request.pickupLocationText }}</p>
+        <p class="text-gray-600 truncate"><strong>Para:</strong> {{ request.dropoffLocationText }}</p>
+      </div>
+      <div class="text-right mt-1 whitespace-nowrap pl-4">
+        <a [routerLink]="['/transport', request.id]" class="text-blue-600 text-xs font-medium hover:underline">
+          Ver
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

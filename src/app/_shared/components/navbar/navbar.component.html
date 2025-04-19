@@ -33,13 +33,17 @@
                     // DRIVER layout logic
                     }
                     @else if (authManagerSignal.currentUser?.type === 1) {
-                    <a href="{{ currentLanguage === 'pt-PT' ? '/' : '/' + currentLanguage }}"
+                    <a [routerLink]="['/', currentLanguage, 'requester-home']"
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900">
                         Página Inicial
                     </a>
-                    <a href="#"
+                    <a [routerLink]="['/', currentLanguage, 'requester-map']"
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
                         Pedir transporte
+                    </a>
+                    <a [routerLink]="['/', currentLanguage, 'requester-my-transports']"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        Os meus transportes
                     </a>
                     <a href="#"
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
