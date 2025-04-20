@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../_shared/services/auth.service';
-import { FirebaseService } from '../../../_shared/services/firebase.service';
+// import { FirebaseService } from '../../../_shared/services/firebase.service';
 
 @Component({
   selector: 'app-register-driver',
@@ -77,7 +77,7 @@ export class RegisterDriverComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private firebaseService: FirebaseService
+    // private firebaseService: FirebaseService
   ) { }
 
   async ngOnInit() {
@@ -89,11 +89,12 @@ export class RegisterDriverComponent {
       }
 
     // Request permission and retrieve FCM token
-    const token = await this.firebaseService.requestPermission();
-      this.token = token;
+    // const token = await this.firebaseService.requestPermission();
+      // this.token = token;
+      this.token = 'token';
 
       // Start listening for messages
-      this.firebaseService.listenForMessages();
+      // this.firebaseService.listenForMessages();
 
     } catch (error) {
       console.error('❌ Error retrieving FCM Token:', error);
@@ -149,11 +150,9 @@ export class RegisterDriverComponent {
             (this.driver as any)[field] = scaledBase64; // Save Base64 instead of file
             (this.filePreview as any)[field] = scaledBase64; // Update preview
 
-            console.log(`📸 ${field} carregado e redimensionado:`, scaledBase64.substring(0, 50) + "..."); // Short log
           };
         };
 
-        console.log(`📸 ${field} carregado:`, file.name);
       } else {
         console.error(`🚨 Campo '${field}' não é um campo de upload de arquivo.`);
       }
@@ -232,7 +231,6 @@ export class RegisterDriverComponent {
 
     formData.append("FcmToken", this.token ?? "");
 
-    console.log("🚀 Dados enviados:", Object.fromEntries((formData as any).entries()));
 
     this.authService.register(Object.fromEntries((formData as any).entries())).subscribe({
       next: () => {

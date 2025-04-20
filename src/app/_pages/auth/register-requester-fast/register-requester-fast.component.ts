@@ -5,9 +5,7 @@ import { AuthService } from '../../../_shared/services/auth.service'; // Use Aut
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ConfigSignal } from '../../../_signals/config';
 import { AuthManagerSignal } from '../../../_signals/authManager.signal';
-import { FirebaseService } from '../../../_shared/services/firebase.service';
 
 
 @Component({
@@ -33,9 +31,8 @@ export class RegisterRequesterFastComponent {
      private router: Router,
      private fb: FormBuilder,
      private authService: AuthService,
-     public configSignal: ConfigSignal,
      public authManagerSignal: AuthManagerSignal,
-     private firebaseService: FirebaseService
+    //  private firebaseService: FirebaseService
    ) {
      this.registerForm = this.fb.group({
        email: ['', [Validators.required, Validators.email]],
@@ -46,12 +43,7 @@ export class RegisterRequesterFastComponent {
    }
  
    ngOnInit(): void {
-     this.setInitialPageConfig();
      this.loadGoogleAuth();
-   }
- 
-   private setInitialPageConfig(): void {
-     this.configSignal.setMode('single_page_layout');
    }
  
    checkPasswordStrength(): void {
@@ -90,8 +82,8 @@ export class RegisterRequesterFastComponent {
      if (this.registerForm.valid) {
  
        // Request permission and retrieve FCM token
-       const token = await this.firebaseService.requestPermission();
-       this.token = token;
+      //  const token = await this.firebaseService.requestPermission();
+       this.token = 'token';
  
        this.errorMessage = '';
        this.isLoading = true;
@@ -181,7 +173,6 @@ export class RegisterRequesterFastComponent {
          setTimeout(() => {
            const buttonContainer = document.getElementById('google-signin-btn');
            if (buttonContainer) {
-             console.log("Rendering Google Sign-In Button...");
  
              // Clear the div before rendering in case of duplicate buttons
              buttonContainer.innerHTML = "";
@@ -213,7 +204,6 @@ export class RegisterRequesterFastComponent {
        return;
      }
  
-     console.log("✅ Google Login Successful", userData);
  
      // Call AuthManagerSignal's new method to handle the user login
      this.authManagerSignal.handleGoogleLogin(userData);

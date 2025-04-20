@@ -94,10 +94,7 @@ export class HomeComponent {
       switchMap((inputValue: string) => this.googleAutocompleteService.testMethod(inputValue)) // Call the service with the current input value
     ).subscribe((response: any) => {
       this.googlePickupPredictions = response;
-      console.log('response in the component')
       this.cd.detectChanges();
-      // console.log('Service response:', response);
-      // this.testPickupLocationControlResponse = response;
     });
 
     // Watch for changes in the pickupLocation input and call the service
@@ -107,10 +104,7 @@ export class HomeComponent {
       switchMap((inputValue: string) => this.googleAutocompleteService.testMethod(inputValue)) // Call the service with the current input value
     ).subscribe((response: any) => {
       this.googleDeliveryPredictions = response;
-      console.log('response in the component delivery delivery')
       this.cd.detectChanges();
-      // console.log('Service response:', response);
-      // this.testPickupLocationControlResponse = response;
     });
 
     // this.googleIniPickupAutocomplete();
@@ -271,53 +265,9 @@ export class HomeComponent {
 
     // ✅ 🚨 Only calculate route if dropoff already exists
     if (this.destinationMarker) {
-      console.log('destination marker exists!!!!!!!!!!!')
       // this.getRoute();
     }
 
-    // const placesService = new google.maps.places.PlacesService(document.createElement('div'));
-    // placesService.getDetails({ placeId: prediction.place_id }, (place: any, status: any) => {
-    //   if (status === google.maps.places.PlacesServiceStatus.OK && place.geometry) {
-    //     const lat = place.geometry.location.lat();
-    //     const lon = place.geometry.location.lng();
-
-    //     this.form.get('pickupLocation')?.setValue(prediction.description, { emitEvent: false });
-
-    //     this.googlePickupPredictions = [];
-    //     // this.cdr.detectChanges();
-    //     // this.currentPickupRequest++;
-
-    //     // ✅ If marker doesn't exist, create it
-    //     if (!this.pickupMarker) {
-    //       // this.pickupMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getBlueMarker() })
-    //       //   .addTo(this.mobileMap)
-    //       //   .bindPopup('Ponto de Recolha')
-    //       //   .on('dragend', () => this.getRoute());
-
-    //       // this.pickupMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getBlueMarker() })
-    //       //   .addTo(this.desktopMap)
-    //       //   .bindPopup('Ponto de Recolha')
-    //       //   .on('dragend', () => this.getRoute());
-    //     } else {
-    //       this.pickupMarker.setLatLng([lat, lon]).openPopup();
-    //     }
-
-    //     // ✅ Update map
-    //     this.desktopMap.setView([lat, lon], 14);
-    //     this.mobileMap.setView([lat, lon], 14);
-
-    //     this.priceSignal.updateState({
-    //       pickupLocationText: prediction.description,
-    //       pickupLatitude: lat,
-    //       pickupLongitude: lon,
-    //     });
-
-    //     // ✅ 🚨 Only calculate route if dropoff already exists
-    //     if (this.destinationMarker) {
-    //       // this.getRoute();
-    //     }
-    //   }
-    // });
   }
 
 
@@ -361,54 +311,6 @@ export class HomeComponent {
       // ✅ Update route
       this.getRoute();
     }
-
-
-    // // ✅ Google Places Service to get details
-    // const placesService = new google.maps.places.PlacesService(document.createElement('div'));
-    // placesService.getDetails({ placeId: prediction.place_id }, (place: any, status: any) => {
-    //   if (status === google.maps.places.PlacesServiceStatus.OK && place.geometry) {
-    //     const lat = place.geometry.location.lat();
-    //     const lon = place.geometry.location.lng();
-
-    //     // ✅ Update the input field without triggering valueChanges
-    //     this.googleDeliveryControl.setValue(prediction.description, { emitEvent: false });
-    //     this.googleDeliveryPredictions = []; // ✅ Hide dropdown
-    //     this.cdr.detectChanges();
-    //     this.currentDeliveryRequest++;
-
-    //     // ✅ If marker doesn't exist, create it
-    //     if (!this.destinationMarker) {
-    //       this.destinationMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getRedMarker() })
-    //         .addTo(this.mobileMap)
-    //         .bindPopup('Ponto de Entrega')
-    //         .on('dragend', () => this.getRoute());
-
-    //       this.destinationMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getRedMarker() })
-    //         .addTo(this.desktopMap)
-    //         .bindPopup('Ponto de Entrega')
-    //         .on('dragend', () => this.getRoute());
-    //     } else {
-    //       this.destinationMarker.setLatLng([lat, lon]).openPopup();
-    //     }
-
-
-    //     // ✅ Update map
-    //     this.desktopMap.setView([lat, lon], 14);
-    //     this.mobileMap.setView([lat, lon], 14);
-
-    //     // ✅ Update the priceSignal state
-    //     this.priceSignal.updateState({
-    //       dropoffLocationText: prediction.description,
-    //       dropoffLatitude: lat,
-    //       dropoffLongitude: lon,
-    //     });
-
-    //     if (this.pickupMarker) {
-    //       // ✅ Update route
-    //       // this.getRoute();
-    //     }
-    //   }
-    // });
   }
 
   getBlueMarker() {
@@ -433,55 +335,16 @@ export class HomeComponent {
     });
   }
 
-
-
-
-  // // faz o update do marker
-  // updateMarker(marker: any, location: any, label: string) {
-  //   const lat = location.lat;
-  //   const lon = location.lon;
-
-  //   // Update both maps with the new location
-  //   this.desktopMap.setView([lat, lon], 14);
-  //   this.mobileMap.setView([lat, lon], 14);
-
-  //   marker.setLatLng([lat, lon]).bindPopup(label).openPopup();
-  // }
-
   getRoute() {
-    // if (!this.pickupMarker || !this.destinationMarker || !this.desktopMap || !this.mobileMap) {
-    //   return;
-    // }
-
-    console.log('got here 1')
-
     const pickupCoords = this.pickupMarker?.getLatLng();
     const destinationCoords = this.destinationMarker?.getLatLng();
 
     const url = `https://router.project-osrm.org/route/v1/driving/${pickupCoords.lng},${pickupCoords.lat};${destinationCoords.lng},${destinationCoords.lat}?overview=full&geometries=geojson`;
 
-    console.log('got here 2')
 
     this.http.get(url).subscribe((response: any) => {
       if (response && response.routes && response.routes.length > 0) {
         const routeCoords = response.routes[0].geometry.coordinates.map((coord: any) => [coord[1], coord[0]]);
-
-        console.log('got here 3')
-
-        // // ✅ Ensure maps are ready before adding the route
-        // if (!this.desktopMap || !this.mobileMap) {
-        //   return;
-        // }
-
-        // // ✅ Ensure previous route is removed before adding a new one
-        // try {
-        //   if (this.routeLayer) {
-        //     this.desktopMap.removeLayer(this.routeLayer);
-        //     // this.mobileMap.removeLayer(this.routeLayer);
-        //   }
-        // } catch (error) {
-        //   console.warn("⚠️ Route layer was already removed or did not exist.", error);
-        // }
 
         // ✅ Store new route in the layer
         this.routeLayer = this.leafletService.L.polyline(routeCoords, { color: 'black', weight: 5, opacity: 0.7 });
@@ -489,8 +352,6 @@ export class HomeComponent {
         // ✅ Add new route to both maps
         this.routeLayer.addTo(this.desktopMap);
         // this.routeLayer.addTo(this.mobileMap);
-
-        console.log('got here 4')
 
         // ✅ Ensure map has the correct size before fitting bounds
         setTimeout(() => {
@@ -581,61 +442,6 @@ export class HomeComponent {
               pickupLatitude: lat,
               pickupLongitude: lon,
             });
-
-            // // ✅ Ensure that the maps are initialized before proceeding
-            // if (!this.desktopMap || !this.mobileMap) {
-            //   console.error("🚨 Error: Maps are not initialized yet.");
-            //   return;
-            // }
-
-            // // ✅ Ensure markers exist before updating
-            // if (!this.pickupMarker) {
-            //   console.warn("⚠️ Pickup marker is missing. Initializing new markers.");
-
-            //   // ✅ Add marker to both maps
-            //   this.pickupMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getBlueMarker() })
-            //     .addTo(this.mobileMap)
-            //     .bindPopup('Ponto de Recolha')
-            //     .on('dragend', () => this.getRoute());
-
-            //   this.pickupMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getBlueMarker() })
-            //     .addTo(this.desktopMap)
-            //     .bindPopup('Ponto de Recolha')
-            //     .on('dragend', () => this.getRoute());
-            // } else {
-            //   // ✅ Move marker & update popups on both maps
-            //   this.pickupMarker.setLatLng([lat, lon]).bindPopup('Ponto de Recolha').openPopup();
-            // }
-
-            // // ✅ Update input field
-            // this.googleLocationControl.setValue(formattedAddress, { emitEvent: false });
-
-            // // ✅ Update both maps' view
-            // setTimeout(() => {
-            //   this.desktopMap.setView([lat, lon], 14);
-            //   this.mobileMap.setView([lat, lon], 14);
-            // }, 500); // Ensure map updates fully before setting view
-
-            // // ✅ Update state & price calculation
-            // this.priceSignal.updateState({
-            //   pickupLocationText: formattedAddress,
-            //   pickupLatitude: lat,
-            //   pickupLongitude: lon,
-            // });
-
-            // // ✅ Ensure route recalculates **only if both markers exist**
-            //   setTimeout(() => {
-            //     if (this.pickupMarker && this.destinationMarker) {
-            //       console.log("🚀 Recalculating Route...");
-            //       this.getRoute();
-            //     } else {
-            //       console.warn("⚠️ Cannot calculate route: Destination marker is missing.");
-            //     }
-            //   }, 800); // Delay ensures the map updates before recalculating route
-            // } else {
-            //   console.error('❌ Erro ao obter endereço:', status);
-            //   alert('Não foi possível obter um endereço. Tente novamente.');
-            // }
           }
         });
       },
