@@ -348,7 +348,7 @@
             Solicite já um motorista especializado para o seu transporte pesado!
         </p>
         <div class="flex items-center justify-center mt-6">
-            <a routerLink="/requester-map"
+            <a [routerLink]="['/', currentLanguage, 'requester-home']"
                 class="w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-sm sm:text-base rounded-full text-white bg-gray-800 hover:bg-gray-600 transition font-bold">
                 Solicitar transporte
             </a>

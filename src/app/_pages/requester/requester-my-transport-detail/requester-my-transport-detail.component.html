@@ -1,0 +1,94 @@
+<section class="max-w-3xl p-4 mx-auto bg-white shadow rounded-xl space-y-4 mt-24">
+
+    <!-- 🔙 Styled Voltar Button -->
+    <button
+      [routerLink]="['/', currentLanguage, 'requester-my-transports']"
+      class="flex items-center text-sm text-gray-500 hover:text-black transition mb-4"
+    >
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Voltar aos meus transportes
+    </button>
+  
+    <h2 class="text-2xl font-bold text-gray-800">Detalhes do Transporte</h2>
+  
+    <div class="flex flex-col md:flex-row gap-6" *ngIf="transportDetails">
+      <!-- Mapa -->
+      <div class="md:w-1/2">
+        <div id="transport-map" class="w-full h-[300px] rounded-lg"></div>
+      </div>
+  
+      <!-- Informações do Transporte -->
+      <div class="md:w-1/2 space-y-2 text-gray-700 text-sm">
+        <div>
+          <span class="font-semibold">Morada de Recolha:</span><br />
+          {{ transportDetails.pickupLocationText || 'N/D' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Data e Hora de Recolha:</span><br />
+          {{ transportDetails.deliveryTimeStart || 'N/D' }} - {{ transportDetails.deliveryTimeEnd || 'N/D' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Morada de Entrega:</span><br />
+          {{ transportDetails.dropoffLocationText || 'N/D' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Distância:</span><br />
+          {{ transportDetails.distance ? (transportDetails.distance | number:'1.1-1') + ' km' : 'A calcular...' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Descrição:</span><br />
+          {{ transportDetails.description || 'N/D' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Preço Total:</span><br />
+          {{ transportDetails.price ? ('€' + transportDetails.price) : 'Por confirmar' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Estado:</span><br />
+          {{ transportDetails.status || 'Pendente' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Data do Pedido:</span><br />
+          {{ transportDetails.timeOfRequestCreated | date: 'dd/MM/yyyy HH:mm' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Solicitante:</span><br />
+          {{ transportDetails.requesterEmail || 'N/D' }}
+          <br />
+          {{ transportDetails.requesterPhone || 'Sem telefone' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Condutor:</span><br />
+          {{ transportDetails.designatedDriverName || 'A aguardar condutor' }}<br />
+          {{ transportDetails.designatedDriverPhone || 'A aguardar contato' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Veículo:</span><br />
+          {{ transportDetails.designatedDriverVanModel && transportDetails.designatedDriverVanColor
+              ? transportDetails.designatedDriverVanModel + ' - ' + transportDetails.designatedDriverVanColor
+              : 'A aguardar veículo' }}
+        </div>
+  
+        <div>
+          <span class="font-semibold">Placa:</span><br />
+          {{ transportDetails.designatedDriverLicencePlate || 'A aguardar placa' }}
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+  

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './_shared/components/navbar/navbar.component';
+import { AuthManagerSignal } from './_signals/authManager.signal';
 
 // Declare gtag as any to avoid TypeScript complaints about its usage.
 declare var gtag: any;
@@ -15,10 +16,12 @@ declare var gtag: any;
 export class AppComponent implements OnInit {
   constructor(
     private router: Router,
+    public authManagerSignal: AuthManagerSignal,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    this.authManagerSignal.loadUserFromLocalStorage();
     // Ensure that code runs only in the browser context.
     if (isPlatformBrowser(this.platformId)) {
       // Dynamically insert the GA script.
