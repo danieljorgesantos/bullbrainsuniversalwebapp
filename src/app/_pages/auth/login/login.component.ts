@@ -47,10 +47,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // private setInitialPageConfig(): void {
-  //   this.configSignal.setMode('single_page_layout');
-  // }
-
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
