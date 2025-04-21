@@ -167,6 +167,7 @@ export class DriverDeliveringComponent implements  OnInit {
     //   }
     // });
   }
+  
 
   getVanMarker() {
     // return L.icon({
