@@ -1,0 +1,43 @@
+# .github/workflows/delete-all-artifacts.yml
+
+name: Delete all artifacts (one-time cleanup)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete ALL artifacts in repo
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            let page = 1;
+            let deleted = 0;
+
+            while (true) {
+              const artifacts = await github.rest.actions.listArtifactsForRepo({
+                owner,
+                repo,
+                per_page: 100,
+                page: page++
+              });
+
+              if (artifacts.data.artifacts.length === 0) break;
+
+              for (const artifact of artifacts.data.artifacts) {
+                await github.rest.actions.deleteArtifact({
+                  owner,
+                  repo,
+                  artifact_id: artifact.id
+                });
+                console.log(`Deleted artifact: ${artifact.name}`);
+                deleted++;
+              }
+            }
+
+            console.log(`Deleted total: ${deleted} artifacts`);
