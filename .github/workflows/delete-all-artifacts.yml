@@ -1,5 +1,3 @@
-# .github/workflows/delete-all-artifacts.yml
-
 name: Delete all artifacts (one-time cleanup)
 
 on:
@@ -8,6 +6,9 @@ on:
 jobs:
   delete-artifacts:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write  # ✅ Required to delete artifacts
+
     steps:
       - name: Delete ALL artifacts in repo
         uses: actions/github-script@v7
