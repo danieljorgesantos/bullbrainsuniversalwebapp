@@ -17,6 +17,11 @@ import { RequesterMapComponent } from './_pages/requester/requester-map/requeste
 import { RegisterSuccessRequesterComponent } from './_pages/auth/register-success-requester/register-success-requester.component';
 import { RequesterMyTransportsComponent } from './_pages/requester/requester-my-transports/requester-my-transports.component';
 import { RequesterMyTransportDetailComponent } from './_pages/requester/requester-my-transport-detail/requester-my-transport-detail.component';
+import { RegisterDriverComponent } from './_pages/auth/register-driver/register-driver.component';
+import { RegisterSuccessDriverComponent } from './_pages/auth/register-success-driver/register-success-driver.component';
+import { DriversHomeComponent } from './_pages/driver/drivers-home/drivers-home.component';
+import { DriversTransportsComponent } from './_pages/driver/drivers-transports/drivers-transports.component';
+import { DriverDeliveringComponent } from './_pages/driver/driver-delivering/driver-delivering.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -54,8 +59,9 @@ export const routes: Routes = [
     // Auth
     { path: ':lang/register', component: RegisterComponent, pathMatch: 'full' },
     { path: ':lang/register-requester-success', component: RegisterSuccessRequesterComponent, pathMatch: 'full' },
-
     { path: ':lang/login', component: LoginComponent, pathMatch: 'full' },
+    { path: ':lang/register-driver', component: RegisterDriverComponent },
+    { path: ':lang/driver-registration-success', component: RegisterSuccessDriverComponent },
 
 
     // User
@@ -64,6 +70,20 @@ export const routes: Routes = [
     { path: ':lang/requester-choose-van', component: RequesterChooseVanComponent, pathMatch: 'full' },
     { path: ':lang/requester-my-transports', component: RequesterMyTransportsComponent },
     { path: ':lang/requester-my-transport-detail/:transportId', component: RequesterMyTransportDetailComponent },
+
+    // 🔹 Driver Pages
+    { path: ':lang/drivers-home', component: DriversHomeComponent },
+    { path: ':lang/drivers-transports', component: DriversTransportsComponent },
+    { path: 'driver-delivering/:transportId', component: DriverDeliveringComponent },
+    //   { path: 'drivers-payments', component: DriversPaymentsComponent },
+    //   { path: 'drivers-profile', component: DriversProfileComponent },
+    //   { path: 'drivers-profile-update-successful', component: DriversProfileUpdateSuccessfulComponent },
+    //   { path: 'drivers-configurations', component: DriversConfigurationsComponent },
+    //   { path: 'drivers-statistics', component: DriversStatisticsComponent },
+    //   { path: 'driver-delivering-finished', component: DriversDeliveringFinishedComponent },
+    //   { path: 'drivers-cash-out', component: DriversCashOutComponent },
+    //   { path: 'driver-delivering-detail/:transportId', component: DriverDeliveringDetailComponent },
+    //   { path: 'drivers-support', component: DriversSupportComponent },
 
 
 

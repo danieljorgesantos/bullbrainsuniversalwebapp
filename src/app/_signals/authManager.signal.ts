@@ -16,10 +16,6 @@ export class AuthManagerSignal {
     private authService: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    console.log('📦 AuthManagerSignal initialized');
-    console.log('authService:', this.authService);
-    console.log('typeof authService.login:', typeof this.authService.login);
-
     this.isBrowser = isPlatformBrowser(this.platformId);
 
     if (this.isBrowser) {
@@ -142,7 +138,7 @@ export class AuthManagerSignal {
     const routes: Record<number, string> = {
       0: '/admin-home',
       1: '/pt-PT/requester-home',
-      2: '/drivers-home'
+      2: '/pt-PT/drivers-home'
     };
 
     const target = routes[userRole] ?? '/login';

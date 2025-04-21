@@ -8,6 +8,8 @@ import { Router, RouterModule } from '@angular/router';
   standalone: true,
 })
 export class RegisterSuccessRequesterComponent {
+    // Language
+    currentLanguage: any = 'pt-PT';
 
   constructor(
     public router: Router,

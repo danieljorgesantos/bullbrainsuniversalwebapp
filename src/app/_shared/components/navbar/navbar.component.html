@@ -66,7 +66,7 @@
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
                         {{ getTranslation('link_pedir_transporte') }}
                     </a>
-                    <a href="#"
+                    <a [routerLink]="['/', currentLanguage, 'register-driver']"
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
                         {{ getTranslation('link_conduzir') }}
                     </a>
@@ -314,10 +314,6 @@
             // DRIVER layout logic
             }
             @else if (authManagerSignal.currentUser?.type === 1) {
-            <a href="/"
-                class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pr-4 pl-3 text-base font-medium text-indigo-700">
-                Tipooooooo 111111111
-            </a>
             <a href="#"
                 class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
                 {{getTranslation('link_pedir_transporte') }}
@@ -335,17 +331,6 @@
             // ADMIN layout logic
             }
             @else {
-            // UNKNOWN or no user type — fallback UI
-            // You could show a message like:
-            // "User type not recognized. Please log in again."
-            <a href="/"
-                class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pr-4 pl-3 text-base font-medium text-indigo-700">
-                tipo elseeeeeeeeeeeeeee
-            </a>
-
-
-
-
             <a href="/"
                 class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pr-4 pl-3 text-base font-medium text-indigo-700">{{
                 getTranslation('link_pagina_inicial') }}</a>

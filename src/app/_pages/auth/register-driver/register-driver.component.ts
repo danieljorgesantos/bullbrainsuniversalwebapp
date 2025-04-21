@@ -8,9 +8,13 @@ import { AuthService } from '../../../_shared/services/auth.service';
 @Component({
   selector: 'app-register-driver',
   imports: [FormsModule, CommonModule],
-  templateUrl: './register-driver.component.html'
+  templateUrl: './register-driver.component.html',
+  standalone: true,
 })
 export class RegisterDriverComponent {
+  // Language
+  currentLanguage: any = 'pt-PT';
+
   isLoading = false;
   errorMessage: string | null = null;
 
@@ -82,23 +86,22 @@ export class RegisterDriverComponent {
 
   async ngOnInit() {
     // 🔥 Request permission and retrieve FCM token when component initializes
-    try {
-      const permission = await Notification.requestPermission();
-      if (permission !== 'granted') {
-        return;
-      }
+    // try {
+    //   const permission = await Notification.requestPermission();
+    //   if (permission !== 'granted') {
+    //     return;
+    //   }
 
-    // Request permission and retrieve FCM token
-    // const token = await this.firebaseService.requestPermission();
-      // this.token = token;
-      this.token = 'token';
+    //   // Request permission and retrieve FCM token
+    //   // const token = await this.firebaseService.requestPermission();
+    //   this.token = 'token';
 
-      // Start listening for messages
-      // this.firebaseService.listenForMessages();
+    //   // Start listening for messages
+    //   // this.firebaseService.listenForMessages();
 
-    } catch (error) {
-      console.error('❌ Error retrieving FCM Token:', error);
-    }
+    // } catch (error) {
+    //   console.error('❌ Error retrieving FCM Token:', error);
+    // }
   }
 
   handleFileInput(event: any, field: keyof typeof this.driver) {
@@ -150,9 +153,11 @@ export class RegisterDriverComponent {
             (this.driver as any)[field] = scaledBase64; // Save Base64 instead of file
             (this.filePreview as any)[field] = scaledBase64; // Update preview
 
+            console.log(`📸 ${field} carregado e redimensionado:`, scaledBase64.substring(0, 50) + "..."); // Short log
           };
         };
 
+        console.log(`📸 ${field} carregado:`, file.name);
       } else {
         console.error(`🚨 Campo '${field}' não é um campo de upload de arquivo.`);
       }
@@ -231,11 +236,13 @@ export class RegisterDriverComponent {
 
     formData.append("FcmToken", this.token ?? "");
 
+    console.log("🚀 Dados enviados:", Object.fromEntries((formData as any).entries()));
 
     this.authService.register(Object.fromEntries((formData as any).entries())).subscribe({
       next: () => {
         this.isLoading = false;
-        this.router.navigate(['/register-driver-success']);
+        this.router.navigate(['/', this.currentLanguage, 'driver-registration-success']);
+
       },
       error: (err: any) => {
         this.isLoading = false;

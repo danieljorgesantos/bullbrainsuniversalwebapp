@@ -1,432 +1,429 @@
-<div class="bg-gray-100 text-gray-900 min-h-screen">
-    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 pt-12">
-        <div class="container mx-auto py-12 sm:py-24">
-            <form (submit)="submitForm()">
-                <div class="space-y-12">
-                    <div class="border-b border-gray-900/10 pb-12">
-                        <h2 class="text-base/7 font-semibold text-gray-900">Registo de Motorista</h2>
-                        <p class="mt-1 text-sm/6 text-gray-600">Preencha o formulário abaixo para se registar como
-                            motorista na Flo Transportes.</p>
+<section class="max-w-3xl mx-auto px-4 pb-12 pt-12">
+    <div class="py-12 sm:py-24">
+        <form (submit)="submitForm()">
+            <div class="space-y-12">
+                <div class="border-b border-gray-900/10 pb-12">
+                    <h2 class="text-base/7 font-semibold text-gray-900">Registo de Motorista</h2>
+                    <p class="mt-1 text-sm/6 text-gray-600">Preencha o formulário abaixo para se registar como
+                        motorista na Flo Transportes.</p>
 
-                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-2">
+                    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-2">
 
-                            <div class="col-span-full">
-                                <label class="block text-sm font-medium text-gray-900">Fotografia do Condutor
-                                    (Obrigatório)</label>
+                        <div class="col-span-full">
+                            <label class="block text-sm font-medium text-gray-900">Fotografia do Condutor
+                                (Obrigatório)</label>
 
-                                <div
-                                    class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
+                            <div
+                                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
 
-                                    <!-- If an image is uploaded, it should fully cover the square container -->
-                                    <div *ngIf="driver.userPhoto" class="absolute inset-0">
-                                        <img [src]="filePreview.userPhoto" alt="Pré-visualização"
-                                            class="w-full h-full object-cover rounded-lg" />
+                                <!-- If an image is uploaded, it should fully cover the square container -->
+                                <div *ngIf="driver.userPhoto" class="absolute inset-0">
+                                    <img [src]="filePreview.userPhoto" alt="Pré-visualização"
+                                        class="w-full h-full object-cover rounded-lg" />
 
-                                        <!-- Delete Button -->
-                                        <div (click)="removeUserPhoto()"
-                                            class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
-                                            ✕
-                                        </div>
-                                    </div>
-
-                                    <!-- Upload Area (Only show if no image is uploaded) -->
-                                    <div *ngIf="!driver.userPhoto"
-                                        class="flex flex-col items-center justify-center w-full h-full text-center">
-                                        <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
-                                            aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <div class="mt-4 flex text-sm text-gray-600">
-                                            <label
-                                                class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                                <span>Enviar um arquivo</span>
-                                                <input type="file" (change)="handleFileInput($event, 'userPhoto')"
-                                                    class="sr-only">
-                                            </label>
-                                            <p class="pl-1">ou arraste e solte</p>
-                                        </div>
-                                        <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
+                                    <!-- Delete Button -->
+                                    <div (click)="removeUserPhoto()"
+                                        class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
+                                        ✕
                                     </div>
                                 </div>
-                            </div>
 
-
-
-
-                            <!-- User Account Fields -->
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Nome Completo</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.fullName" name="fullName"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Email</label>
-                                <div class="mt-2">
-                                    <input type="email" [(ngModel)]="driver.email" name="email"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Password</label>
-                                <div class="mt-2">
-                                    <input type="password" [(ngModel)]="driver.password" name="password"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Telefone</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.phone" name="phone"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <!-- Personal Information -->
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Data de Nascimento</label>
-                                <div class="mt-2">
-                                    <input type="date" [(ngModel)]="driver.dateOfBirth" name="dateOfBirth"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Local de Nascimento</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.placeOfBirth" name="placeOfBirth"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Nacionalidade</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.nationality" name="nationality"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <!-- Emergency Contact -->
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Nome do Contacto de
-                                    Emergência</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.emergencyContactName"
-                                        name="emergencyContactName"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Telefone do Contacto de
-                                    Emergência</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.emergencyContactPhone"
-                                        name="emergencyContactPhone"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <!-- Identification Documents -->
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Nº do Cartão de Cidadão ou
-                                    Passaporte</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.idCardNumber" name="idCardNumber"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Data de Validade do
-                                    Cartão</label>
-                                <div class="mt-2">
-                                    <input type="date" [(ngModel)]="driver.idCardExpiration" name="idCardExpiration"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <!-- Driver License -->
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Número da Carta de
-                                    Condução</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.licenseNumber" name="licenseNumber"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Categoria da Carta</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.licenseCategory" name="licenseCategory"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <!-- Vehicle Information -->
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Matrícula do Veículo</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.vehiclePlateNumber" name="vehiclePlateNumber"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="sm:col-span-1">
-                                <label class="block text-sm/6 font-medium text-gray-900">Marca e Modelo do
-                                    Veículo</label>
-                                <div class="mt-2">
-                                    <input type="text" [(ngModel)]="driver.vehicleMakeModel" name="vehicleMakeModel"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                        required />
-                                </div>
-                            </div>
-
-                            <div class="col-span-full">
-                                <label class="block text-sm font-medium text-gray-900">Frente da Carta de
-                                    Condução (Obrigatório)</label>
-
-                                <div
-                                    class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
-
-                                    <!-- If an image is uploaded, it should fully cover the square container -->
-                                    <div *ngIf="driver.licenseFront" class="absolute inset-0">
-                                        <img [src]="filePreview.licenseFront" alt="Pré-visualização"
-                                            class="w-full h-full object-cover rounded-lg" />
-
-                                        <!-- Delete Button -->
-                                        <div (click)="removeLicenseFront()"
-                                            class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
-                                            ✕
-                                        </div>
-                                    </div>
-
-                                    <!-- Upload Area (Only show if no image is uploaded) -->
-                                    <div *ngIf="!driver.licenseFront"
-                                        class="flex flex-col items-center justify-center w-full h-full text-center">
-                                        <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
-                                            aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <div class="mt-4 flex text-sm text-gray-600">
-                                            <label
-                                                class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                                <span>Enviar um arquivo</span>
-                                                <input type="file" (change)="handleFileInput($event, 'licenseFront')"
-                                                    class="sr-only">
-                                            </label>
-                                            <p class="pl-1">ou arraste e solte</p>
-                                        </div>
-                                        <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-span-full">
-                                <label class="block text-sm font-medium text-gray-900">Verso da Carta de
-                                    Condução (Obrigatório)</label>
-
-                                <div
-                                    class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
-
-                                    <!-- If an image is uploaded, it should fully cover the square container -->
-                                    <div *ngIf="driver.licenseBack" class="absolute inset-0">
-                                        <img [src]="filePreview.licenseBack" alt="Pré-visualização"
-                                            class="w-full h-full object-cover rounded-lg" />
-
-                                        <!-- Delete Button -->
-                                        <div (click)="removeLicenseBack()"
-                                            class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
-                                            ✕
-                                        </div>
-                                    </div>
-
-                                    <!-- Upload Area (Only show if no image is uploaded) -->
-                                    <div *ngIf="!driver.licenseBack"
-                                        class="flex flex-col items-center justify-center w-full h-full text-center">
-                                        <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
-                                            aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <div class="mt-4 flex text-sm text-gray-600">
-                                            <label
-                                                class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                                <span>Enviar um arquivo</span>
-                                                <input type="file" (change)="handleFileInput($event, 'licenseBack')"
-                                                    class="sr-only">
-                                            </label>
-                                            <p class="pl-1">ou arraste e solte</p>
-                                        </div>
-                                        <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-span-full">
-                                <label class="block text-sm font-medium text-gray-900">Frente do Cartão de Cidadão ou
-                                    Passaporte (Obrigatório)</label>
-
-                                <div
-                                    class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
-
-                                    <!-- If an image is uploaded, it should fully cover the square container -->
-                                    <div *ngIf="driver.idCardFront" class="absolute inset-0">
-                                        <img [src]="filePreview.idCardFront" alt="Pré-visualização"
-                                            class="w-full h-full object-cover rounded-lg" />
-
-                                        <!-- Delete Button -->
-                                        <div (click)="removeIdCardFront()"
-                                            class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
-                                            ✕
-                                        </div>
-                                    </div>
-
-                                    <!-- Upload Area (Only show if no image is uploaded) -->
-                                    <div *ngIf="!driver.idCardFront"
-                                        class="flex flex-col items-center justify-center w-full h-full text-center">
-                                        <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
-                                            aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <div class="mt-4 flex text-sm text-gray-600">
-                                            <label
-                                                class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                                <span>Enviar um arquivo</span>
-                                                <input type="file" (change)="handleFileInput($event, 'idCardFront')"
-                                                    class="sr-only">
-                                            </label>
-                                            <p class="pl-1">ou arraste e solte</p>
-                                        </div>
-                                        <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-span-full">
-                                <label class="block text-sm font-medium text-gray-900">Verso do Cartão de Cidadão ou
-                                    Passaporte (Obrigatório)</label>
-
-                                <div
-                                    class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
-
-                                    <!-- If an image is uploaded, it should fully cover the square container -->
-                                    <div *ngIf="driver.idCardBack" class="absolute inset-0">
-                                        <img [src]="filePreview.idCardBack" alt="Pré-visualização"
-                                            class="w-full h-full object-cover rounded-lg" />
-
-                                        <!-- Delete Button -->
-                                        <div (click)="removeIdCardBack()"
-                                            class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
-                                            ✕
-                                        </div>
-                                    </div>
-
-                                    <!-- Upload Area (Only show if no image is uploaded) -->
-                                    <div *ngIf="!driver.idCardBack"
-                                        class="flex flex-col items-center justify-center w-full h-full text-center">
-                                        <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
-                                            aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <div class="mt-4 flex text-sm text-gray-600">
-                                            <label
-                                                class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                                <span>Enviar um arquivo</span>
-                                                <input type="file" (change)="handleFileInput($event, 'idCardBack')"
-                                                    class="sr-only">
-                                            </label>
-                                            <p class="pl-1">ou arraste e solte</p>
-                                        </div>
-                                        <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- Privacy Policy -->
-                            <div class="lg:col-span-2 flex items-center space-x-2">
-                                <input type="checkbox" required
-                                    class="w-5 h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-                                <label class="text-sm text-gray-700">
-                                    Concordo com a
-                                    <a href="/termos-de-privacidade" target="_blank"
-                                        class="text-indigo-600 hover:underline">
-                                        Política de Privacidade
-                                    </a>
-                                </label>
-                            </div>
-
-
-                            <!-- Submit Button -->
-                            <div class="lg:col-span-2">
-                                <button type="submit" [disabled]="isLoading"
-                                    class="bg-primary text-white p-3 rounded w-full md:w-auto flex justify-center items-center disabled:bg-gray-400">
-
-                                    <span>Enviar Registo</span>
-
-                                    <!-- Spinner (shown only when loading) -->
-                                    <svg *ngIf="isLoading" class="ml-2 h-5 w-5 animate-spin text-white"
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                            stroke-width="4"></circle>
-                                        <path class="opacity-75" fill="currentColor"
-                                            d="M12 2a10 10 0 0 1 10 10h-4a6 6 0 0 0-6-6V2z"></path>
+                                <!-- Upload Area (Only show if no image is uploaded) -->
+                                <div *ngIf="!driver.userPhoto"
+                                    class="flex flex-col items-center justify-center w-full h-full text-center">
+                                    <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                            clip-rule="evenodd" />
                                     </svg>
-
-                                </button>
-                            </div>
-
-                            <!-- Error Message -->
-                            <div *ngIf="errorMessage" class="rounded-md bg-red-50 p-4 mt-2">
-                                <div class="flex">
-                                    <div class="shrink-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                            class="size-5 text-red-400">
-                                            <path fill-rule="evenodd"
-                                                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
+                                    <div class="mt-4 flex text-sm text-gray-600">
+                                        <label
+                                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
+                                            <span>Enviar um arquivo</span>
+                                            <input type="file" (change)="handleFileInput($event, 'userPhoto')"
+                                                class="sr-only">
+                                        </label>
+                                        <p class="pl-1">ou arraste e solte</p>
                                     </div>
-                                    <div class="ml-3">
-                                        <p class="text-sm font-medium text-red-800">{{ errorMessage }}</p>
-                                    </div>
+                                    <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
                                 </div>
                             </div>
+                        </div>
 
-                        </div> 
+
+
+
+                        <!-- User Account Fields -->
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Nome Completo</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.fullName" name="fullName"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Email</label>
+                            <div class="mt-2">
+                                <input type="email" [(ngModel)]="driver.email" name="email"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Password</label>
+                            <div class="mt-2">
+                                <input type="password" [(ngModel)]="driver.password" name="password"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Telefone</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.phone" name="phone"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <!-- Personal Information -->
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Data de Nascimento</label>
+                            <div class="mt-2">
+                                <input type="date" [(ngModel)]="driver.dateOfBirth" name="dateOfBirth"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Local de Nascimento</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.placeOfBirth" name="placeOfBirth"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Nacionalidade</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.nationality" name="nationality"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Nome do Contacto de
+                                Emergência</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.emergencyContactName" name="emergencyContactName"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Telefone do Contacto de
+                                Emergência</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.emergencyContactPhone"
+                                    name="emergencyContactPhone"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <!-- Identification Documents -->
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Nº do Cartão de Cidadão ou
+                                Passaporte</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.idCardNumber" name="idCardNumber"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Data de Validade do
+                                Cartão</label>
+                            <div class="mt-2">
+                                <input type="date" [(ngModel)]="driver.idCardExpiration" name="idCardExpiration"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <!-- Driver License -->
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Número da Carta de
+                                Condução</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.licenseNumber" name="licenseNumber"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Categoria da Carta</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.licenseCategory" name="licenseCategory"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <!-- Vehicle Information -->
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Matrícula do Veículo</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.vehiclePlateNumber" name="vehiclePlateNumber"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-1">
+                            <label class="block text-sm/6 font-medium text-gray-900">Marca e Modelo do
+                                Veículo</label>
+                            <div class="mt-2">
+                                <input type="text" [(ngModel)]="driver.vehicleMakeModel" name="vehicleMakeModel"
+                                    class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label class="block text-sm font-medium text-gray-900">Frente da Carta de
+                                Condução (Obrigatório)</label>
+
+                            <div
+                                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
+
+                                <!-- If an image is uploaded, it should fully cover the square container -->
+                                <div *ngIf="driver.licenseFront" class="absolute inset-0">
+                                    <img [src]="filePreview.licenseFront" alt="Pré-visualização"
+                                        class="w-full h-full object-cover rounded-lg" />
+
+                                    <!-- Delete Button -->
+                                    <div (click)="removeLicenseFront()"
+                                        class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
+                                        ✕
+                                    </div>
+                                </div>
+
+                                <!-- Upload Area (Only show if no image is uploaded) -->
+                                <div *ngIf="!driver.licenseFront"
+                                    class="flex flex-col items-center justify-center w-full h-full text-center">
+                                    <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <div class="mt-4 flex text-sm text-gray-600">
+                                        <label
+                                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
+                                            <span>Enviar um arquivo</span>
+                                            <input type="file" (change)="handleFileInput($event, 'licenseFront')"
+                                                class="sr-only">
+                                        </label>
+                                        <p class="pl-1">ou arraste e solte</p>
+                                    </div>
+                                    <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label class="block text-sm font-medium text-gray-900">Verso da Carta de
+                                Condução (Obrigatório)</label>
+
+                            <div
+                                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
+
+                                <!-- If an image is uploaded, it should fully cover the square container -->
+                                <div *ngIf="driver.licenseBack" class="absolute inset-0">
+                                    <img [src]="filePreview.licenseBack" alt="Pré-visualização"
+                                        class="w-full h-full object-cover rounded-lg" />
+
+                                    <!-- Delete Button -->
+                                    <div (click)="removeLicenseBack()"
+                                        class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
+                                        ✕
+                                    </div>
+                                </div>
+
+                                <!-- Upload Area (Only show if no image is uploaded) -->
+                                <div *ngIf="!driver.licenseBack"
+                                    class="flex flex-col items-center justify-center w-full h-full text-center">
+                                    <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <div class="mt-4 flex text-sm text-gray-600">
+                                        <label
+                                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
+                                            <span>Enviar um arquivo</span>
+                                            <input type="file" (change)="handleFileInput($event, 'licenseBack')"
+                                                class="sr-only">
+                                        </label>
+                                        <p class="pl-1">ou arraste e solte</p>
+                                    </div>
+                                    <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label class="block text-sm font-medium text-gray-900">Frente do Cartão de Cidadão ou
+                                Passaporte (Obrigatório)</label>
+
+                            <div
+                                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
+
+                                <!-- If an image is uploaded, it should fully cover the square container -->
+                                <div *ngIf="driver.idCardFront" class="absolute inset-0">
+                                    <img [src]="filePreview.idCardFront" alt="Pré-visualização"
+                                        class="w-full h-full object-cover rounded-lg" />
+
+                                    <!-- Delete Button -->
+                                    <div (click)="removeIdCardFront()"
+                                        class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
+                                        ✕
+                                    </div>
+                                </div>
+
+                                <!-- Upload Area (Only show if no image is uploaded) -->
+                                <div *ngIf="!driver.idCardFront"
+                                    class="flex flex-col items-center justify-center w-full h-full text-center">
+                                    <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <div class="mt-4 flex text-sm text-gray-600">
+                                        <label
+                                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
+                                            <span>Enviar um arquivo</span>
+                                            <input type="file" (change)="handleFileInput($event, 'idCardFront')"
+                                                class="sr-only">
+                                        </label>
+                                        <p class="pl-1">ou arraste e solte</p>
+                                    </div>
+                                    <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-full">
+                            <label class="block text-sm font-medium text-gray-900">Verso do Cartão de Cidadão ou
+                                Passaporte (Obrigatório)</label>
+
+                            <div
+                                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 relative w-full h-64">
+
+                                <!-- If an image is uploaded, it should fully cover the square container -->
+                                <div *ngIf="driver.idCardBack" class="absolute inset-0">
+                                    <img [src]="filePreview.idCardBack" alt="Pré-visualização"
+                                        class="w-full h-full object-cover rounded-lg" />
+
+                                    <!-- Delete Button -->
+                                    <div (click)="removeIdCardBack()"
+                                        class="absolute top-2 right-2 bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition">
+                                        ✕
+                                    </div>
+                                </div>
+
+                                <!-- Upload Area (Only show if no image is uploaded) -->
+                                <div *ngIf="!driver.idCardBack"
+                                    class="flex flex-col items-center justify-center w-full h-full text-center">
+                                    <svg class="size-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <div class="mt-4 flex text-sm text-gray-600">
+                                        <label
+                                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
+                                            <span>Enviar um arquivo</span>
+                                            <input type="file" (change)="handleFileInput($event, 'idCardBack')"
+                                                class="sr-only">
+                                        </label>
+                                        <p class="pl-1">ou arraste e solte</p>
+                                    </div>
+                                    <p class="text-xs text-gray-600">Formatos permitidos: PNG, JPG, GIF até 10MB</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Privacy Policy -->
+                        <div class="lg:col-span-2 flex items-center space-x-2">
+                            <input type="checkbox" required
+                                class="w-5 h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                            <label class="text-sm text-gray-700">
+                                Concordo com a
+                                <a  target="_blank"
+                                    class="text-indigo-600 hover:underline">
+                                    Política de Privacidade
+                                </a>
+                            </label>
+                        </div>
+
+
+                        <!-- Submit Button -->
+                        <div class="lg:col-span-2">
+                            <button type="submit" [disabled]="isLoading"
+                                class="bg-black text-white p-3 rounded w-full md:w-auto flex justify-center items-center disabled:bg-gray-400">
+
+                                <span>Enviar Registo</span>
+
+                                <!-- Spinner (shown only when loading) -->
+                                <svg *ngIf="isLoading" class="ml-2 h-5 w-5 animate-spin text-white"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M12 2a10 10 0 0 1 10 10h-4a6 6 0 0 0-6-6V2z"></path>
+                                </svg>
+
+                            </button>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div *ngIf="errorMessage" class="rounded-md bg-red-50 p-4 mt-2">
+                            <div class="flex">
+                                <div class="shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-5 text-red-400">
+                                        <path fill-rule="evenodd"
+                                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-red-800">{{ errorMessage }}</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </form>
-        </div>
-    </section>
-</div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -14,7 +14,7 @@
 
         <div class="mt-8 sm:text-left text-center">
           <!-- Login Button -->
-          <a routerLink="/login"
+          <a [routerLink]="['/', currentLanguage, 'login']"
             class="inline-flex w-full sm:w-auto items-center justify-center px-6 py-3 bg-black text-white rounded-xl font-medium hover:bg-gray-900 transition">
             Iniciar Sessão
           </a>

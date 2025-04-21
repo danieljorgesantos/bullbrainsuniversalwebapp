@@ -1,0 +1,113 @@
+<div class="h-screen w-screen relative">
+    <!-- Map Container -->
+    <div id="leaflet-map-desktop" class="absolute inset-0"></div>
+
+    <!-- Floating "Voltar" Button -->
+    <button (click)="goBack()"
+        class="absolute top-4 left-4 bg-gray-900 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-gray-700 transition">
+        Voltar
+    </button>
+
+    <!-- Floating Button Container -->
+    <div class="absolute bottom-0 left-0 w-full bg-white p-4 z-[999]">
+
+        <div style="display: flex; justify-content: flex-end; padding: 8px;">
+            <a
+            [routerLink]="['/driver-delivering-detail', transportDetails.id]"
+            class="inline-flex items-center gap-2 text-xs text-gray-600 border border-gray-400 rounded px-3 py-1 hover:bg-gray-100 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          
+            Detalhes do Pedido
+          </a>
+          
+          </div>
+          
+
+        <div class="flex flex-col space-y-2 p-2 pb-4">
+            <!-- Current Location -->
+            <div class="flex items-center">
+                <div class="flex flex-col items-center">
+                    <!-- Blue Circle for Current Location -->
+                    <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
+                    <!-- Vertical Line -->
+                    <div class="h-6 border-l-4 border-gray-300"></div>
+                </div> 
+                <div class="text-sm font-medium text-black pl-2 h-10 w-full truncate-2-lines">
+                    <span class="text-gray-600">(Localização actual) </span>
+                    {{ currentLocationAddress || "A procurar.." }}
+                </div>
+            </div>
+        
+            <!-- Pickup Point -->
+            <div class="flex items-center">
+                <div class="flex flex-col items-center">
+                    <!-- Green Circle for Pickup -->
+                    <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
+                    <!-- Vertical Line -->
+                    <div class="h-6 border-l-4 border-gray-300"></div>
+                </div>
+                <div class="text-sm font-medium text-black pl-2 h-10 w-full truncate-2-lines">
+                    <span class="text-gray-600">(Recolha) </span>
+                    {{ transportDetails.pickupLocationText || "Erro no ponto de recolha" }}
+                </div>
+            </div>
+        
+            <!-- Delivery Point -->
+            <div class="flex items-center">
+                <div class="flex flex-col items-center">
+                    <!-- Red Circle for Delivery -->
+                    <div class="w-4 h-4 bg-gray-500 rounded-full"></div>
+                </div>
+                <div class="text-sm font-medium text-black pl-2 h-10 w-full truncate-2-lines">
+                    <span class="text-gray-600">(Entrega) </span>
+                    {{ transportDetails.dropoffLocationText || "Erro no ponto de Entrega" }}
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+        <div class="flex justify-between items-center">
+
+            
+
+            <!-- Price on the Left -->
+            <div class="text-3xl font-semibold text-black">
+                € {{ transportDetails.price | number:'1.2-2' }}
+            </div>
+            
+        
+            <!-- Buttons on the Right -->
+            <div class="flex space-x-2">
+                <!-- Iniciar/Finalizar Pedido Button (Large Green on the Right) -->
+                <button (click)="handleOrderStep()"
+                [ngClass]="{
+                    'bg-green-500 hover:bg-green-600': deliveryStep === 0,
+                    'bg-blue-500 hover:bg-blue-600': deliveryStep === 1,
+                    'bg-indigo-600 hover:bg-indigo-700': deliveryStep === 2
+                }"
+                class="text-white px-6 py-4 rounded-lg shadow-lg text-lg font-bold transition">
+                {{ getOrderButtonText() }}
+            </button>
+            
+            </div>
+        </div>
+        <!-- Spacer to Prevent Overlapping with Navbar -->
+        <div class="h-16 w-full"></div>
+        
+    </div>
+    
+</div>
