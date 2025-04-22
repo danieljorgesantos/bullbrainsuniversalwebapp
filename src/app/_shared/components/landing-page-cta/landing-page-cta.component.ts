@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { homeTranslations } from './translations';
+import { landingPageCtaTranslations } from './translations';
 
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
@@ -69,7 +69,7 @@ export class LandingPageCtaComponent {
 
   // Get a specific translation by key
   getTranslation(key: string) {
-    return homeTranslations[this.currentLanguage]?.[key] || homeTranslations['en']?.[key];
+    return landingPageCtaTranslations[this.currentLanguage]?.[key] || landingPageCtaTranslations['en']?.[key];
   }
 
   // https://stackoverflow.com/questions/58080301/how-to-use-angular-universal-with-leaflet
@@ -106,57 +106,9 @@ export class LandingPageCtaComponent {
       this.googleDeliveryPredictions = response;
       this.cd.detectChanges();
     });
-
-    // this.googleIniPickupAutocomplete();
-    // this.googleInitDeliveryAutocomplete();
-
-    // // Initialize Google Autocomplete for Pickup Point
-    // this.googleAutocompleteService.googleIniPickupAutocomplete(
-    //   document.getElementById('pickup-location-input') as HTMLInputElement,
-    //   this.googleLocationControl
-    // );
-
-    // // Subscribe to the googlePredictions observable to get predictions
-    // this.googleAutocompleteService.googlePredictions$.subscribe(predictions => {
-    //   this.googlePredictions = predictions;
-    // });
-
-
-
-    this.setInitialPageConfiguration();
-
   }
 
-  setInitialPageConfiguration() {
-    // // 🆕 Set the lang attribute on <html>
-    // document.documentElement.lang = this.currentLanguage;
 
-    const titleToSet = homeTranslations[this.currentLanguage]?.meta_title || homeTranslations['en']?.meta_title;
-    const descriptionToSet = homeTranslations[this.currentLanguage]?.meta_description || homeTranslations['en']?.meta_description;
-    const shareImage = 'https://www.floand-go.com/flo-logo-11.jpg';
-
-    this.titleService.setTitle(titleToSet);
-    this.metaService.updateTag({ name: 'description', content: descriptionToSet });
-    this.metaService.updateTag({ name: 'robots', content: 'index, follow' });
-    this.metaService.updateTag({ name: 'author', content: 'Flo and Go' });
-    this.metaService.updateTag({ httpEquiv: 'content-language', content: this.currentLanguage });
-
-    // Open Graph
-    this.metaService.updateTag({ property: 'og:title', content: titleToSet });
-    this.metaService.updateTag({ property: 'og:description', content: descriptionToSet });
-    this.metaService.updateTag({ property: 'og:url', content: 'https://www.floand-go.com/available-anytime-moving-services' });
-    // this.metaService.updateTag({ property: 'og:type', content: contentType });
-    this.metaService.updateTag({ property: 'og:site_name', content: 'Flo and Go' });
-    this.metaService.updateTag({ property: 'og:locale', content: this.currentLanguage });
-    this.metaService.updateTag({ property: 'og:image', content: shareImage });
-
-    // Twitter
-    // this.metaService.updateTag({ name: 'twitter:card', content: twitterCard });
-    this.metaService.updateTag({ name: 'twitter:title', content: titleToSet });
-    this.metaService.updateTag({ name: 'twitter:description', content: descriptionToSet });
-    this.metaService.updateTag({ name: 'twitter:site', content: '@floandgo' }); // Replace with your Twitter handle
-    this.metaService.updateTag({ name: 'twitter:image', content: shareImage });
-  }
 
   private setupMap() {
     if (this.leafletService.L) {
@@ -175,57 +127,6 @@ export class LandingPageCtaComponent {
       // Optionally show an error message to the user or retry logic here
     }
   }
-
-  // /** ✅ Initialize Google Autocomplete for Pickup Point */
-  // private googleIniPickupAutocomplete(): void {
-  //   this.googleAutocomplete = new google.maps.places.AutocompleteService();
-
-  //   this.googleLocationControl.valueChanges
-  //     .pipe(debounceTime(500), distinctUntilChanged())
-  //     .subscribe((inputValue: string) => {
-  //       if (inputValue.length > 2) {
-  //         const requestId = ++this.currentPickupRequest; // ✅ Track request ID
-
-  //         this.googleAutocomplete.getPlacePredictions(
-  //           { input: inputValue, componentRestrictions: { country: 'PT' } },
-  //           (predictions: any[], status: any) => {
-  //             if (requestId !== this.currentPickupRequest) return; // ✅ Ignore old responses
-
-  //             this.googlePredictions =
-  //               status === google.maps.places.PlacesServiceStatus.OK ? predictions : [];
-  //           }
-  //         );
-  //       } else {
-  //         this.googlePredictions = [];
-  //       }
-  //     });
-  // }
-
-  // /** ✅ Initialize Google Autocomplete for Delivery Point */
-  // private googleInitDeliveryAutocomplete(): void {
-  //   this.googleDeliveryAutocomplete = new google.maps.places.AutocompleteService();
-
-  //   this.googleDeliveryControl.valueChanges
-  //     .pipe(debounceTime(500), distinctUntilChanged())
-  //     .subscribe((inputValue: string) => {
-  //       if (inputValue.length > 2) {
-  //         const requestId = ++this.currentDeliveryRequest; // ✅ Track request ID
-
-  //         this.googleDeliveryAutocomplete.getPlacePredictions(
-  //           { input: inputValue, componentRestrictions: { country: 'PT' } },
-  //           (predictions: any[], status: any) => {
-  //             if (requestId !== this.currentDeliveryRequest) return; // ✅ Ignore old responses
-
-  //             this.googleDeliveryPredictions =
-  //               status === google.maps.places.PlacesServiceStatus.OK ? predictions : [];
-  //           }
-  //         );
-  //       } else {
-  //         this.googleDeliveryPredictions = [];
-  //       }
-  //     });
-  // }
-
 
   /** ✅ Select a Pickup Location & Update Map */
   selectGooglePickupLocation(prediction: any): void {
@@ -385,8 +286,6 @@ export class LandingPageCtaComponent {
     });
   }
 
-
-
   /** ✅ Use Current Location for Pickup (All-in-One) */
   useCurrentLocationForPickup(): void {
     if (!navigator.geolocation) {
@@ -453,98 +352,79 @@ export class LandingPageCtaComponent {
     );
   }
 
-  // /** ✅ Use Current Location for Delivery (Dropoff) */
-  // useCurrentLocationForDelivery(): void {
-  //   if (!navigator.geolocation) {
-  //     alert('Geolocalização não é suportada pelo seu navegador.');
-  //     return;
-  //   }
+  /** ✅ Use Current Location for Delivery (All-in-One) */
+  useCurrentLocationForDelivery(): void {
+    if (!navigator.geolocation) {
+      alert('Geolocalização não é suportada pelo seu navegador.');
+      return;
+    }
 
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       const lat = position.coords.latitude;
-  //       const lon = position.coords.longitude;
-  //       console.log(`📍 Obtained GPS Location for Delivery: ${lat}, ${lon}`);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        console.log(`📍 Obtained GPS Location for Delivery: ${lat}, ${lon}`);
 
-  //       const geocoder = new google.maps.Geocoder();
-  //       const latLng = new google.maps.LatLng(lat, lon);
+        const geocoder = new google.maps.Geocoder();
+        const latLng = new google.maps.LatLng(lat, lon);
 
-  //       geocoder.geocode({ location: latLng }, (results: any, status: any) => {
-  //         console.log('🛰️ Geocoder Results:', results, 'Status:', status);
+        geocoder.geocode({ location: latLng }, (results: any, status: any) => {
+          console.log('🛰️ Geocoder Results for Delivery:', results, 'Status:', status);
 
-  //         if (status === google.maps.GeocoderStatus.OK && results.length > 0) {
-  //           let formattedAddress = results.find((res: any) => res.types.includes('street_address'))?.formatted_address || results[0].formatted_address;
+          if (status === google.maps.GeocoderStatus.OK && results.length > 0) {
+            let formattedAddress = results.find((res: any) => res.types.includes('street_address'))?.formatted_address || results[0].formatted_address;
 
-  //           if (!formattedAddress) {
-  //             console.warn('⚠️ No detailed address found, using fallback:', results);
-  //             formattedAddress = results[0].formatted_address; // Fallback to first result
-  //           }
+            if (!formattedAddress) {
+              console.warn('⚠️ No detailed address found, using fallback:', results);
+              formattedAddress = results[0].formatted_address;
+            }
 
-  //           console.log(`🏡 Selected Delivery Address: ${formattedAddress}`);
+            console.log(`🏡 Selected Delivery Address: ${formattedAddress}`);
 
-  //           // ✅ Ensure that the maps are initialized before proceeding
-  //           if (!this.desktopMap || !this.mobileMap) {
-  //             console.error("🚨 Error: Maps are not initialized yet.");
-  //             return;
-  //           }
+            // Update input field without triggering valueChanges again
+            this.form.get('destinationLocation')?.setValue(formattedAddress, { emitEvent: false });
 
-  //           // ✅ Ensure markers exist before updating
-  //           if (!this.destinationMarker) {
-  //             console.warn("⚠️ Destination marker is missing. Initializing new markers.");
+            // ✅ If marker doesn't exist, create it
+            if (!this.destinationMarker) {
+              this.destinationMarker = this.leafletService.L.marker([lat, lon], {
+                draggable: true,
+                icon: this.getRedMarker(),
+              })
+                .addTo(this.desktopMap)
+                .bindPopup('Ponto de Entrega');
+              // .on('dragend', () => this.getRoute());
+            } else {
+              this.destinationMarker.setLatLng([lat, lon]).openPopup();
+            }
 
-  //             // ✅ Add marker to both maps
-  //             this.destinationMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getRedMarker() })
-  //               .addTo(this.mobileMap)
-  //               .bindPopup('Ponto de Entrega')
-  //               .on('dragend', () => this.getRoute());
+            // Center the map on the selected location
+            this.desktopMap.setView([lat, lon], 14);
 
-  //             this.destinationMarker = this.leafletService.L.marker([lat, lon], { draggable: true, icon: this.getRedMarker() })
-  //               .addTo(this.desktopMap)
-  //               .bindPopup('Ponto de Entrega')
-  //               .on('dragend', () => this.getRoute());
-  //           } else {
-  //             // ✅ Move marker & update popups on both maps
-  //             this.destinationMarker.setLatLng([lat, lon]).bindPopup('Ponto de Entrega').openPopup();
-  //           }
+            // Update app-wide state
+            this.priceSignal.updateState({
+              dropoffLocationText: formattedAddress,
+              dropoffLatitude: lat,
+              dropoffLongitude: lon,
+            });
 
-  //           // ✅ Update input field
-  //           this.googleDeliveryControl.setValue(formattedAddress, { emitEvent: false });
+            // ✅ If pickup marker exists, recalculate route
+            if (this.pickupMarker) {
+              this.getRoute();
+            }
+          } else {
+            console.error('❌ Erro ao obter endereço de entrega:', status);
+            alert('Não foi possível obter um endereço. Tente novamente.');
+          }
+        });
+      },
+      (error) => {
+        console.error('❌ Erro ao obter a localização de entrega:', error);
+        alert('Não foi possível obter a localização. Verifique as permissões de localização.');
+      },
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
+    );
+  }
 
-  //           // ✅ Update both maps' view
-  //           setTimeout(() => {
-  //             this.desktopMap.setView([lat, lon], 14);
-  //             this.mobileMap.setView([lat, lon], 14);
-  //           }, 500); // Ensure map updates fully before centering
-
-  //           // ✅ Update state & price calculation
-  //           this.priceSignal.updateState({
-  //             dropoffLocationText: formattedAddress,
-  //             dropoffLatitude: lat,
-  //             dropoffLongitude: lon,
-  //           });
-
-  //           // ✅ Ensure route recalculates **only if both markers exist**
-  //           setTimeout(() => {
-  //             if (this.pickupMarker && this.destinationMarker) {
-  //               console.log("🚀 Recalculating Route...");
-  //               this.getRoute();
-  //             } else {
-  //               console.warn("⚠️ Cannot calculate route: Pickup marker is missing.");
-  //             }
-  //           }, 800); // Delay ensures the map updates before recalculating route
-  //         } else {
-  //           console.error('❌ Erro ao obter endereço:', status);
-  //           alert('Não foi possível obter um endereço. Tente novamente.');
-  //         }
-  //       });
-  //     },
-  //     (error) => {
-  //       console.error('❌ Erro ao obter a localização:', error);
-  //       alert('Não foi possível obter a localização. Verifique as permissões de localização.');
-  //     },
-  //     { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
-  //   );
-  // }
 
   // scheduleTrip() {
   //   this.router.navigate(['/choose-truck']);
@@ -556,28 +436,9 @@ export class LandingPageCtaComponent {
   //   this.openSections[id] = !this.openSections[id];
   // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   ngOnDestroy(): void {
     this.desktopMap?.remove();
     this.mobileMap?.remove();
   }
-
-
-
-
-
 
 }
