@@ -2,18 +2,26 @@ import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core
 import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import {
+  CommonModule,
   DOCUMENT,
   isPlatformBrowser,
   isPlatformServer,
   PlatformLocation
 } from '@angular/common';
 import { lowCostCheapTransportTranslations } from './translations';
+import { LandingPageCtaComponent } from '../../../_shared/components/landing-page-cta/landing-page-cta.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-low-cost-cheap-transport',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    FormsModule,
+    LandingPageCtaComponent
+  ],
   templateUrl: './low-cost-cheap-transport.component.html'
+
 })
 export class LowCostCheapTransportComponent implements OnInit, OnDestroy {
   currentLanguage: string = 'pt-PT';

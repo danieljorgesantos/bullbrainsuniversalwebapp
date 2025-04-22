@@ -38,7 +38,7 @@ export const longDistanceTranslations: any = {
         porquê_escolher_nos: "Why Choose Us for Your Long-Distance Move?",
         experiência_em_mudanças: "Experience in national and international moves, our own fleet, a qualified team, and a strong commitment to your satisfaction."
     },
-    "fr-FFR": {
+    "fr-FR": {
         home: "Accueil",
         mudanças_de_longa: "Déménagements longue distance",
         mudanças_de_longa_2: "Déménagements longue distance",
