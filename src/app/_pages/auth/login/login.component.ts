@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
       this.authManagerSignal.signIn(this.loginForm.value);
     }
   }
+  
 
   loadGoogleAuth(): void {
     if (!this.isBrowser) return;
