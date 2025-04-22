@@ -22,6 +22,7 @@ import { RegisterSuccessDriverComponent } from './_pages/auth/register-success-d
 import { DriversHomeComponent } from './_pages/driver/drivers-home/drivers-home.component';
 import { DriversTransportsComponent } from './_pages/driver/drivers-transports/drivers-transports.component';
 import { DriverDeliveringComponent } from './_pages/driver/driver-delivering/driver-delivering.component';
+import { DriversPaymentsComponent } from './_pages/driver/drivers-payments/drivers-payments.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -75,7 +76,7 @@ export const routes: Routes = [
     { path: ':lang/drivers-home', component: DriversHomeComponent },
     { path: ':lang/drivers-transports', component: DriversTransportsComponent },
     { path: 'driver-delivering/:transportId', component: DriverDeliveringComponent },
-    //   { path: 'drivers-payments', component: DriversPaymentsComponent },
+      { path: ':lang/drivers-payments', component: DriversPaymentsComponent },
     //   { path: 'drivers-profile', component: DriversProfileComponent },
     //   { path: 'drivers-profile-update-successful', component: DriversProfileUpdateSuccessfulComponent },
     //   { path: 'drivers-configurations', component: DriversConfigurationsComponent },

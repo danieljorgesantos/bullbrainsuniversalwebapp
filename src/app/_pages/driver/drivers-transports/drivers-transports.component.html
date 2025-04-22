@@ -1,66 +1,63 @@
-<div class="min-h-screen bg-gray-100 p-4">
-  <!-- Title -->
-  <!-- Title and Controls -->
-  <div class="flex items-center justify-between mb-4">
-    <h1 class="text-2xl font-bold">Pedidos</h1>
-    <div class="flex items-center gap-2">
-      <!-- Filter Dropdown -->
-      <select class="text-sm border border-gray-300 rounded-md px-2 py-1 bg-white shadow-sm focus:outline-none">
-        <option value="all">Todos</option>
-        <option value="recent">Recentes</option>
-        <option value="distancia">Mais próximos</option>
-      </select>
-      <!-- Refresh Button -->
-      <button (click)="refreshTransportRequests()" class="p-2 rounded-md hover:bg-gray-200 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-gray-600">
-          <path fill-rule="evenodd"
-            d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z"
-            clip-rule="evenodd" />
-        </svg>
-
-      </button>
-    </div>
-  </div>
-
-  <!-- Request Cards -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div *ngFor="let request of transportRequestSignal.transportRequests" class="bg-white rounded-xl p-4 shadow-sm">
-      <div class="flex justify-between mb-2">
-        <div>
-          <p class="text-sm text-gray-500 font-medium">Distância</p>
-          <p class="text-base font-semibold">{{ request?.distance | number: '1.0-0' }} km</p>
-        </div>
-        <p
-          class="inline-flex items-center justify-center bg-gray-100 text-black text-xs font-bold px-3 py-1 rounded-xl shadow-sm">
-          {{ getTimeAgo(request?.timeOfRequestCreated) }}
-        </p>
-
-
-      </div>
-
-      <div class="flex justify-between mb-2">
-        <div>
-          <p class="text-sm text-gray-500 font-medium">Recolha</p>
-          <p class="text-base font-semibold">{{ request?.pickupLocationText }}</p>
-        </div>
-      </div>
-
-      <div class="mt-2 border-t pt-2 flex justify-between mb-4">
-        <div>
-          <p class="text-sm text-gray-500 font-medium">Entrega</p>
-          <p class="text-base font-semibold">{{ request?.dropoffLocationText }}</p>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <span class="text-2xl font-bold text-black">€{{ request?.price }}</span>
-
-        <button [routerLink]="['/driver-delivering', request?.id]"
-          class="px-6 py-2 text-white bg-black hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm transition-all duration-200">
-          Iniciar Transporte
+<div class="min-h-screen p-4 mt-24">
+  <div class="max-w-3xl mx-auto">
+    <!-- Title and Controls -->
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-2xl font-bold">Pedidos</h1>
+      <div class="flex items-center gap-2">
+        <!-- Filter Dropdown -->
+        <select class="text-sm border border-gray-300 rounded-md px-2 py-1 bg-white shadow-sm focus:outline-none">
+          <option value="all">Todos</option>
+          <option value="recent">Recentes</option>
+          <option value="distancia">Mais próximos</option>
+        </select>
+        <!-- Refresh Button -->
+        <button (click)="refreshTransportRequests()" class="p-2 rounded-md hover:bg-gray-200 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-gray-600">
+            <path fill-rule="evenodd"
+              d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z"
+              clip-rule="evenodd" />
+          </svg>
         </button>
       </div>
     </div>
-  </div>
 
+    <!-- Request Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div *ngFor="let request of transportRequestSignal.transportRequests" class="bg-gray-50 border border-gray-200 rounded-xl p-4 shadow-sm">
+        <div class="flex justify-between mb-2">
+          <div>
+            <p class="text-sm text-gray-500 font-medium">Distância</p>
+            <p class="text-base font-semibold">{{ request?.distance | number: '1.0-0' }} km</p>
+          </div>
+          <p
+            class="inline-flex items-center justify-center bg-gray-100 text-black text-xs font-bold px-3 py-1 rounded-xl shadow-sm">
+            {{ getTimeAgo(request?.timeOfRequestCreated) }}
+          </p>
+        </div>
+
+        <div class="flex justify-between mb-2">
+          <div>
+            <p class="text-sm text-gray-500 font-medium">Recolha</p>
+            <p class="text-base font-semibold">{{ request?.pickupLocationText }}</p>
+          </div>
+        </div>
+
+        <div class="mt-2 border-t pt-2 flex justify-between mb-4">
+          <div>
+            <p class="text-sm text-gray-500 font-medium">Entrega</p>
+            <p class="text-base font-semibold">{{ request?.dropoffLocationText }}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <span class="text-2xl font-bold text-black">€{{ request?.price }}</span>
+
+          <button [routerLink]="['/driver-delivering', request?.id]"
+            class="px-6 py-2 text-white bg-black hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm transition-all duration-200">
+            Iniciar Transporte
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

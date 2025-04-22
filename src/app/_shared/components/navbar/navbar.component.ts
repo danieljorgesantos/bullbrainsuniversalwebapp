@@ -67,7 +67,12 @@ export class NavbarComponent implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
 
+  closeMenu() {
+    this.menuOpen = false;
+  }
+
   logout(): void {
+    this.closeMenu();
     this.authManagerSignal.logout();
     this.router.navigate(['/']);
   }

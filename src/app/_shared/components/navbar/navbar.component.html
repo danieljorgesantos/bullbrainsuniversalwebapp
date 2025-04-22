@@ -30,7 +30,22 @@
 
 
                     @if (authManagerSignal.currentUser?.type === 2) {
-                    // DRIVER layout logic
+                    <a [routerLink]="['/', currentLanguage, 'drivers-transports']" (click)="closeMenu()"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900">
+                        Pedidos
+                    </a>
+                    <a [routerLink]="['/', currentLanguage, 'drivers-payments']"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        Pagamentos
+                    </a>
+                    <a [routerLink]="['/', currentLanguage, 'requester-my-transports']"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        Configurações
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">
+                        Suporte
+                    </a>
                     }
                     @else if (authManagerSignal.currentUser?.type === 1) {
                     <a [routerLink]="['/', currentLanguage, 'requester-home']"
@@ -239,8 +254,12 @@
                         <div *ngIf="user" class="flex items-center gap-3 max-w-full">
 
                             <!-- Avatar + Info clickable block with red background -->
-                            <div class="flex items-center gap-2 cursor-pointer px-3 py-1.5 rounded-md"
-                                [routerLink]="['/', currentLanguage, 'requester-home']">
+                            <div class="flex items-center gap-2 cursor-pointer px-3 py-1.5 rounded-md" [routerLink]="
+                            user?.type === 1 ? ['/', currentLanguage, 'requester-home'] :
+                            user?.type === 2 ? ['/', currentLanguage, 'drivers-home'] :
+                            user?.type === 0 ? ['/', currentLanguage, 'admin-home'] :
+                            ['/', currentLanguage]
+                          ">
 
                                 <!-- Avatar -->
                                 <div class="shrink-0">
@@ -311,7 +330,30 @@
 
 
             @if (authManagerSignal.currentUser?.type === 2) {
-            // DRIVER layout logic
+            <a [routerLink]="['/', currentLanguage, 'drivers-transports']" (click)="closeMenu()"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                Pedidos
+            </a>
+            <a [routerLink]="['/', currentLanguage, 'drivers-payments']" (click)="closeMenu()"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                Pagamentos
+            </a>
+            <a href="#"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                Configurações
+            </a>
+            <a [routerLink]="['/', currentLanguage, 'drivers-transports']" (click)="closeMenu()"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                Perfil
+            </a>
+            <a href="#"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                Suporte
+            </a>
+            <a (click)="logout()"
+                class="block border-l-4 border-transparent py-2 pr-4 pl-3 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
+                Sair da conta
+            </a>
             }
             @else if (authManagerSignal.currentUser?.type === 1) {
             <a href="#"
