@@ -3,6 +3,7 @@ export const lowCostCheapTransportTranslations: any = {
         meta_title: "Mudancas Baratas em Lisboa — Preços Ridiculos, Muda Já com Serviço Top | Flo and Go",
         meta_description: "Ninguém em Lisboa devia pagar tanto para mudar! Vê como a Flo and Go faz mudanças baratas com serviço top. Vagas limitadas!",
 
+        
         home: "Início",
         mudanças_de_longa: "Mudanças Baratas em Lisboa",
         mudanças_de_longa_2: "Transporte Low Cost em Lisboa",
