@@ -2,17 +2,24 @@ import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core
 import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import {
+  CommonModule,
   DOCUMENT,
   isPlatformBrowser,
   isPlatformServer,
   PlatformLocation
 } from '@angular/common';
 import { localChangesTranslations } from './translations';
+import { FormsModule } from '@angular/forms';
+import { LandingPageCtaComponent } from '../../../_shared/components/landing-page-cta/landing-page-cta.component';
 
 @Component({
   selector: 'app-local-changes',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    FormsModule,
+    LandingPageCtaComponent
+  ],
   templateUrl: './local-changes.component.html'
 })
 export class LocalChangesComponent implements OnInit, OnDestroy {
@@ -25,7 +32,7 @@ export class LocalChangesComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,
     private platformLocation: PlatformLocation
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const langParam = this.route.snapshot.paramMap.get('lang');
@@ -177,5 +184,5 @@ export class LocalChangesComponent implements OnInit, OnDestroy {
     this.document.head.appendChild(link);
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void { }
 }

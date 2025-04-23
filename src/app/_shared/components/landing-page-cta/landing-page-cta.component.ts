@@ -128,35 +128,27 @@ export class LandingPageCtaComponent {
     }
   }
 
-  /** ✅ Select a Pickup Location & Update Map */
   selectGooglePickupLocation(prediction: any): void {
     const lat = prediction.lat;
     const lon = prediction.lng;
 
-    // Clear predictions
     this.googlePickupPredictions = [];
 
-    // Update input field without triggering valueChanges again
     this.form.get('pickupLocation')?.setValue(prediction.description, { emitEvent: false });
 
-    // ✅ If marker doesn't exist, create it
     if (!this.pickupMarker) {
       this.pickupMarker = this.leafletService.L.marker([lat, lon], {
         draggable: true,
         icon: this.getBlueMarker(),
       })
-        .addTo(this.desktopMap) // or this.mobileMap depending on current view
+        .addTo(this.desktopMap)
         .bindPopup('Ponto de Recolha')
-      // .on('dragend', () => this.getRoute());
     } else {
       this.pickupMarker.setLatLng([lat, lon]).openPopup();
     }
 
-    // Center the map on the selected location
     this.desktopMap.setView([lat, lon], 14);
-    // this.mobileMap.setView([lat, lon], 14); // if needed
 
-    // Update app-wide state
     this.priceSignal.updateState({
       pickupLocationText: prediction.description,
       pickupLatitude: lat,
@@ -166,7 +158,7 @@ export class LandingPageCtaComponent {
 
     // ✅ 🚨 Only calculate route if dropoff already exists
     if (this.destinationMarker) {
-      // this.getRoute();
+      this.getRoute();
     }
 
   }
@@ -180,27 +172,21 @@ export class LandingPageCtaComponent {
     // Clear predictions
     this.googleDeliveryPredictions = [];
 
-    // Update input field without triggering valueChanges again
     this.form.get('destinationLocation')?.setValue(prediction.description, { emitEvent: false });
 
-    // ✅ If marker doesn't exist, create it
     if (!this.destinationMarker) {
       this.destinationMarker = this.leafletService.L.marker([lat, lon], {
         draggable: true,
         icon: this.getRedMarker(),
       })
-        .addTo(this.desktopMap) // or this.mobileMap depending on current view
+        .addTo(this.desktopMap)
         .bindPopup('Ponto de Recolha')
-      // .on('dragend', () => this.getRoute());
     } else {
       this.destinationMarker.setLatLng([lat, lon]).openPopup();
     }
 
-    // Center the map on the selected location
     this.desktopMap.setView([lat, lon], 14);
-    // this.mobileMap.setView([lat, lon], 14); // if needed
 
-    // Update app-wide state
     this.priceSignal.updateState({
       dropoffLocationText: prediction.description,
       dropoffLatitude: lat,
@@ -208,8 +194,6 @@ export class LandingPageCtaComponent {
     });
 
     if (this.pickupMarker) {
-      console.log('pickup marker exsteeee!!!!')
-      // ✅ Update route
       this.getRoute();
     }
   }
@@ -424,17 +408,6 @@ export class LandingPageCtaComponent {
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
     );
   }
-
-
-  // scheduleTrip() {
-  //   this.router.navigate(['/choose-truck']);
-  // }
-
-  // openSections: { [key: string]: boolean } = {};
-
-  // toggleAccordion(id: string): void {
-  //   this.openSections[id] = !this.openSections[id];
-  // }
 
   ngOnDestroy(): void {
     this.desktopMap?.remove();

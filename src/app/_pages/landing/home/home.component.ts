@@ -265,7 +265,7 @@ export class HomeComponent {
 
     // ✅ 🚨 Only calculate route if dropoff already exists
     if (this.destinationMarker) {
-      // this.getRoute();
+      this.getRoute();
     }
 
   }

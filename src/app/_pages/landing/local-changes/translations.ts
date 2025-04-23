@@ -24,6 +24,10 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "O Seu Próximo Passo para uma Mudança Local Sem Complicações",
         esta_pronto_para: "Está pronto para simplificar a sua mudança residencial em Lisboa? Agende o seu serviço online ou entre em contacto connosco para um orçamento personalizado. A sua tranquilidade é a nossa prioridade.",
         mudancas_locais_em: "Mudanças Locais em:",
+
+        simulatePriceNow: "Simula o Teu Preço Agora",
+        in10Seconds: "Em 10 Segundos",
+        seeDiscountedPrices: "Vê os preços com desconto garantido"
     },
     "en": {
         meta_title: 'Local Moves in Lisbon – Fast, Secure & Flexible | Flo and Go',
@@ -49,6 +53,10 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Your Next Step Toward a Hassle-Free Local Move",
         esta_pronto_para: "Ready to simplify your residential move in Lisbon? Book your service online or contact us for a personalized quote. Your peace of mind is our priority.",
         mudancas_locais_em: "Local Moves in:",
+
+        simulatePriceNow: "Simulate Your Price Now",
+        in10Seconds: "In 10 Seconds",
+        seeDiscountedPrices: "See guaranteed discounted prices"
     },
     "fr-FR": {
         meta_title: 'Déménagements Locaux à Lisbonne – Rapides, Sécurisés et Flexibles | Flo and Go',

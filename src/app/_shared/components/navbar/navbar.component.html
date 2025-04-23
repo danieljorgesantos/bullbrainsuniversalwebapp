@@ -1,4 +1,4 @@
-<nav class="bg-white shadow-sm fixed top-0 w-full z-50">
+<nav class="bg-white shadow-sm fixed top-0 w-full z-50" style="z-index:9999999">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 justify-between">
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -24,11 +24,6 @@
                 </a>
 
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-
-
-
-
-
                     @if (authManagerSignal.currentUser?.type === 2) {
                     <a [routerLink]="['/', currentLanguage, 'drivers-transports']" (click)="closeMenu()"
                         class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900">
