@@ -1,1 +1,83 @@
-<p>footer works!</p>
+<footer class="bg-gray-100 text-gray-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
+            <!-- Branding -->
+            <div class="md:col-span-2">
+                <img src="flo-logo-11.webp" alt="Company Logo" class="h-10 mb-4">
+                <p class="text-sm leading-relaxed">
+                    We offer reliable, fast, and cost-effective moving services across cities and countries.
+                    From small changes to long-distance relocations, we move with you—always available.
+                </p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://facebook.com/yourcompany" aria-label="Facebook"
+                        class="text-gray-600 hover:text-gray-900">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/yourcompany" aria-label="LinkedIn"
+                        class="text-gray-600 hover:text-gray-900">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h4 class="text-base font-semibold mb-3">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/en/house-removals" class="hover:underline">House Removals</a></li>
+                    <li><a href="/en/office-changes" class="hover:underline">Office Changes</a></li>
+                    <li><a href="/en/long-distance" class="hover:underline">Long Distance</a></li>
+                    <li><a href="/en/local-changes" class="hover:underline">Local Changes</a></li>
+                    <li><a href="/en/small-changes" class="hover:underline">Small Changes</a></li>
+                    <li><a href="/en/last-minute-changes" class="hover:underline">Last-Minute Moves</a></li>
+                    <li><a href="/en/low-cost-cheap-transport" class="hover:underline">Low-Cost Transport</a></li>
+                </ul>
+            </div>
+
+            <!-- Company -->
+            <div>
+                <h4 class="text-base font-semibold mb-3">Company</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/en/available-anytime-moving-services" class="hover:underline">About Us</a></li>
+                    <li><a href="/en/login" class="hover:underline">Login</a></li>
+                    <li><a href="/en/register" class="hover:underline">Register</a></li>
+                    <li><a href="/en/register-driver" class="hover:underline">Become a Driver</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div>
+                <h4 class="text-base font-semibold mb-3">Legal</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="/en/legal" class="hover:underline">Legal Notice</a></li>
+                    <li><a href="/en/privacy-policy" class="hover:underline">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-10 border-t pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+            <p>© 2025 Flo and Go. All rights reserved.</p>
+
+            <!-- Language selector -->
+            <div class="mt-4 md:mt-0 flex items-center space-x-2">
+                <label for="lang" class="sr-only">Change Language</label>
+                <select id="lang" onchange="location.href='/' + this.value"
+                    class="bg-white border border-gray-300 rounded px-3 py-1">
+                    <option value="en">English</option>
+                    <option value="es-ES">Español</option>
+                    <option value="fr-FR">Français</option>
+                    <option value="de-DE">Deutsch</option>
+                    <option value="pt-PT">Português</option>
+                    <option value="it-IT">Italiano</option>
+                    <option value="zh-CN">中文</option>
+                    <option value="hi-IN">हिंदी</option>
+                    <option value="pl-PL">Polski</option>
+                    <option value="sv-SE">Svenska</option>
+                    <option value="da-DK">Dansk</option>
+                    <option value="fi-FI">Suomi</option>
+                    <option value="ja-JP">日本語</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</footer>

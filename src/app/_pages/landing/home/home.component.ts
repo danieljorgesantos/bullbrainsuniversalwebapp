@@ -15,13 +15,14 @@ import { HttpClient } from '@angular/common/http';
 import { GoogleAutocompleteService } from '../../../_shared/services/google-autocomplete.service';
 import { Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
+import { FooterComponent } from '../../../_shared/components/footer/footer.component';
 
 declare const google: any; // Ensure Google API is loaded
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, FooterComponent],
   providers: [LeafletService, GoogleAutocompleteService],
   templateUrl: './home.component.html'
 })
