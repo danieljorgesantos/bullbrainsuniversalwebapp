@@ -1,19 +1,10 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-import { priceSignal } from '../../../_signals/price.signal';
+import { Component, inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-// import { ConfigSignal } from '../../../_signals/config';
-// import { TransportRequestService } from '../../../_shared/services/transport-request.service';
-// import { NgxStripeModule, StripeFactoryService, StripeInstance } from "ngx-stripe";
-import { Subscription, switchMap } from "rxjs";
+import { priceSignal } from '../../../_signals/price.signal';
+import { Subscription, switchMap } from 'rxjs';
 import { environment } from '../../../_shared/enviroments/enviroment';
-import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-
-
-// import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
-// import { CountryISO } from 'ngx-intl-tel-input';
-// import { AuthManagerSignal } from '../../../_signals/authManager.signal';
 
 @Component({
   selector: 'app-landing-choose-van',
@@ -30,10 +21,19 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   templateUrl: './landing-choose-van.component.html',
 })
 export class LandingChooseVanComponent {
+
+
+
+
+
+
+
+
+
+
+
   public priceSignal = inject(priceSignal);
-
-
-
+  private platformId = inject(PLATFORM_ID);
 
 
 
@@ -89,6 +89,10 @@ export class LandingChooseVanComponent {
   }
 
   ngOnInit() {
+
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
 
     this.form = new FormGroup({
       vanType: new FormControl('normal', [Validators.required]),

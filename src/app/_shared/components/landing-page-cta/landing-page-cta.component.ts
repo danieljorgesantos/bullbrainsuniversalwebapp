@@ -52,6 +52,7 @@ export class LandingPageCtaComponent {
   private currentDeliveryRequest = 0;
 
   form!: FormGroup;
+  errorMessageVisible: boolean = false;
 
   constructor(
     private leafletService: LeafletService,
@@ -408,6 +409,25 @@ export class LandingPageCtaComponent {
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
     );
   }
+
+  goToChooseVan(): void {
+    const pickupControl = this.form.get('pickupLocation');
+    const destinationControl = this.form.get('destinationLocation');
+
+    pickupControl?.markAsTouched();
+    destinationControl?.markAsTouched();
+
+    if (pickupControl?.invalid || destinationControl?.invalid) {
+      this.errorMessageVisible = true;
+      return;
+    }
+
+    this.errorMessageVisible = false; // hide error if navigation proceeds
+    this.router.navigate(['/', this.currentLanguage, 'choose-van']);
+  }
+
+
+
 
   ngOnDestroy(): void {
     this.desktopMap?.remove();

@@ -27,7 +27,12 @@ export const localChangesTranslations: any = {
 
         simulatePriceNow: "Simula o Teu Preço Agora",
         in10Seconds: "Em 10 Segundos",
-        seeDiscountedPrices: "Vê os preços com desconto garantido"
+        seeDiscountedPrices: "Vê os preços com desconto garantido",
+
+        movesDoneLisbon: "+1300 mudanças feitas em Lisboa",
+        averageRating: "Avaliação média: 4,3/5",
+        inLisbon: "em Lisboa",
+        numReviews: "3 avaliações",
     },
     "en": {
         meta_title: 'Local Moves in Lisbon – Fast, Secure & Flexible | Flo and Go',
@@ -56,7 +61,13 @@ export const localChangesTranslations: any = {
 
         simulatePriceNow: "Simulate Your Price Now",
         in10Seconds: "In 10 Seconds",
-        seeDiscountedPrices: "See guaranteed discounted prices"
+        seeDiscountedPrices: "See guaranteed discounted prices",
+
+        movesDoneLisbon: "Over 1300 moves done in Lisbon",
+        averageRating: "Average rating: 4.3/5",
+        inLisbon: "in Lisbon",
+        numReviews: "3 reviews",
+
     },
     "fr-FR": {
         meta_title: 'Déménagements Locaux à Lisbonne – Rapides, Sécurisés et Flexibles | Flo and Go',
@@ -82,6 +93,16 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Votre Prochaine Étape vers un Déménagement Sans Complication",
         esta_pronto_para: "Prêt à simplifier votre déménagement résidentiel à Lisbonne ? Réservez en ligne ou contactez-nous pour un devis personnalisé. Votre tranquillité est notre priorité.",
         mudancas_locais_em: "Déménagements Locaux à :",
+
+        simulatePriceNow: "Simulez Votre Prix Maintenant",
+        in10Seconds: "En 10 Secondes",
+        seeDiscountedPrices: "Voir les prix remisés garantis",
+
+        movesDoneLisbon: "+1300 déménagements effectués à Lisbonne",
+        averageRating: "Note moyenne : 4,3/5",
+        inLisbon: "à Lisbonne",
+        numReviews: "3 avis",
+
     },
     "es-ES": {
         meta_title: 'Mudanzas Locales en Lisboa – Rápidas, Seguras y Flexibles | Flo and Go',
@@ -107,6 +128,16 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Tu Próximo Paso hacia una Mudanza sin Complicaciones",
         esta_pronto_para: "¿Listo para simplificar tu mudanza en Lisboa? Reserva online o contáctanos para un presupuesto personalizado. Tu tranquilidad es nuestra prioridad.",
         mudancas_locais_em: "Mudanzas Locales en:",
+
+        simulatePriceNow: "Simula Tu Precio Ahora",
+        in10Seconds: "En 10 Segundos",
+        seeDiscountedPrices: "Ver precios con descuento garantizado",
+
+        movesDoneLisbon: "Más de 1300 mudanzas realizadas en Lisboa",
+        averageRating: "Valoración media: 4,3/5",
+        inLisbon: "en Lisboa",
+        numReviews: "3 reseñas",
+
     },
     "de-DE": {
         meta_title: 'Lokale Umzüge in Lissabon – Schnell, Sicher und Flexibel | Flo and Go',
@@ -132,6 +163,17 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Ihr Nächster Schritt zu einem Stressfreien Umzug",
         esta_pronto_para: "Bereit, Ihren Umzug in Lissabon zu vereinfachen? Buchen Sie online oder kontaktieren Sie uns für ein individuelles Angebot. Ihre Zufriedenheit ist unsere Priorität.",
         mudancas_locais_em: "Lokale Umzüge in:",
+
+        simulatePriceNow: "Preis jetzt berechnen",
+        in10Seconds: "In 10 Sekunden",
+        seeDiscountedPrices: "Sieh garantierte Rabatte",
+
+
+        movesDoneLisbon: "Über 1300 Umzüge in Lissabon durchgeführt",
+        averageRating: "Durchschnittliche Bewertung: 4,3/5",
+        inLisbon: "in Lissabon",
+        numReviews: "3 Bewertungen",
+
     },
     "it-IT": {
         meta_title: 'Traslochi Locali a Lisbona – Veloci, Sicuri e Flessibili | Flo and Go',
@@ -157,6 +199,17 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Il Tuo Prossimo Passo verso un Trasloco Senza Complicazioni",
         esta_pronto_para: "Pronto a semplificare il tuo trasloco a Lisbona? Prenota online o contattaci per un preventivo personalizzato. La tua tranquillità è la nostra priorità.",
         mudancas_locais_em: "Traslochi Locali a:",
+
+        simulatePriceNow: "Simula il Tuo Prezzo Ora",
+        in10Seconds: "In 10 Secondi",
+        seeDiscountedPrices: "Vedi i prezzi scontati garantiti",
+
+
+        movesDoneLisbon: "Oltre 1300 traslochi effettuati a Lisbona",
+        averageRating: "Valutazione media: 4,3/5",
+        inLisbon: "a Lisbona",
+        numReviews: "3 recensioni",
+
     },
     "zh-CN": {
         meta_title: '里斯本本地搬家服务 – 快速、安全、灵活 | Flo and Go',
@@ -182,6 +235,17 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "迈出轻松搬家的第一步",
         esta_pronto_para: "准备好简化您在里斯本的搬家了吗？现在预订或联系我们获取个性化报价。让您安心是我们的首要任务。",
         mudancas_locais_em: "服务地区包括：",
+
+        simulatePriceNow: "立即模拟您的价格",
+        in10Seconds: "仅需10秒",
+        seeDiscountedPrices: "查看保证优惠价格",
+
+
+        movesDoneLisbon: "在里斯本完成了超过1300次搬家",
+        averageRating: "平均评分：4.3/5",
+        inLisbon: "在里斯本",
+        numReviews: "3 条评论",
+
     },
     "hi-IN": {
         meta_title: 'लिस्बन में लोकल मूविंग – तेज़, सुरक्षित और लचीला | Flo and Go',
@@ -207,6 +271,17 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "बिना झंझट वाले मूव के लिए अगला कदम उठाएं",
         esta_pronto_para: "क्या आप लिस्बन में अपने रेजिडेंशियल मूव को आसान बनाना चाहते हैं? ऑनलाइन बुक करें या पर्सनल कोट के लिए संपर्क करें। आपकी शांति हमारी प्राथमिकता है।",
         mudancas_locais_em: "इन क्षेत्रों में लोकल मूविंग:",
+
+        simulatePriceNow: "अपना मूल्य अभी जानें",
+        in10Seconds: "सिर्फ 10 सेकंड में",
+        seeDiscountedPrices: "गारंटीकृत छूट कीमतें देखें",
+
+
+        movesDoneLisbon: "लिस्बन में 1300 से अधिक स्थानांतरण किए गए",
+        averageRating: "औसत रेटिंग: 4.3/5",
+        inLisbon: "लिस्बन में",
+        numReviews: "3 समीक्षाएँ",
+
     },
     "pl-PL": {
         meta_title: 'Przeprowadzki lokalne w Lizbonie – Szybkie, Bezpieczne i Elastyczne | Flo and Go',
@@ -232,6 +307,17 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Twój kolejny krok do bezproblemowej przeprowadzki",
         esta_pronto_para: "Gotowy, by uprościć swoją przeprowadzkę w Lizbonie? Zarezerwuj online lub skontaktuj się z nami, aby uzyskać indywidualną wycenę. Twój spokój to nasz priorytet.",
         mudancas_locais_em: "Przeprowadzki lokalne w:",
+
+        simulatePriceNow: "Symuluj swoją cenę teraz",
+        in10Seconds: "W 10 sekund",
+        seeDiscountedPrices: "Zobacz gwarantowane obniżone ceny",
+
+
+        movesDoneLisbon: "Ponad 1300 przeprowadzek w Lizbonie",
+        averageRating: "Średnia ocena: 4,3/5",
+        inLisbon: "w Lizbonie",
+        numReviews: "3 recenzje",
+
     },
     "sv-SE": {
         meta_title: 'Lokala Flyttjänster i Lissabon – Snabba, Säkra och Flexibla | Flo and Go',
@@ -257,6 +343,17 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Ditt Nästa Steg mot en Smidig Flytt",
         esta_pronto_para: "Redo att förenkla din flytt i Lissabon? Boka online eller kontakta oss för en personlig offert. Din trygghet är vår prioritet.",
         mudancas_locais_em: "Lokala Flyttar i:",
+
+        simulatePriceNow: "Simulera ditt pris nu",
+        in10Seconds: "På 10 sekunder",
+        seeDiscountedPrices: "Se garanterade rabatterade priser",
+
+
+        movesDoneLisbon: "Över 1300 flyttar genomförda i Lissabon",
+        averageRating: "Genomsnittligt betyg: 4,3/5",
+        inLisbon: "i Lissabon",
+        numReviews: "3 recensioner",
+
     },
     "da-DK": {
         meta_title: 'Lokale Flytninger i Lissabon – Hurtige, Sikre og Fleksible | Flo and Go',
@@ -282,6 +379,17 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Dit Næste Skridt mod en Problemfri Flytning",
         esta_pronto_para: "Klar til at gøre din flytning i Lissabon nemmere? Book online eller kontakt os for et personligt tilbud. Din tryghed er vores prioritet.",
         mudancas_locais_em: "Lokale Flytninger i:",
+
+        simulatePriceNow: "Simuler din pris nu",
+        in10Seconds: "På 10 sekunder",
+        seeDiscountedPrices: "Se garanterede rabatpriser",
+
+
+        movesDoneLisbon: "Over 1300 flytninger udført i Lissabon",
+        averageRating: "Gennemsnitlig vurdering: 4,3/5",
+        inLisbon: "i Lissabon",
+        numReviews: "3 anmeldelser",
+
     },
     "fi-FI": {
         meta_title: 'Paikalliset muuttopalvelut Lissabonissa – Nopeat, Turvalliset ja Joustavat | Flo and Go',
@@ -307,6 +415,17 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "Seuraava askel kohti stressitöntä muuttoa",
         esta_pronto_para: "Oletko valmis tekemään muutostasi Lissabonissa helpompaa? Varaa verkossa tai ota yhteyttä henkilökohtaista tarjousta varten. Mielenrauhasi on meille tärkeintä.",
         mudancas_locais_em: "Paikalliset muutot alueilla:",
+
+        simulatePriceNow: "Simuloi hintasi nyt",
+        in10Seconds: "10 sekunnissa",
+        seeDiscountedPrices: "Näe taatut alennetut hinnat",
+
+
+        movesDoneLisbon: "Yli 1300 muuttoa tehty Lissabonissa",
+        averageRating: "Keskimääräinen arvio: 4,3/5",
+        inLisbon: "Lissabonissa",
+        numReviews: "3 arvostelua",
+
     },
     "ja-JP": {
         meta_title: 'リスボンの地域引越しサービス – 迅速、安全、柔軟 | Flo and Go',
@@ -332,5 +451,15 @@ export const localChangesTranslations: any = {
         o_seu_proximo: "スムーズな引越しへの次のステップ",
         esta_pronto_para: "リスボンでの引越しをもっと簡単にしませんか？今すぐオンライン予約、またはお見積りのご相談を。お客様の安心が私たちの最優先です。",
         mudancas_locais_em: "対応地域：",
+
+        simulatePriceNow: "今すぐ料金をシミュレーション",
+        in10Seconds: "10秒で",
+        seeDiscountedPrices: "割引保証価格を見る",
+
+        movesDoneLisbon: "リスボンで1300件以上の引越し実績",
+        averageRating: "平均評価：4.3/5",
+        inLisbon: "リスボンで",
+        numReviews: "3件のレビュー",
+
     }
 }
