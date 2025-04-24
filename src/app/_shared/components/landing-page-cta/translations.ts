@@ -6,7 +6,9 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Usar Localização atual para Recolha',
       placeholder_digite_local_entrega: 'Digite o Local de Entrega',
       button_usar_localizacao_atual_entrega: 'Usar Localização atual para Entrega',
-      button_ver_precos: 'Ver Preços'
+      button_ver_precos: 'Ver Preços',
+      missing_location_warning: 'É necessário preencher o local de recolha e entrega.'
+
     },
     "en": {
       headline_solicitar_transporte_pesado: 'Request Heavy Transport',
@@ -15,7 +17,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Use Current Location for Pickup',
       placeholder_digite_local_entrega: 'Enter Delivery Location',
       button_usar_localizacao_atual_entrega: 'Use Current Location for Delivery',
-      button_ver_precos: 'View Prices'
+      button_ver_precos: 'View Prices',
+      missing_location_warning: 'Pickup and delivery locations are required.'
     },
     "fr-FR": {
       headline_solicitar_transporte_pesado: 'Demander un Transport Lourd',
@@ -24,7 +27,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Utiliser la position actuelle pour la collecte',
       placeholder_digite_local_entrega: 'Entrez le lieu de livraison',
       button_usar_localizacao_atual_entrega: 'Utiliser la position actuelle pour la livraison',
-      button_ver_precos: 'Voir les prix'
+      button_ver_precos: 'Voir les prix',
+      missing_location_warning: 'Les lieux de ramassage et de livraison sont requis'
     },
     "es-ES": {
       headline_solicitar_transporte_pesado: 'Solicitar Transporte Pesado',
@@ -33,7 +37,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Usar ubicación actual para recogida',
       placeholder_digite_local_entrega: 'Ingrese el lugar de entrega',
       button_usar_localizacao_atual_entrega: 'Usar ubicación actual para entrega',
-      button_ver_precos: 'Ver Precios'
+      button_ver_precos: 'Ver Precios',
+      missing_location_warning: 'Se requieren las ubicaciones de recogida y entrega'
     },
     "de-DE": {
       headline_solicitar_transporte_pesado: 'Schwertransport Anfragen',
@@ -42,7 +47,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Aktuellen Standort für Abholung verwenden',
       placeholder_digite_local_entrega: 'Lieferort eingeben',
       button_usar_localizacao_atual_entrega: 'Aktuellen Standort für Lieferung verwenden',
-      button_ver_precos: 'Preise anzeigen'
+      button_ver_precos: 'Preise anzeigen',
+      missing_location_warning: 'Abhol- und Lieferorte sind erforderlich'
     },
     "it-IT": {
       headline_solicitar_transporte_pesado: 'Richiedi Trasporto Pesante',
@@ -51,7 +57,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Usa la posizione attuale per il ritiro',
       placeholder_digite_local_entrega: 'Inserisci il luogo di consegna',
       button_usar_localizacao_atual_entrega: 'Usa la posizione attuale per la consegna',
-      button_ver_precos: 'Vedi Prezzi'
+      button_ver_precos: 'Vedi Prezzi',
+      missing_location_warning: 'Sono richieste le località di ritiro e di consegna'
     },
     "zh-CN": {
       headline_solicitar_transporte_pesado: '申请重型运输',
@@ -60,7 +67,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: '使用当前位置作为取货地点',
       placeholder_digite_local_entrega: '输入送货地点',
       button_usar_localizacao_atual_entrega: '使用当前位置作为送货地点',
-      button_ver_precos: '查看价格'
+      button_ver_precos: '查看价格',
+      missing_location_warning: '必须填写取件和送达地址'
     },
     "hi-IN": {
       headline_solicitar_transporte_pesado: 'भारी परिवहन का अनुरोध करें',
@@ -69,7 +77,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'वर्तमान स्थान का उपयोग करें (पिकअप)',
       placeholder_digite_local_entrega: 'डिलीवरी स्थान दर्ज करें',
       button_usar_localizacao_atual_entrega: 'वर्तमान स्थान का उपयोग करें (डिलीवरी)',
-      button_ver_precos: 'मूल्य देखें'
+      button_ver_precos: 'मूल्य देखें',
+      missing_location_warning: 'पिकअप और डिलीवरी स्थान आवश्यक हैं'
     },
     "pl-PL": {
       headline_solicitar_transporte_pesado: 'Zamów Transport Ciężki',
@@ -78,7 +87,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Użyj bieżącej lokalizacji do odbioru',
       placeholder_digite_local_entrega: 'Wpisz miejsce dostawy',
       button_usar_localizacao_atual_entrega: 'Użyj bieżącej lokalizacji do dostawy',
-      button_ver_precos: 'Zobacz ceny'
+      button_ver_precos: 'Zobacz ceny',
+      missing_location_warning: 'Wymagane są lokalizacje odbioru i dostawy'
     },
     "sv-SE": {
       headline_solicitar_transporte_pesado: 'Begär Tung Transport',
@@ -87,7 +97,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Använd aktuell plats för upphämtning',
       placeholder_digite_local_entrega: 'Ange leveransplats',
       button_usar_localizacao_atual_entrega: 'Använd aktuell plats för leverans',
-      button_ver_precos: 'Visa priser'
+      button_ver_precos: 'Visa priser',
+      missing_location_warning: 'Upphämtnings- och leveransplatser krävs'
     },
     "da-DK": {
       headline_solicitar_transporte_pesado: 'Anmod om Tung Transport',
@@ -96,7 +107,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Brug nuværende placering til afhentning',
       placeholder_digite_local_entrega: 'Indtast leveringssted',
       button_usar_localizacao_atual_entrega: 'Brug nuværende placering til levering',
-      button_ver_precos: 'Se Priser'
+      button_ver_precos: 'Se Priser',
+      missing_location_warning: 'Afhentnings- og leveringssteder er påkrævet'
     },
     "fi-FI": {
       headline_solicitar_transporte_pesado: 'Pyydä Raskasta Kuljetusta',
@@ -105,7 +117,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: 'Käytä nykyistä sijaintia (nouto)',
       placeholder_digite_local_entrega: 'Anna toimituspaikka',
       button_usar_localizacao_atual_entrega: 'Käytä nykyistä sijaintia (toimitus)',
-      button_ver_precos: 'Näytä hinnat'
+      button_ver_precos: 'Näytä hinnat',
+      missing_location_warning: 'Nouto- ja toimituspaikat ovat pakollisia'
     },
     "ja-JP": {
       headline_solicitar_transporte_pesado: '重量輸送を依頼する',
@@ -114,7 +127,8 @@ export const landingPageCtaTranslations: any = {
       button_usar_localizacao_atual_recolha: '現在地を集荷場所として使用',
       placeholder_digite_local_entrega: '配送場所を入力',
       button_usar_localizacao_atual_entrega: '現在地を配送場所として使用',
-      button_ver_precos: '料金を見る'
+      button_ver_precos: '料金を見る',
+      missing_location_warning: '受け取り場所と配達場所の入力が必要です'
     }
   };
   

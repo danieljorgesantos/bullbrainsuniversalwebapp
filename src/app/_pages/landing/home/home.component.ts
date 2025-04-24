@@ -16,13 +16,14 @@ import { GoogleAutocompleteService } from '../../../_shared/services/google-auto
 import { Validators } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { FooterComponent } from '../../../_shared/components/footer/footer.component';
+import { LandingPageCtaComponent } from '../../../_shared/components/landing-page-cta/landing-page-cta.component';
 
 declare const google: any; // Ensure Google API is loaded
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, FooterComponent],
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule, FooterComponent, LandingPageCtaComponent],
   providers: [LeafletService, GoogleAutocompleteService],
   templateUrl: './home.component.html'
 })
@@ -83,30 +84,30 @@ export class HomeComponent {
       this.currentLanguage = langParam;
     }
 
-    // Map logic
-    if (this.leafletService.L) {
-      this.setupMap();
-    }
+    // // Map logic
+    // if (this.leafletService.L) {
+    //   this.setupMap();
+    // }
 
-    // Watch for changes in the pickupLocation input and call the service
-    this.form.get('pickupLocation')?.valueChanges.pipe(
-      debounceTime(500), // Wait 500ms after the user stops typing
-      distinctUntilChanged(), // Only trigger the service if the value changes
-      switchMap((inputValue: string) => this.googleAutocompleteService.testMethod(inputValue)) // Call the service with the current input value
-    ).subscribe((response: any) => {
-      this.googlePickupPredictions = response;
-      this.cd.detectChanges();
-    });
+    // // Watch for changes in the pickupLocation input and call the service
+    // this.form.get('pickupLocation')?.valueChanges.pipe(
+    //   debounceTime(500), // Wait 500ms after the user stops typing
+    //   distinctUntilChanged(), // Only trigger the service if the value changes
+    //   switchMap((inputValue: string) => this.googleAutocompleteService.testMethod(inputValue)) // Call the service with the current input value
+    // ).subscribe((response: any) => {
+    //   this.googlePickupPredictions = response;
+    //   this.cd.detectChanges();
+    // });
 
-    // Watch for changes in the pickupLocation input and call the service
-    this.form.get('destinationLocation')?.valueChanges.pipe(
-      debounceTime(500), // Wait 500ms after the user stops typing
-      distinctUntilChanged(), // Only trigger the service if the value changes
-      switchMap((inputValue: string) => this.googleAutocompleteService.testMethod(inputValue)) // Call the service with the current input value
-    ).subscribe((response: any) => {
-      this.googleDeliveryPredictions = response;
-      this.cd.detectChanges();
-    });
+    // // Watch for changes in the pickupLocation input and call the service
+    // this.form.get('destinationLocation')?.valueChanges.pipe(
+    //   debounceTime(500), // Wait 500ms after the user stops typing
+    //   distinctUntilChanged(), // Only trigger the service if the value changes
+    //   switchMap((inputValue: string) => this.googleAutocompleteService.testMethod(inputValue)) // Call the service with the current input value
+    // ).subscribe((response: any) => {
+    //   this.googleDeliveryPredictions = response;
+    //   this.cd.detectChanges();
+    // });
 
     // this.googleIniPickupAutocomplete();
     // this.googleInitDeliveryAutocomplete();
@@ -159,23 +160,23 @@ export class HomeComponent {
     this.metaService.updateTag({ name: 'twitter:image', content: shareImage });
   }
 
-  private setupMap() {
-    if (this.leafletService.L) {
-      // Ensure L is available before using it
-      this.desktopMap = this.leafletService.L.map('leaflet-map-desktop', {
-        attributionControl: false,
-        zoomControl: false
-      }).setView([38.7169, -9.1399], 12);
+  // private setupMap() {
+  //   if (this.leafletService.L) {
+  //     // Ensure L is available before using it
+  //     this.desktopMap = this.leafletService.L.map('leaflet-map-desktop', {
+  //       attributionControl: false,
+  //       zoomControl: false
+  //     }).setView([38.7169, -9.1399], 12);
 
-      // Add a tilelayer
-      this.leafletService.L.tileLayer(
-        'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-      ).addTo(this.desktopMap);
-    } else {
-      console.error('Leaflet is not loaded');
-      // Optionally show an error message to the user or retry logic here
-    }
-  }
+  //     // Add a tilelayer
+  //     this.leafletService.L.tileLayer(
+  //       'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+  //     ).addTo(this.desktopMap);
+  //   } else {
+  //     console.error('Leaflet is not loaded');
+  //     // Optionally show an error message to the user or retry logic here
+  //   }
+  // }
 
   // /** ✅ Initialize Google Autocomplete for Pickup Point */
   // private googleIniPickupAutocomplete(): void {
