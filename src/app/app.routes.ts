@@ -23,6 +23,8 @@ import { DriversHomeComponent } from './_pages/driver/drivers-home/drivers-home.
 import { DriversTransportsComponent } from './_pages/driver/drivers-transports/drivers-transports.component';
 import { DriverDeliveringComponent } from './_pages/driver/driver-delivering/driver-delivering.component';
 import { DriversPaymentsComponent } from './_pages/driver/drivers-payments/drivers-payments.component';
+import { langGuard } from './_shared/guards/lang.guard';
+import { NotFoundComponent } from './_pages/landing/not-found/not-found.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -41,42 +43,42 @@ import { DriversPaymentsComponent } from './_pages/driver/drivers-payments/drive
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
-    { path: ':lang', component: HomeComponent, pathMatch: 'full' },
-
+    { path: ':lang', component: HomeComponent, pathMatch: 'full', canActivate: [langGuard] },
 
     // landing
-    { path: ':lang/available-anytime-moving-services', component: AvailableAnytimeMovingServicesComponent, pathMatch: 'full' },
-    { path: ':lang/house-removals', component: HouseRemovalsComponent, pathMatch: 'full' },
-    { path: ':lang/last-minute-changes', component: LastMinuteChangesComponent, pathMatch: 'full' },
-    { path: ':lang/local-changes', component: LocalChangesComponent, pathMatch: 'full' },
-    { path: ':lang/long-distance', component: LongDistanceComponent, pathMatch: 'full' },
-    { path: ':lang/low-cost-cheap-transport', component: LowCostCheapTransportComponent, pathMatch: 'full' },
-    { path: ':lang/office-changes', component: OfficeChangesComponent, pathMatch: 'full' },
-    { path: ':lang/small-changes', component: SmallChangesComponent, pathMatch: 'full' },
-    { path: ':lang/choose-van', component: LandingChooseVanComponent, pathMatch: 'full' },
-
-
+    { path: ':lang/available-anytime-moving-services', component: AvailableAnytimeMovingServicesComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/house-removals', component: HouseRemovalsComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/last-minute-changes', component: LastMinuteChangesComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/local-changes', component: LocalChangesComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/long-distance', component: LongDistanceComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/low-cost-cheap-transport', component: LowCostCheapTransportComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/office-changes', component: OfficeChangesComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/small-changes', component: SmallChangesComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/choose-van', component: LandingChooseVanComponent, pathMatch: 'full', canActivate: [langGuard] },
 
     // Auth
-    { path: ':lang/register', component: RegisterComponent, pathMatch: 'full' },
-    { path: ':lang/register-requester-success', component: RegisterSuccessRequesterComponent, pathMatch: 'full' },
-    { path: ':lang/login', component: LoginComponent, pathMatch: 'full' },
-    { path: ':lang/register-driver', component: RegisterDriverComponent },
-    { path: ':lang/driver-registration-success', component: RegisterSuccessDriverComponent },
-
+    { path: ':lang/register', component: RegisterComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/register-requester-success', component: RegisterSuccessRequesterComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/login', component: LoginComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/register-driver', component: RegisterDriverComponent, canActivate: [langGuard] },
+    { path: ':lang/driver-registration-success', component: RegisterSuccessDriverComponent, canActivate: [langGuard] },
 
     // User
-    { path: ':lang/requester-home', component: RequesterHomeComponent, pathMatch: 'full' },
-    { path: ':lang/requester-map', component: RequesterMapComponent, pathMatch: 'full' },
-    { path: ':lang/requester-choose-van', component: RequesterChooseVanComponent, pathMatch: 'full' },
-    { path: ':lang/requester-my-transports', component: RequesterMyTransportsComponent },
-    { path: ':lang/requester-my-transport-detail/:transportId', component: RequesterMyTransportDetailComponent },
+    { path: ':lang/requester-home', component: RequesterHomeComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/requester-map', component: RequesterMapComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/requester-choose-van', component: RequesterChooseVanComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/requester-my-transports', component: RequesterMyTransportsComponent, canActivate: [langGuard] },
+    { path: ':lang/requester-my-transport-detail/:transportId', component: RequesterMyTransportDetailComponent, canActivate: [langGuard] },
 
     // 🔹 Driver Pages
     { path: ':lang/drivers-home', component: DriversHomeComponent },
     { path: ':lang/drivers-transports', component: DriversTransportsComponent },
     { path: 'driver-delivering/:transportId', component: DriverDeliveringComponent },
-      { path: ':lang/drivers-payments', component: DriversPaymentsComponent },
+    { path: ':lang/drivers-payments', component: DriversPaymentsComponent },
+
+    { path: ':lang/404', component: NotFoundComponent },
+
+
     //   { path: 'drivers-profile', component: DriversProfileComponent },
     //   { path: 'drivers-profile-update-successful', component: DriversProfileUpdateSuccessfulComponent },
     //   { path: 'drivers-configurations', component: DriversConfigurationsComponent },
@@ -87,7 +89,8 @@ export const routes: Routes = [
     //   { path: 'drivers-support', component: DriversSupportComponent },
 
 
-
+    // { path: '404', component: NotFoundComponent },
+    // { path: '**', redirectTo: '404', pathMatch: 'full' }
 
 
 ];
