@@ -4,9 +4,11 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
+import { validUrls } from './s-valid-paths';
+import fs from 'node:fs';
 
-// The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
+  const custom404Html = fs.readFileSync('./404.html', 'utf-8');
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -17,37 +19,64 @@ export function app(): express.Express {
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
-  // Serve static files from /browser
-  server.get('**', express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: 'index.html',
+  // Serve static files (assets) from /browser
+  server.get('*.*', express.static(browserDistFolder, {
+    maxAge: '1y'
   }));
 
-  // All regular routes use the Angular engine
-  server.get('**', (req, res, next) => {
+  // Handle all other routes with SSR
+  server.get('*', (req, res) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
-    commonEngine
-      .render({
-        bootstrap,
-        documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}${originalUrl}`,
-        publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+    // Early 404 detection for unknown URLs
+    if (!isValidUrl(originalUrl)) {
+      res.status(404).send(custom404Html);
+      return;
+    }
+
+    commonEngine.render({
+      bootstrap,
+      documentFilePath: indexHtml,
+      url: `${protocol}://${headers.host}${originalUrl}`,
+      publicPath: browserDistFolder,
+      providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+    })
+      .then((html) => {
+        // After SSR, check if it's the 404 page
+        if (originalUrl.includes('/404') || html.includes('<app-not-found') || html.includes('class="not-found-page"')) {
+          res.status(404);
+        }
+        res.send(html);
       })
-      .then((html) => res.send(html))
-      .catch((err) => next(err));
+      .catch((err) => {
+        console.error('Error during server-side rendering:', err);
+        res.status(500).send('Internal Server Error');
+      });
   });
 
   return server;
 }
 
+// URL Validation Function
+function isValidUrl(url: string): boolean {
+  const cleanUrl = url.split('?')[0]; // Remove query parameters
+
+  // Allow static assets
+  if (cleanUrl.match(/\\.[a-zA-Z0-9]+$/)) {
+    return true;
+  }
+
+  // Check if the URL is an exact match
+  if (validUrls.includes(cleanUrl)) {
+    return true;
+  }
+
+  // No match = invalid URL
+  return false;
+}
+
 function run(): void {
   const port = process.env['PORT'] || 4000;
-
-  // Start up the Node server
   const server = app();
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);

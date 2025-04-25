@@ -1,10 +1,12 @@
 import { Component, inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { priceSignal } from '../../../_signals/price.signal';
 import { Subscription, switchMap } from 'rxjs';
 import { environment } from '../../../_shared/enviroments/enviroment';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { chooseVanTranslations } from './translations';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-landing-choose-van',
@@ -84,11 +86,24 @@ export class LandingChooseVanComponent {
     // private transportRequestService: TransportRequestService,
     // private http: HttpClient,
     // private stripeFactory: StripeFactoryService,
+
+    private titleService: Title,
+    private metaService: Meta,
+    private route: ActivatedRoute
   ) {
     this.subscriptions = new Subscription();
   }
 
   ngOnInit() {
+
+    // Get the "lang" route param
+    const langParam = this.route.snapshot.paramMap.get('lang');
+
+    if (langParam) {
+      this.currentLanguage = langParam;
+    }
+
+    this.setInitialPageConfiguration();
 
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -366,5 +381,65 @@ export class LandingChooseVanComponent {
     //     this.isLoading = false;
     //   }
     // );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // SEO
+
+  // Language
+  currentLanguage: any = 'pt-PT';
+
+  // Get a specific translation by key
+  getTranslation(key: string) {
+    return chooseVanTranslations[this.currentLanguage]?.[key] || chooseVanTranslations['en']?.[key];
+  }
+
+  setInitialPageConfiguration() {
+    const titleToSet = chooseVanTranslations[this.currentLanguage]?.meta_title || chooseVanTranslations['en']?.meta_title;
+    const descriptionToSet = chooseVanTranslations[this.currentLanguage]?.meta_description || chooseVanTranslations['en']?.meta_description;
+    const shareImage = 'https://www.floand-go.com/flo-logo-11.jpg';
+
+    this.titleService.setTitle(titleToSet);
+    this.metaService.updateTag({ name: 'description', content: descriptionToSet });
+    this.metaService.updateTag({ name: 'robots', content: 'index, follow' });
+    this.metaService.updateTag({ name: 'author', content: 'Flo and Go' });
+    this.metaService.updateTag({ httpEquiv: 'content-language', content: this.currentLanguage });
+
+    // Open Graph
+    this.metaService.updateTag({ property: 'og:title', content: titleToSet });
+    this.metaService.updateTag({ property: 'og:description', content: descriptionToSet });
+    this.metaService.updateTag({ property: 'og:url', content: 'https://www.floand-go.com/available-anytime-moving-services' });
+    // this.metaService.updateTag({ property: 'og:type', content: contentType });
+    this.metaService.updateTag({ property: 'og:site_name', content: 'Flo and Go' });
+    // this.metaService.updateTag({ property: 'og:locale', content: this.formatLocale(currentLanguage) });
+    this.metaService.updateTag({ property: 'og:image', content: shareImage });
+
+    // if (alternateLocales) {
+    //   alternateLocales.forEach(alt => {
+    //     this.metaService.addTag({ property: 'og:locale:alternate', content: alt.locale });
+    //     // You might need to handle the alternate URL separately if needed by some platforms
+    //   });
+    // }
+
+    // Twitter
+    // this.metaService.updateTag({ name: 'twitter:card', content: twitterCard });
+    this.metaService.updateTag({ name: 'twitter:title', content: titleToSet });
+    this.metaService.updateTag({ name: 'twitter:description', content: descriptionToSet });
+    this.metaService.updateTag({ name: 'twitter:site', content: '@floandgo' }); // Replace with your Twitter handle
+    this.metaService.updateTag({ name: 'twitter:image', content: shareImage });
   }
 }

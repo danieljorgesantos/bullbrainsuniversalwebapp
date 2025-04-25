@@ -3,45 +3,44 @@
     <a routerLink="/requester-map"
         class="absolute top-4 right-4 hidden md:flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-4">
         <span class="text-xl mr-2">&#8592;</span>
-        <span>Voltar ao Mapa</span>
+        <span>{{ getTranslation('back_to_map') }}</span>
     </a>
+
     <section class="relative w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto items-center lg:items-stretch py-12 sm:py-24">
 
 
+            <!-- Mobile Only Link -->
             <div class="flex justify-end">
-                <!-- Mobile Only Link -->
                 <a routerLink="/requester-map"
                     class="top-4 right-4 flex md:hidden items-center text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2">
-                    <span class="text-xs mr-2">&#8592;</span> <!-- Make arrow smaller -->
-                    <span class="text-xs">Voltar ao Mapa</span> <!-- Make text smaller on mobile -->
+                    <span class="text-xs mr-2">&#8592;</span>
+                    <span class="text-xs">{{ getTranslation('back_to_map') }}</span>
                 </a>
             </div>
 
-
-            <h2 class="text-xl font-bold text-black mt-6 mb-8">Agende Seu Transporte Agora</h2>
+            <!-- Title -->
+            <h2 class="text-xl font-bold text-black mt-6 mb-8">{{ getTranslation('schedule_transport_now') }}</h2>
 
             <!-- Distance Display -->
             <p class="text-lg text-sm/6 font-medium text-gray-900 mb-8">
-                São
+                {{ getTranslation('distance_info_start') }}
                 <strong>{{ priceSignal.state.distance.toFixed(2) }} km</strong>
-
-
-                do ponto de recolha até ao ponto de
-                entrega
+                {{ getTranslation('distance_info_end') }}
             </p>
 
             <!-- Pickup & Dropoff Locations -->
             <p class="text-lg text-sm/6 font-medium text-gray-900 text-gray-600 mb-4">
-                <strong>De:</strong>
+                <strong>{{ getTranslation('from') }}:</strong>
                 {{ priceSignal.state.pickupLocationText }}
             </p>
 
             <p class="text-lg text-sm/6 font-medium text-gray-900 text-gray-600 mb-4">
-                <strong>Até:</strong>
+                <strong>{{ getTranslation('to') }}:</strong>
                 {{ priceSignal.state.dropoffLocationText }}
             </p>
 
+            <!-- Info Banner -->
             <div class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 mt-8"
                 role="alert">
                 <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -49,77 +48,55 @@
                     <path
                         d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
                 </svg>
-                <span class="sr-only">Info</span>
+                <span class="sr-only">{{ getTranslation('info') }}</span>
                 <div>
-                    <span class="font-medium">Informação:</span> Os preços abaixo apresentados são finais, com tudo
-                    incluído, para cargas até 1000kg.
+                    <span class="font-medium">{{ getTranslation('info_label') }}</span> {{
+                    getTranslation('info_message') }}
                 </div>
             </div>
 
-
-
             <!-- Van Selection -->
             <fieldset aria-label="Pricing plans" class="relative space-y-4 rounded-md w-full">
-
-                <!-- First Van Option (Carrinha Normal) -->
-                <label [ngClass]="{
-                    'border-indigo-500 shadow': form.get('vanType')?.value === 'normal',
-                    'hover:shadow': true
-                  }"
+                <!-- First Van Option -->
+                <label
+                    [ngClass]="{ 'border-indigo-500 shadow': form.get('vanType')?.value === 'normal', 'hover:shadow': true }"
                     class="group flex cursor-pointer flex-col border border-gray-200 rounded-2xl bg-white p-4 transition hover:border-indigo-500 md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-6 md:p-6">
-
-                    <!-- Radio and label -->
                     <span class="flex items-center gap-3 text-sm md:text-base">
                         <input type="radio" formControlName="vanType" [value]="'normal'" name="vanType"
-                            (change)="updateSelection('normal')" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white 
-                      before:absolute before:inset-1 before:rounded-full before:bg-white 
-                      not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 
-                      focus-visible:outline-none focus:ring-2 focus:ring-indigo-600" />
-                        <span class="font-medium text-gray-900 group-has-checked:text-indigo-900">Carrinha Normal</span>
+                            (change)="updateSelection('normal')"
+                            class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white focus:ring-2 focus:ring-indigo-600" />
+                        <span class="font-medium text-gray-900 group-has-checked:text-indigo-900">{{
+                            getTranslation('normal_van') }}</span>
                     </span>
-
-                    <!-- Price and Image -->
                     <span class="mt-4 flex items-center justify-between md:mt-0 w-full">
                         <span class="flex flex-col text-right text-sm md:text-base mr-8">
                             <span class="text-2xl md:text-3xl font-bold text-black">{{ totalFareNormal }}€</span>
-                            <!-- Optional info line -->
-                            <!-- <span class="text-gray-500 text-xs md:text-sm">Inclui taxa base</span> -->
                         </span>
-                        <img [src]="'van_normal.webp'" alt="Carrinha Normal"
+                        <img [src]="'van_normal.webp'" alt="{{ getTranslation('normal_van') }}"
                             class="w-16 h-16 md:w-20 md:h-20 object-contain ml-4" />
                     </span>
-
                 </label>
 
-                <!-- Second Van Option (Carrinha de Caixa) -->
+                <!-- Second Van Option -->
                 <label
                     class="group flex cursor-pointer flex-col border border-gray-200 rounded-2xl bg-white p-4 transition hover:border-indigo-500 md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-6 md:p-6 shadow-sm hover:shadow-md mt-4">
-
-                    <!-- Radio and label -->
                     <span class="flex items-center gap-3 text-sm md:text-base">
                         <input type="radio" formControlName="vanType" [value]="'box'" name="vanType"
-                            (change)="updateSelection('box')" class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white 
-                      before:absolute before:inset-1 before:rounded-full before:bg-white 
-                      not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 
-                      focus-visible:outline-none focus:ring-2 focus:ring-indigo-600" />
-                        <span class="font-medium text-gray-900 group-has-checked:text-indigo-900">Carrinha de
-                            Caixa</span>
+                            (change)="updateSelection('box')"
+                            class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white focus:ring-2 focus:ring-indigo-600" />
+                        <span class="font-medium text-gray-900 group-has-checked:text-indigo-900">{{
+                            getTranslation('box_van') }}</span>
                     </span>
-
-                    <!-- Price and Image -->
                     <span class="mt-4 flex items-center justify-between md:mt-0 w-full">
                         <span class="flex flex-col text-right text-sm md:text-base mr-8">
                             <span class="text-2xl md:text-3xl font-bold text-black">{{ totalFareBox }}€</span>
-                            <!-- Optional info line -->
-                            <!-- <span class="text-gray-500 text-xs md:text-sm">Inclui taxa base</span> -->
                         </span>
-                        <img [src]="'van_box.webp'" alt="Carrinha de Caixa"
+                        <img [src]="'van_box.webp'" alt="{{ getTranslation('box_van') }}"
                             class="w-16 h-16 md:w-20 md:h-20 object-contain ml-4" />
                     </span>
-
                 </label>
-
             </fieldset>
+
 
             <!-- <button
                 class="w-full border-2 border-indigo-700 text-indigo-700 py-3 rounded-lg font-semibold transition duration-150 hover:bg-indigo-100 hover:border-indigo-600 mt-6"
@@ -147,240 +124,264 @@
                 <!-- Number of Items -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                        <label for="numberOfItems" class="block text-sm/6 font-medium text-gray-900">Número de
-                            volumes</label>
+                        <label for="numberOfItems" class="block text-sm/6 font-medium text-gray-900">
+                            {{ getTranslation('number_of_items') }}
+                        </label>
                         <input type="number" id="numberOfItems" formControlName="numberOfItems" min="1" class="mt-2 block w-full rounded-md border border-gray-300 shadow-sm px-3 py-2
-          text-sm text-gray-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600" />
+               text-sm text-gray-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600" />
                     </div>
 
                     <!-- Item Dimensions -->
                     <div>
-                        <label for="itemDimensions" class="block text-sm/6 font-medium text-gray-900">Dimensão dos
-                            volumes</label>
+                        <label for="itemDimensions" class="block text-sm/6 font-medium text-gray-900">
+                            {{ getTranslation('item_dimensions') }}
+                        </label>
                         <input type="text" id="itemDimensions" formControlName="itemDimensions"
-                            placeholder="Ex: 40x50x60 cm" class="mt-2 block w-full rounded-md border border-gray-300 shadow-sm px-3 py-2
-          text-sm text-gray-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600" />
+                            placeholder="{{ getTranslation('dimensions_placeholder') }}" class="mt-2 block w-full rounded-md border border-gray-300 shadow-sm px-3 py-2
+               text-sm text-gray-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600" />
                     </div>
 
                     <!-- Item Weight -->
                     <div>
-                        <label for="itemWeight" class="block text-sm/6 font-medium text-gray-900">Peso dos
-                            volumes</label>
-                        <input type="text" id="itemWeight" formControlName="itemWeight" placeholder="Ex: 25 kg" class="mt-2 block w-full rounded-md border border-gray-300 shadow-sm px-3 py-2
-          text-sm text-gray-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600" />
+                        <label for="itemWeight" class="block text-sm/6 font-medium text-gray-900">
+                            {{ getTranslation('item_weight') }}
+                        </label>
+                        <input type="text" id="itemWeight" formControlName="itemWeight"
+                            placeholder="{{ getTranslation('weight_placeholder') }}" class="mt-2 block w-full rounded-md border border-gray-300 shadow-sm px-3 py-2
+               text-sm text-gray-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600" />
                     </div>
                 </div>
+
 
                 <div class="grid grid-cols-1 sm:grid-cols-2">
 
 
                     <!-- Needs Packaging -->
                     <div class="mt-6">
-                        <legend class="text-sm/6 font-semibold text-gray-900">É preciso embalagem?</legend>
+                        <legend class="text-sm/6 font-semibold text-gray-900">
+                            {{ getTranslation('needs_packaging') }}
+                        </legend>
                         <p class="mt-1 text-sm/6 text-gray-600">
-                            Indique se o {{ form.get('numberOfItems')?.value > 1 ? 'artigos' : 'artigo' }} necessita de
-                            embalagem.
+                            {{ getTranslation('packaging_hint_start') }} {{
+                            form.get('numberOfItems')?.value > 1 ? getTranslation('items_plural') :
+                            getTranslation('item_singular')
+                            }} {{ getTranslation('packaging_hint_end') }}
                         </p>
 
                         <div class="mt-4 flex space-x-10">
                             <div class="flex items-center">
                                 <input id="packaging-yes" type="radio" formControlName="needsPackaging" [value]="true"
                                     class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white
-          before:absolute before:inset-1 before:rounded-full before:bg-white
-          not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
-          focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
-                                <label for="packaging-yes"
-                                    class="ml-3 block text-sm/6 font-medium text-gray-900">Sim</label>
+                 before:absolute before:inset-1 before:rounded-full before:bg-white
+                 not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+                                <label for="packaging-yes" class="ml-3 block text-sm/6 font-medium text-gray-900">
+                                    {{ getTranslation('yes') }}
+                                </label>
                             </div>
 
                             <div class="flex items-center">
                                 <input id="packaging-no" type="radio" formControlName="needsPackaging" [value]="false"
                                     class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white
-          before:absolute before:inset-1 before:rounded-full before:bg-white
-          not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
-          focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
-                                <label for="packaging-no"
-                                    class="ml-3 block text-sm/6 font-medium text-gray-900">Não</label>
+                 before:absolute before:inset-1 before:rounded-full before:bg-white
+                 not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+                                <label for="packaging-no" class="ml-3 block text-sm/6 font-medium text-gray-900">
+                                    {{ getTranslation('no') }}
+                                </label>
                             </div>
                         </div>
                     </div>
 
 
+
                     <!-- Needs Assembly -->
                     <div class="mt-6">
-                        <legend class="text-sm/6 font-semibold text-gray-900">É preciso montagem?</legend>
+                        <legend class="text-sm/6 font-semibold text-gray-900">
+                            {{ getTranslation('needs_assembly') }}
+                        </legend>
                         <p class="mt-1 text-sm/6 text-gray-600">
-                            Indique se o {{ form.get('numberOfItems')?.value > 1 ? 'artigos' : 'artigo' }} necessita de
-                            montagem.
+                            {{ getTranslation('assembly_hint_start') }} {{
+                            form.get('numberOfItems')?.value > 1 ? getTranslation('items_plural') :
+                            getTranslation('item_singular')
+                            }} {{ getTranslation('assembly_hint_end') }}
                         </p>
 
                         <div class="mt-4 flex space-x-10">
                             <div class="flex items-center">
                                 <input id="assembly-yes" type="radio" formControlName="needsAssembly" [value]="true"
                                     class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white
-            before:absolute before:inset-1 before:rounded-full before:bg-white
-            not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
-            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
-                                <label for="assembly-yes"
-                                    class="ml-3 block text-sm/6 font-medium text-gray-900">Sim</label>
+                 before:absolute before:inset-1 before:rounded-full before:bg-white
+                 not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+                                <label for="assembly-yes" class="ml-3 block text-sm/6 font-medium text-gray-900">
+                                    {{ getTranslation('yes') }}
+                                </label>
                             </div>
 
                             <div class="flex items-center">
                                 <input id="assembly-no" type="radio" formControlName="needsAssembly" [value]="false"
                                     class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white
-            before:absolute before:inset-1 before:rounded-full before:bg-white
-            not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
-            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
-                                <label for="assembly-no"
-                                    class="ml-3 block text-sm/6 font-medium text-gray-900">Não</label>
+                 before:absolute before:inset-1 before:rounded-full before:bg-white
+                 not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+                                <label for="assembly-no" class="ml-3 block text-sm/6 font-medium text-gray-900">
+                                    {{ getTranslation('no') }}
+                                </label>
                             </div>
                         </div>
                     </div>
 
+
                     <!-- Elevator -->
                     <div class="mt-10">
-                        <legend class="text-sm/6 font-semibold text-gray-900">Tem elevador?</legend>
+                        <legend class="text-sm/6 font-semibold text-gray-900">
+                            {{ getTranslation('has_elevator') }}
+                        </legend>
                         <div class="mt-4 flex space-x-10">
                             <div class="flex items-center">
                                 <input id="elevator-yes" type="radio" formControlName="hasElevator" [value]="true"
                                     class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white
-            before:absolute before:inset-1 before:rounded-full before:bg-white
-            not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
-            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
-                                <label for="elevator-yes"
-                                    class="ml-3 block text-sm/6 font-medium text-gray-900">Sim</label>
+                 before:absolute before:inset-1 before:rounded-full before:bg-white
+                 not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+                                <label for="elevator-yes" class="ml-3 block text-sm/6 font-medium text-gray-900">
+                                    {{ getTranslation('yes') }}
+                                </label>
                             </div>
 
                             <div class="flex items-center">
                                 <input id="elevator-no" type="radio" formControlName="hasElevator" [value]="false"
                                     class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white
-            before:absolute before:inset-1 before:rounded-full before:bg-white
-            not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
-            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
-                                <label for="elevator-no"
-                                    class="ml-3 block text-sm/6 font-medium text-gray-900">Não</label>
+                 before:absolute before:inset-1 before:rounded-full before:bg-white
+                 not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600
+                 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" />
+                                <label for="elevator-no" class="ml-3 block text-sm/6 font-medium text-gray-900">
+                                    {{ getTranslation('no') }}
+                                </label>
                             </div>
                         </div>
                     </div>
 
+
                 </div>
 
-                <!-- Acesso fácil -->
+                <!-- Easy Access -->
                 <div class="mt-10">
-                    <legend class="text-sm/6 font-semibold text-gray-900">O acesso é fácil?</legend>
+                    <legend class="text-sm/6 font-semibold text-gray-900">
+                        {{ getTranslation('easy_access_question') }}
+                    </legend>
                     <div class="mt-4 flex flex-col sm:flex-row gap-6">
                         <label class="flex items-center">
                             <input type="radio" formControlName="easyAccess" [value]="'easy'"
                                 class="size-4 rounded-full border border-gray-300 mr-2" />
-                            Sim, é fácil
+                            {{ getTranslation('easy_access_easy') }}
                         </label>
                         <label class="flex items-center">
                             <input type="radio" formControlName="easyAccess" [value]="'tight_stairs'"
                                 class="size-4 rounded-full border border-gray-300 mr-2" />
-                            Não, escadas estreitas
+                            {{ getTranslation('easy_access_stairs') }}
                         </label>
                         <label class="flex items-center">
                             <input type="radio" formControlName="easyAccess" [value]="'hand_carry'"
                                 class="size-4 rounded-full border border-gray-300 mr-2" />
-                            Não, precisa de carregar à mão
+                            {{ getTranslation('easy_access_handcarry') }}
                         </label>
                     </div>
                 </div>
 
-                <!-- Horário preferencial -->
+
+                <!-- Preferred Time -->
                 <div class="mt-10">
                     <label for="preferredTime" class="block text-sm font-semibold text-gray-900">
-                        Horário preferencial
+                        {{ getTranslation('preferred_time') }}
                     </label>
                     <select id="preferredTime" formControlName="preferredTime"
                         class="mt-4 block w-full sm:w-64 rounded-md border border-gray-300 shadow-sm px-3 py-2 text-sm font-semibold text-black focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600">
-                        <option value="" disabled selected hidden>Escolha o horário</option>
-                        <option value="immediate" class="text-gray-900 font-normal">Entrega Imediata</option>
-                        <option value="morning" class="text-gray-900 font-normal">Manhã (9h–12h)</option>
-                        <option value="afternoon" class="text-gray-900 font-normal">Tarde (12h–17h)</option>
-                        <option value="custom" class="text-gray-900 font-normal">Outro horário</option>
+                        <option value="" disabled selected hidden>{{ getTranslation('preferred_time_select') }}</option>
+                        <option value="immediate" class="text-gray-900 font-normal">{{
+                            getTranslation('preferred_time_immediate') }}</option>
+                        <option value="morning" class="text-gray-900 font-normal">{{
+                            getTranslation('preferred_time_morning') }}</option>
+                        <option value="afternoon" class="text-gray-900 font-normal">{{
+                            getTranslation('preferred_time_afternoon') }}</option>
+                        <option value="custom" class="text-gray-900 font-normal">{{
+                            getTranslation('preferred_time_custom') }}</option>
                     </select>
                 </div>
 
 
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <!-- Acesso da carrinha -->
+                    <!-- Van Access -->
                     <div class="mt-6">
-                        <legend class="text-sm/6 font-semibold text-gray-900">A carrinha pode estacionar à porta?
+                        <legend class="text-sm/6 font-semibold text-gray-900">
+                            {{ getTranslation('van_access_question') }}
                         </legend>
                         <div class="mt-4 flex space-x-10">
                             <label class="flex items-center">
                                 <input type="radio" formControlName="vanAccess" [value]="true"
                                     class="size-4 rounded-full border border-gray-300 mr-2" />
-                                Sim
+                                {{ getTranslation('yes') }}
                             </label>
                             <label class="flex items-center">
                                 <input type="radio" formControlName="vanAccess" [value]="false"
                                     class="size-4 rounded-full border border-gray-300 mr-2" />
-                                Não
+                                {{ getTranslation('no') }}
                             </label>
                         </div>
                     </div>
 
-
                     <!-- Floor -->
                     <div class="mt-6">
-                        <label for="floorNumber" class="block text-sm/6 font-medium text-gray-900">Andar</label>
+                        <label for="floorNumber" class="block text-sm/6 font-medium text-gray-900">
+                            {{ getTranslation('floor') }}
+                        </label>
                         <input type="number" id="floorNumber" formControlName="floorNumber" min="0" class="mt-2 block w-full sm:w-32 lg:w-full rounded-md border border-gray-300 shadow-sm px-3 py-2
-                          text-sm text-gray-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600" />
+                               text-sm text-gray-900 focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600" />
                     </div>
                 </div>
+
 
 
 
             </fieldset>
 
             <div class="col-span-full pt-4">
-                <label for="description" class="block text-sm/6 font-medium text-gray-900">Detalhes para o
-                    Condutor</label>
+                <label for="description" class="block text-sm/6 font-medium text-gray-900">
+                    {{ getTranslation('driver_details_label') }}
+                </label>
                 <div class="mt-2 w-full">
                     <textarea id="description" formControlName="description" rows="3"
                         class="block w-full rounded-md bg-white px-3 py-1.5 text-sm text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        placeholder="Escreva detalhes que o condutor pode precisar de saber para completar o pedido.">
+                        [placeholder]="getTranslation('driver_details_placeholder')">
                   </textarea>
-
                 </div>
             </div>
 
+
             <div class="pt-4 max-w-lg mx-auto">
                 <label for="requesterPhone" class="block text-sm font-medium text-gray-900"
-                    [ngClass]="{'text-red-600': isPhoneInvalid, 'text-gray-900': !isPhoneInvalid}">
-                    O seu Número para contacto *
+                    [ngClass]="{ 'text-red-600': isPhoneInvalid, 'text-gray-900': !isPhoneInvalid }">
+                    {{ getTranslation('contact_number_label') }}
                 </label>
 
-                <!-- <div class="mt-2 relative" [ngClass]="{
-                           'border-red-500': isPhoneInvalid,
-                           'border-gray-300': !isPhoneInvalid,
-                           'border': true, 
-                           'rounded-md': true
-                         }" (blur)="showPhoneValidation = true">
-
-                    <ngx-intl-tel-input [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true"
-                        [separateDialCode]="separateDialCode" [searchCountryFlag]="true" [inputId]="'requesterPhone'"
-                        [maxLength]="15" formControlName="phone" [enablePlaceholder]="true"
-                        customPlaceholder="96 249 64 74">
-                    </ngx-intl-tel-input>
-                </div> -->
-
                 <p *ngIf="isPhoneInvalid" class="mt-2 text-red-600 text-sm">
-                    É necessário um número de telemóvel válido.
+                    {{ getTranslation('invalid_phone_message') }}
                 </p>
             </div>
+
 
             <button
                 class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 transition duration-150 mt-6 flex items-center justify-center gap-2"
                 [disabled]="isLoading" (click)="handleTransportAndPayment()">
 
-                <span>Agendar Transporte e Pagamento</span>
+                <span>{{ getTranslation('schedule_transport_button') }}</span>
 
                 <div *ngIf="isLoading"
                     class="w-5 h-5 border-4 border-gray-300 border-t-indigo-600 rounded-full animate-spin"></div>
             </button>
+
 
             <!-- <button disabled
                 class="w-full bg-gray-400 text-white py-3 rounded-lg font-semibold cursor-not-allowed opacity-50 mt-6 flex items-center justify-center gap-2">

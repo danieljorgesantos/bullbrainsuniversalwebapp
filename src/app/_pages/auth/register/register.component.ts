@@ -5,7 +5,7 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -17,6 +17,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthManagerSignal } from '../../../_signals/authManager.signal';
 import { AuthService } from '../../../_shared/services/auth.service';
+import { registerTranslations } from './translations';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -42,7 +44,10 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     public authManagerSignal: AuthManagerSignal,
     private authService: AuthService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private titleService: Title,
+    private metaService: Meta,
+    private route: ActivatedRoute
   ) {
     this.registerForm = this.fb.group(
       {
@@ -56,6 +61,16 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Get the "lang" route param
+    const langParam = this.route.snapshot.paramMap.get('lang');
+
+    if (langParam) {
+      this.currentLanguage = langParam;
+    }
+
+    this.setInitialPageConfiguration();
+
+
     if (isPlatformBrowser(this.platformId)) {
       this.loadGoogleAuth();
     }
@@ -238,4 +253,69 @@ export class RegisterComponent implements OnInit {
       });
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // SEO
+
+  // Language
+  currentLanguage: any = 'pt-PT';
+
+  // Get a specific translation by key
+  getTranslation(key: string) {
+    return registerTranslations[this.currentLanguage]?.[key] || registerTranslations['en']?.[key];
+  }
+
+  setInitialPageConfiguration() {
+    const titleToSet = registerTranslations[this.currentLanguage]?.meta_title || registerTranslations['en']?.meta_title;
+    const descriptionToSet = registerTranslations[this.currentLanguage]?.meta_description || registerTranslations['en']?.meta_description;
+    const shareImage = 'https://www.floand-go.com/flo-logo-11.jpg';
+
+    this.titleService.setTitle(titleToSet);
+    this.metaService.updateTag({ name: 'description', content: descriptionToSet });
+    this.metaService.updateTag({ name: 'robots', content: 'index, follow' });
+    this.metaService.updateTag({ name: 'author', content: 'Flo and Go' });
+    this.metaService.updateTag({ httpEquiv: 'content-language', content: this.currentLanguage });
+
+    // Open Graph
+    this.metaService.updateTag({ property: 'og:title', content: titleToSet });
+    this.metaService.updateTag({ property: 'og:description', content: descriptionToSet });
+    this.metaService.updateTag({ property: 'og:url', content: 'https://www.floand-go.com/available-anytime-moving-services' });
+    // this.metaService.updateTag({ property: 'og:type', content: contentType });
+    this.metaService.updateTag({ property: 'og:site_name', content: 'Flo and Go' });
+    // this.metaService.updateTag({ property: 'og:locale', content: this.formatLocale(currentLanguage) });
+    this.metaService.updateTag({ property: 'og:image', content: shareImage });
+
+    // if (alternateLocales) {
+    //   alternateLocales.forEach(alt => {
+    //     this.metaService.addTag({ property: 'og:locale:alternate', content: alt.locale });
+    //     // You might need to handle the alternate URL separately if needed by some platforms
+    //   });
+    // }
+
+    // Twitter
+    // this.metaService.updateTag({ name: 'twitter:card', content: twitterCard });
+    this.metaService.updateTag({ name: 'twitter:title', content: titleToSet });
+    this.metaService.updateTag({ name: 'twitter:description', content: descriptionToSet });
+    this.metaService.updateTag({ name: 'twitter:site', content: '@floandgo' }); // Replace with your Twitter handle
+    this.metaService.updateTag({ name: 'twitter:image', content: shareImage });
+  }
+
+
 }
