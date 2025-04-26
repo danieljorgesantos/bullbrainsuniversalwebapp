@@ -10,8 +10,9 @@
                 </span>
             </h1>
             <p class="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                O teu sucesso começa aqui! Aceita novas viagens, acompanha os teus ganhos e maximiza a tua experiência.
+                Organize o seu transporte de forma rápida e simples. Faça o seu pedido e nós tratamos do resto!
             </p>
+
         </div>
 
         <!-- Right Side: Clickable User Avatar -->
@@ -41,28 +42,27 @@
 </section>
 
 <!-- Secção do Painel de Controlo -->
-<section class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 pt-6 pb-16">
+<section *ngIf="totalRequests > 0" class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 pt-6 pb-16">
+
     <!-- Cartões de Estatísticas -->
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
         <div class="bg-white p-4 rounded-lg shadow text-center flex flex-col justify-between h-28">
             <p class="text-sm font-semibold text-gray-600">Os Meus Transportes</p>
-            <p class="text-3xl font-bold text-gray-900 mt-auto">12</p>
+            <p class="text-3xl font-bold text-gray-900 mt-auto">{{ totalRequests }}</p>
         </div>
         <div class="bg-white p-4 rounded-lg shadow text-center flex flex-col justify-between h-28">
             <p class="text-sm font-semibold text-gray-600">Agendados</p>
-            <p class="text-3xl font-bold text-gray-900 mt-auto">3</p>
+            <p class="text-3xl font-bold text-gray-900 mt-auto">{{ scheduledRequests }}</p>
         </div>
         <div class="bg-white p-4 rounded-lg shadow text-center flex flex-col justify-between h-28">
             <p class="text-sm font-semibold text-gray-600">Concluídos</p>
-            <p class="text-3xl font-bold text-gray-900 mt-auto">8</p>
+            <p class="text-3xl font-bold text-gray-900 mt-auto">{{ completedRequests }}</p>
         </div>
         <div class="bg-white p-4 rounded-lg shadow text-center flex flex-col justify-between h-28">
             <p class="text-sm font-semibold text-gray-600">Cancelados</p>
-            <p class="text-3xl font-bold text-gray-900 mt-auto">1</p>
+            <p class="text-3xl font-bold text-gray-900 mt-auto">{{ cancelledRequests }}</p>
         </div>
     </div>
-
-
 
     <!-- Secção Em Transporte -->
     <div class="bg-white rounded-lg shadow p-4 mb-6">
@@ -86,47 +86,88 @@
             <p class="text-sm text-gray-700"><strong>Para:</strong> 321 Pine Rd, Ogdenville</p>
         </div>
     </div>
+
 </section>
 
 
 
+<!-- Empty state banner with hand + CTA -->
+<section *ngIf="totalRequests === 0" class="w-full pb-8 px-4 sm:px-8 max-w-3xl mx-auto">
+    <div
+        class="bg-gradient-to-br from-blue-50 to-orange-50 rounded-3xl p-8 sm:p-10 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
 
-
-<!-- ====== Mudanças Simplificadas Section Start -->
-<section class="pb-8 overflow-hidden dark:bg-black">
-    <div class="max-w-3xl mx-auto bg-white dark:bg-neutral-900 p-6 rounded-2xl">
-
-        <div class="flex flex-wrap items-center lg:flex-nowrap gap-10">
-
-            <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
-                <img src="furniture-inside-the-house.webp" alt="Móveis dentro de casa"
-                    class="w-full max-w-xs sm:max-w-sm lg:max-w-md rounded-lg" />
-            </div>
-
-            <div class="w-full lg:w-1/2 text-center lg:text-left">
-                <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white leading-tight">
-                    O seu próximo pedido começa aqui
-                </h2>
-
-                <h3 class="text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300 mt-3">
-                    Já pode <span class="text-black dark:text-white font-semibold">fazer um pedido de transporte</span>
-                    com a Flo.
-                </h3>
-
-                <p class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Quer esteja a planear uma mudança de casa ou apenas a transportar alguns móveis, a Flo está pronta
-                    para ajudar. Simples, rápido e sem complicações.
-                </p>
-
-                <div class="mt-6">
-                    <a [href]="'/' + currentLanguage + '/requester-map'"
-                        class="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-900">
-                        Fazer pedido agora
-                    </a>
-                </div>
-            </div>
+        <!-- Left: Text & CTA -->
+        <div class="text-center lg:text-left flex-1">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Ainda não tem transportes
+            </h2>
+            <p class="text-gray-700 text-base sm:text-lg mb-6">
+                Agende o seu primeiro transporte em minutos com apenas alguns cliques.
+            </p>
+            <button [routerLink]="['/', currentLanguage, 'requester-map']"
+                class="inline-block bg-black text-white px-6 py-3 rounded-xl font-semibold text-sm sm:text-base hover:bg-gray-900 transition">
+                Agendar Transporte
+            </button>
         </div>
 
+        <!-- Right: Image -->
+        <div class="flex-1 flex justify-center">
+            <img src="aaa2.webp" alt="Agendar transporte" class="w-64 sm:w-80 md:w-96 max-w-full" />
+        </div>
+
+    </div>
+</section>
+
+<!-- Third Section: How It Works -->
+<section class="max-w-3xl mx-auto py-10 dark:bg-dark mb-8">
+    <div class="px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white text-center mb-2">
+            Como funciona?
+        </h2>
+        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto">
+            Em apenas três passos simples, o seu transporte estará a caminho!
+        </p>
+
+        <div class="mt-10 grid gap-10 sm:grid-cols-3">
+            <!-- Passo 1 -->
+            <div class="text-center flex flex-col items-center px-2">
+                <div class="relative flex justify-center items-center">
+                    <img src="sada_3.webp" alt="Solicitar um motorista" class="w-20 h-20 object-contain">
+                    <span
+                        class="absolute -top-3 -left-8 bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">1</span>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-4">Solicite um motorista</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Escolha o tipo de transporte necessário e indique os detalhes da sua carga.
+                </p>
+            </div>
+
+            <!-- Passo 2 -->
+            <div class="text-center flex flex-col items-center px-2">
+                <div class="relative flex justify-center items-center">
+                    <img src="sada_5.webp" alt="Aguardar recolha" class="w-20 h-20 object-contain">
+                    <span
+                        class="absolute -top-3 -left-8 bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">2</span>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-4">Aguarde a recolha</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    O nosso sistema encontra automaticamente o motorista mais próximo e disponível.
+                </p>
+            </div>
+
+            <!-- Passo 3 -->
+            <div class="text-center flex flex-col items-center px-2">
+                <div class="relative flex justify-center items-center">
+                    <img src="sada_4.webp" alt="Receber a carga" class="w-20 h-20 object-contain">
+                    <span
+                        class="absolute -top-3 -left-8 bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">3</span>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-4">Receba a sua carga</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Acompanhe o transporte em tempo real e receba a sua carga com total segurança.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -283,58 +324,6 @@
 
 
 
-<!-- Third Section: How It Works -->
-<section class="max-w-3xl mx-auto py-10 dark:bg-dark mb-8">
-    <div class="px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white text-center mb-2">
-            Como funciona?
-        </h2>
-        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-center max-w-2xl mx-auto">
-            Em apenas três passos simples, o seu transporte estará a caminho!
-        </p>
-
-        <div class="mt-10 grid gap-10 sm:grid-cols-3">
-            <!-- Passo 1 -->
-            <div class="text-center flex flex-col items-center px-2">
-                <div class="relative flex justify-center items-center">
-                    <img src="sada_3.webp" alt="Solicitar um motorista" class="w-20 h-20 object-contain">
-                    <span
-                        class="absolute -top-3 -left-8 bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">1</span>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-4">Solicite um motorista</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                    Escolha o tipo de transporte necessário e indique os detalhes da sua carga.
-                </p>
-            </div>
-
-            <!-- Passo 2 -->
-            <div class="text-center flex flex-col items-center px-2">
-                <div class="relative flex justify-center items-center">
-                    <img src="sada_5.webp" alt="Aguardar recolha" class="w-20 h-20 object-contain">
-                    <span
-                        class="absolute -top-3 -left-8 bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">2</span>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-4">Aguarde a recolha</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                    O nosso sistema encontra automaticamente o motorista mais próximo e disponível.
-                </p>
-            </div>
-
-            <!-- Passo 3 -->
-            <div class="text-center flex flex-col items-center px-2">
-                <div class="relative flex justify-center items-center">
-                    <img src="sada_4.webp" alt="Receber a carga" class="w-20 h-20 object-contain">
-                    <span
-                        class="absolute -top-3 -left-8 bg-indigo-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">3</span>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mt-4">Receba a sua carga</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                    Acompanhe o transporte em tempo real e receba a sua carga com total segurança.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 

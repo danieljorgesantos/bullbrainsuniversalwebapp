@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="handleTransportAndPayment()" class="text-gray-900 min-h-screen pt-4 pb-12">
     <!-- Desktop Only Link -->
-    <a routerLink="/requester-map"
+    <a [routerLink]="['/', currentLanguage]"
         class="absolute top-4 right-4 hidden md:flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-4">
         <span class="text-xl mr-2">&#8592;</span>
         <span>{{ getTranslation('back_to_map') }}</span>
@@ -12,7 +12,7 @@
 
             <!-- Mobile Only Link -->
             <div class="flex justify-end">
-                <a routerLink="/requester-map"
+                <a [routerLink]="['/', currentLanguage]"
                     class="top-4 right-4 flex md:hidden items-center text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-2">
                     <span class="text-xs mr-2">&#8592;</span>
                     <span class="text-xs">{{ getTranslation('back_to_map') }}</span>
@@ -359,12 +359,18 @@
                 </div>
             </div>
 
-
-            <div class="pt-4 max-w-lg mx-auto">
-                <label for="requesterPhone" class="block text-sm font-medium text-gray-900"
-                    [ngClass]="{ 'text-red-600': isPhoneInvalid, 'text-gray-900': !isPhoneInvalid }">
+            <div class="col-span-full pt-4">
+                <label for="requesterPhone" class="block text-sm/6 font-medium"
+                    [ngClass]="{'text-red-600': isPhoneInvalid, 'text-gray-900': !isPhoneInvalid}">
                     {{ getTranslation('contact_number_label') }}
                 </label>
+
+                <div class="mt-2 w-full">
+                    <input type="tel" id="requesterPhone" placeholder="96 249 64 74" maxlength="15"
+                        formControlName="phone"
+                        class="block w-full rounded-md bg-white px-3 py-1.5 text-sm text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        (blur)="form.controls['phone'].markAsTouched()" />
+                </div>
 
                 <p *ngIf="isPhoneInvalid" class="mt-2 text-red-600 text-sm">
                     {{ getTranslation('invalid_phone_message') }}
@@ -372,8 +378,9 @@
             </div>
 
 
-            <button
-                class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-indigo-600 transition duration-150 mt-6 flex items-center justify-center gap-2"
+
+            <button type="button"
+                class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition duration-150 mt-6 flex items-center justify-center gap-2"
                 [disabled]="isLoading" (click)="handleTransportAndPayment()">
 
                 <span>{{ getTranslation('schedule_transport_button') }}</span>

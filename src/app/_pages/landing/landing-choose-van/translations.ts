@@ -2,7 +2,7 @@ export const chooseVanTranslations: any = {
     "pt-PT": {
         meta_title: 'Inicie Sessão | FLO AND GO',
         meta_description: 'Aceda à sua conta FLO AND GO para continuar a agendar mudanças rápidas, económicas e seguras em Lisboa e arredores. Login simples e seguro!',
-        back_to_map: 'Voltar ao Mapa',
+        back_to_map: 'Voltar à Página Principal',
         schedule_transport_now: 'Agende Seu Transporte Agora',
         distance_info_start: 'São',
         distance_info_end: 'do ponto de recolha até ao ponto de entrega',
@@ -50,7 +50,7 @@ export const chooseVanTranslations: any = {
     "en": {
         meta_title: 'Sign In | FLO AND GO',
         meta_description: 'Access your FLO AND GO account to continue booking fast, economical, and secure moves in Lisbon and nearby areas. Simple and secure login!',
-        back_to_map: 'Back to Map',
+        back_to_map: 'Back to Main Page',
         schedule_transport_now: 'Schedule Your Transport Now',
         distance_info_start: 'It is',
         distance_info_end: 'from pickup to drop-off point',
@@ -98,7 +98,7 @@ export const chooseVanTranslations: any = {
     "fr-FR": {
         meta_title: 'Se connecter | FLO AND GO',
         meta_description: 'Accédez à votre compte FLO AND GO pour continuer à réserver des déménagements rapides, économiques et sûrs à Lisbonne et dans les environs. Connexion simple et sécurisée !',
-        back_to_map: 'Retour à la carte',
+        back_to_map: 'Retour à la Page Principale',
         schedule_transport_now: 'Planifiez votre transport maintenant',
         distance_info_start: 'Il y a',
         distance_info_end: 'du point de départ au point de livraison',
@@ -146,7 +146,7 @@ export const chooseVanTranslations: any = {
     "es-ES": {
         meta_title: 'Iniciar sesión | FLO AND GO',
         meta_description: 'Accede a tu cuenta FLO AND GO para seguir reservando mudanzas rápidas, económicas y seguras en Lisboa y alrededores. ¡Inicio de sesión simple y seguro!',
-        back_to_map: 'Volver al mapa',
+        back_to_map: 'Volver a la Página Principal',
         schedule_transport_now: 'Programa tu transporte ahora',
         distance_info_start: 'Hay',
         distance_info_end: 'desde el punto de recogida hasta el de entrega',
@@ -194,7 +194,7 @@ export const chooseVanTranslations: any = {
     "de-DE": {
         meta_title: 'Anmelden | FLO AND GO',
         meta_description: 'Greifen Sie auf Ihr FLO AND GO-Konto zu, um weiterhin schnelle, günstige und sichere Umzüge in Lissabon und Umgebung zu buchen. Einfacher und sicherer Login!',
-        back_to_map: 'Zurück zur Karte',
+        back_to_map: 'Zur Hauptseite zurückkehren',
         schedule_transport_now: 'Transport jetzt planen',
         distance_info_start: 'Es sind',
         distance_info_end: 'vom Abholort bis zum Lieferort',
@@ -242,7 +242,7 @@ export const chooseVanTranslations: any = {
     "it-IT": {
         meta_title: 'Accedi | FLO AND GO',
         meta_description: 'Accedi al tuo account FLO AND GO per continuare a prenotare trasporti rapidi, economici e sicuri a Lisbona e dintorni. Accesso semplice e sicuro!',
-        back_to_map: 'Torna alla mappa',
+        back_to_map: 'Torna alla Pagina Principale',
         schedule_transport_now: 'Prenota il tuo trasporto ora',
         distance_info_start: 'Sono',
         distance_info_end: 'dal punto di ritiro al punto di consegna',
@@ -290,7 +290,7 @@ export const chooseVanTranslations: any = {
     "zh-CN": {
         meta_title: '登录 | FLO AND GO',
         meta_description: '登录您的 FLO AND GO 账户，继续在里斯本及周边地区安排快捷、经济和安全的搬运服务。简单安全的登录方式！',
-        back_to_map: '返回地图',
+        back_to_map: '返回主页',
         schedule_transport_now: '立即安排运输',
         distance_info_start: '距离为',
         distance_info_end: '从取货点到送达点',
@@ -338,7 +338,7 @@ export const chooseVanTranslations: any = {
     "hi-IN": {
         meta_title: 'लॉगिन करें | FLO AND GO',
         meta_description: 'अपने FLO AND GO खाते में लॉग इन करें और लिस्बन और आस-पास के क्षेत्रों में तेज़, किफायती और सुरक्षित परिवहन बुक करना जारी रखें। आसान और सुरक्षित लॉगिन!',
-        back_to_map: 'मानचित्र पर लौटें',
+        back_to_map: 'मुख्य पृष्ठ पर लौटें',
         schedule_transport_now: 'अभी परिवहन शेड्यूल करें',
         distance_info_start: 'यह है',
         distance_info_end: 'पिकअप से डिलीवरी पॉइंट तक की दूरी',
@@ -386,7 +386,7 @@ export const chooseVanTranslations: any = {
     "pl-PL": {
         meta_title: 'Zaloguj się | FLO AND GO',
         meta_description: 'Zaloguj się na swoje konto FLO AND GO, aby kontynuować szybkie, tanie i bezpieczne przeprowadzki w Lizbonie i okolicach. Prosty i bezpieczny login!',
-        back_to_map: 'Wróć do mapy',
+        back_to_map: 'Powrót do Strony Głównej',
         schedule_transport_now: 'Zaplanuj swój transport teraz',
         distance_info_start: 'To jest',
         distance_info_end: 'od punktu odbioru do punktu dostawy',
@@ -435,7 +435,7 @@ export const chooseVanTranslations: any = {
     "sv-SE": {
         meta_title: 'Logga in | FLO AND GO',
         meta_description: 'Logga in på ditt FLO AND GO-konto för att fortsätta boka snabba, prisvärda och säkra flyttar i Lissabon och omgivningar. Enkelt och säkert inloggning!',
-        back_to_map: 'Tillbaka till kartan',
+        back_to_map: 'Tillbaka till Huvudsidan',
         schedule_transport_now: 'Boka din transport nu',
         distance_info_start: 'Det är',
         distance_info_end: 'från upphämtningsplatsen till leveransplatsen',
@@ -484,7 +484,7 @@ export const chooseVanTranslations: any = {
     "da-DK": {
         meta_title: 'Log ind | FLO AND GO',
         meta_description: 'Log ind på din FLO AND GO-konto for at fortsætte med at booke hurtige, billige og sikre flytninger i Lissabon og omegn. Nem og sikker login!',
-        back_to_map: 'Tilbage til kortet',
+        back_to_map: 'Tilbage til Hovedsiden',
         schedule_transport_now: 'Planlæg din transport nu',
         distance_info_start: 'Det er',
         distance_info_end: 'fra afhentningspunktet til leveringspunktet',
@@ -533,7 +533,7 @@ export const chooseVanTranslations: any = {
     "fi-FI": {
         meta_title: 'Kirjaudu sisään | FLO AND GO',
         meta_description: 'Kirjaudu FLO AND GO -tilillesi jatkaaksesi nopeiden, edullisten ja turvallisten muuttojen varaamista Lissabonissa ja sen lähialueilla. Helppo ja turvallinen kirjautuminen!',
-        back_to_map: 'Takaisin kartalle',
+        back_to_map: 'Palaa Pääsivulle',
         schedule_transport_now: 'Varaa kuljetus nyt',
         distance_info_start: 'Matkaa on',
         distance_info_end: 'noutopaikasta toimituspaikkaan',
@@ -582,7 +582,7 @@ export const chooseVanTranslations: any = {
     "ja-JP": {
         meta_title: 'ログイン | FLO AND GO',
         meta_description: 'FLO AND GO アカウントにログインして、リスボンおよびその周辺での迅速・安全・経済的な引っ越しを続けて予約しましょう。簡単で安全なログイン！',
-        back_to_map: '地図に戻る',
+        back_to_map: 'メインページに戻る',
         schedule_transport_now: '今すぐ輸送を予約',
         distance_info_start: '距離：',
         distance_info_end: 'はピックアップから配達地点まで',

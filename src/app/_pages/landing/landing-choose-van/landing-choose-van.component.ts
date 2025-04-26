@@ -7,6 +7,8 @@ import { environment } from '../../../_shared/enviroments/enviroment';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { chooseVanTranslations } from './translations';
 import { Meta, Title } from '@angular/platform-browser';
+import { AuthManagerSignal } from '../../../_signals/authManager.signal';
+import { PendingRequestSignal } from '../../../_signals/pendingRequest.signal';
 
 @Component({
   selector: 'app-landing-choose-van',
@@ -49,7 +51,7 @@ export class LandingChooseVanComponent {
   // public stripe!: StripeInstance;
   public stripeAmount!: number;
   // public stripePublicKey = 'pk_test_51Qvz43FQKbu2elOQuFD5qGlmxxnUBMMsZt1ATmOnHgsxLhfqk0cXgNrzueAgbWIaEFFXa6gzcRDOJ83POUT0e9nQ00GQiuJWVc'; // chave de testes
-  public stripePublicKey = 'pk_live_51Qvz3tFAcPNRPq1tscpWVRnG4oPJ6fTpLCJRZrdkSA0c3ZDzcW6qMqx2fIWHGWiylbEqDO0M2oefs3YTX4KvXhfH00gQR8mflB'; // chave de producao
+  // public stripePublicKey = 'pk_live_51Qvz3tFAcPNRPq1tscpWVRnG4oPJ6fTpLCJRZrdkSA0c3ZDzcW6qMqx2fIWHGWiylbEqDO0M2oefs3YTX4KvXhfH00gQR8mflB'; // chave de producao
 
   private subscriptions: Subscription;
   isLoading: boolean = false; // Track loading state
@@ -82,7 +84,8 @@ export class LandingChooseVanComponent {
     // public priceSignal: priceSignal,
     private router: Router,
     // private configSignal: ConfigSignal,
-    // public authManagerSignal: AuthManagerSignal,
+    public authManagerSignal: AuthManagerSignal,
+    private pendingRequestSignal: PendingRequestSignal,
     // private transportRequestService: TransportRequestService,
     // private http: HttpClient,
     // private stripeFactory: StripeFactoryService,
@@ -280,6 +283,7 @@ export class LandingChooseVanComponent {
     this.showPhoneValidation = true;
 
     if (this.form.invalid) {
+      console.log('form invalid')
       return;
     }
 
@@ -381,6 +385,16 @@ export class LandingChooseVanComponent {
     //     this.isLoading = false;
     //   }
     // );
+
+    console.log('!this.authManagerSignal.currentUser?.id')
+
+    if (!this.authManagerSignal.currentUser?.id) {
+      console.log('inside the !this.authManagerSignal.currentUser?.id')
+      this.isLoading = false;
+      this.pendingRequestSignal.setPendingRequest(transportRequestData);
+      this.router.navigate(['/', this.currentLanguage, 'register']);
+      return;
+    }
   }
 
 
