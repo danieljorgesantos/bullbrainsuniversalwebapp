@@ -136,8 +136,6 @@ export class LandingPageCtaComponent {
 
     this.googlePickupPredictions = [];
 
-    this.form.get('pickupLocation')?.setValue(prediction.description, { emitEvent: false });
-
     if (!this.pickupMarker) {
       this.pickupMarker = this.leafletService.L.marker([lat, lon], {
         draggable: true,
@@ -162,7 +160,6 @@ export class LandingPageCtaComponent {
     if (this.destinationMarker) {
       this.getRoute();
     }
-
   }
 
 
@@ -221,51 +218,54 @@ export class LandingPageCtaComponent {
       shadowSize: [41, 41]
     });
   }
-
   getRoute() {
+    // if (!this.pickupMarker || !this.destinationMarker || !this.desktopMap || !this.mobileMap) {
+    //   return;
+    // }
+
     const pickupCoords = this.pickupMarker?.getLatLng();
     const destinationCoords = this.destinationMarker?.getLatLng();
-  
+
     const url = `https://router.project-osrm.org/route/v1/driving/${pickupCoords.lng},${pickupCoords.lat};${destinationCoords.lng},${destinationCoords.lat}?overview=full&geometries=geojson`;
-  
-    this.isLoadingRoute = true;
-  
-    this.http.get(url).subscribe({
-      next: (response: any) => {
-        if (response?.routes?.length) {
-          const routeCoords = response.routes[0].geometry.coordinates.map((coord: any) => [coord[1], coord[0]]);
-  
-          this.routeLayer = this.leafletService.L.polyline(routeCoords, { color: 'black', weight: 5, opacity: 0.7 });
-          this.routeLayer.addTo(this.desktopMap);
-  
-          setTimeout(() => {
-            try {
-              this.desktopMap.fitBounds(this.routeLayer.getBounds());
-            } catch (_) {}
-          }, 500);
-  
-          const distanceKm = response.routes[0].distance / 1000;
-  
-          this.priceSignal.updateState({
-            distance: distanceKm,
-            pickupLatitude: pickupCoords.lat,
-            pickupLongitude: pickupCoords.lng,
-            dropoffLatitude: destinationCoords.lat,
-            dropoffLongitude: destinationCoords.lng,
-          });
-        } else {
-          console.error("🚨 No routes found from OSRM API.");
-        }
-      },
-      error: (error) => {
-        console.error("🚨 Error fetching route:", error);
-      },
-      complete: () => {
-        this.isLoadingRoute = false;
+
+    this.http.get(url).subscribe((response: any) => {
+      if (response && response.routes && response.routes.length > 0) {
+        const routeCoords = response.routes[0].geometry.coordinates.map((coord: any) => [coord[1], coord[0]]);
+
+        // ✅ Store new route in the layer
+        this.routeLayer = this.leafletService.L.polyline(routeCoords, { color: 'black', weight: 5, opacity: 0.7 });
+
+        // ✅ Add new route to both maps
+        this.routeLayer.addTo(this.desktopMap);
+        // this.routeLayer.addTo(this.mobileMap);
+
+        // ✅ Ensure map has the correct size before fitting bounds
+        setTimeout(() => {
+          try {
+            this.desktopMap.fitBounds(this.routeLayer.getBounds());
+            // this.mobileMap.fitBounds(this.routeLayer.getBounds());
+          } catch (error) { }
+        }, 500); // Small delay ensures map is ready
+
+        const distanceKm = response.routes[0].distance / 1000;
+
+        // ✅ Update distance in priceSignal
+        this.priceSignal.updateState({
+          distance: distanceKm,
+          pickupLatitude: pickupCoords.lat,
+          pickupLongitude: pickupCoords.lng,
+          dropoffLatitude: destinationCoords.lat,
+          dropoffLongitude: destinationCoords.lng,
+        });
+
+      } else {
+        console.error("No routes found from OSRM API.");
       }
+    }, (error: any) => {
+      console.error("Error fetching route:", error);
     });
   }
-  
+
 
   /** ✅ Use Current Location for Pickup (All-in-One) */
   useCurrentLocationForPickup(): void {
