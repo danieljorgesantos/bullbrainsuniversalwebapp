@@ -22,25 +22,40 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.authManagerSignal.loadUserFromLocalStorage();
+
     // Ensure that code runs only in the browser context.
     if (isPlatformBrowser(this.platformId)) {
-      // Dynamically insert the GA script.
-      const script1 = document.createElement('script');
-      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-6FK4NJS35W'; // Replace with your GA4 Measurement ID.
-      script1.async = true;
-      document.head.appendChild(script1);
+      // --- Google Analytics 4 (GA4) ---
+      const scriptGA = document.createElement('script');
+      scriptGA.src = 'https://www.googletagmanager.com/gtag/js?id=G-6FK4NJS35W'; // Your GA4 Measurement ID
+      scriptGA.async = true;
+      document.head.appendChild(scriptGA);
 
-      // Insert the GA initialization script.
-      const script2 = document.createElement('script');
-      script2.text = `
+      const scriptGAInit = document.createElement('script');
+      scriptGAInit.text = `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-6FK4NJS35W');
       `;
-      document.head.appendChild(script2);
+      document.head.appendChild(scriptGAInit);
 
-      // Track route changes to measure pageviews for Angular routing.
+      // --- Google Ads Conversion Tracking (AW-16977624080) ---
+      const scriptAds = document.createElement('script');
+      scriptAds.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16977624080';
+      scriptAds.async = true;
+      document.head.appendChild(scriptAds);
+
+      const scriptAdsInit = document.createElement('script');
+      scriptAdsInit.text = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-16977624080');
+      `;
+      document.head.appendChild(scriptAdsInit);
+
+      // Track route changes to measure pageviews for Angular routing (GA4)
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
           gtag('config', 'G-6FK4NJS35W', {
@@ -50,4 +65,5 @@ export class AppComponent implements OnInit {
       });
     }
   }
+
 }
