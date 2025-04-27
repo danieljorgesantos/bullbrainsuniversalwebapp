@@ -3,6 +3,10 @@ export const validUrls = [
     // no slash version of the website
     '/',
 
+    '/pt-PT/privacy-policy',
+    '/privacy-policy',
+
+
     // pt-PT version of the website
     '/pt-PT',
     '/pt-PT/available-anytime-moving-services',

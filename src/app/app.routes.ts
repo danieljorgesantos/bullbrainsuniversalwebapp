@@ -25,6 +25,7 @@ import { DriverDeliveringComponent } from './_pages/driver/driver-delivering/dri
 import { DriversPaymentsComponent } from './_pages/driver/drivers-payments/drivers-payments.component';
 import { langGuard } from './_shared/guards/lang.guard';
 import { NotFoundComponent } from './_pages/landing/not-found/not-found.component';
+import { PrivacyPolicyComponent } from './_pages/landing/privacy-policy/privacy-policy.component';
 
 // lang codes (BCP 47 standard):
 // Portuguese (Portugal)      → pt-PT  
@@ -55,6 +56,8 @@ export const routes: Routes = [
     { path: ':lang/office-changes', component: OfficeChangesComponent, pathMatch: 'full', canActivate: [langGuard] },
     { path: ':lang/small-changes', component: SmallChangesComponent, pathMatch: 'full', canActivate: [langGuard] },
     { path: ':lang/choose-van', component: LandingChooseVanComponent, pathMatch: 'full', canActivate: [langGuard] },
+    { path: ':lang/privacy-policy', component: PrivacyPolicyComponent, canActivate: [langGuard] },
+
 
     // Auth
     { path: ':lang/register', component: RegisterComponent, pathMatch: 'full', canActivate: [langGuard] },
