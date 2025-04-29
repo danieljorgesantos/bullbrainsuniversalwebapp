@@ -6,6 +6,9 @@ export const validUrls = [
     '/pt-PT/privacy-policy',
     '/privacy-policy',
 
+    '/pt-PT/contacts',
+    '/privacy-policy',
+
 
     // pt-PT version of the website
     '/pt-PT',
