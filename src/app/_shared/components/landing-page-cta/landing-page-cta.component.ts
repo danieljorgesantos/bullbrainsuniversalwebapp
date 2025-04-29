@@ -243,11 +243,21 @@ export class LandingPageCtaComponent {
         setTimeout(() => {
           try {
             this.desktopMap.fitBounds(this.routeLayer.getBounds());
+
+            console.log('fitbounds worked')
             // this.mobileMap.fitBounds(this.routeLayer.getBounds());
           } catch (error) { }
         }, 500); // Small delay ensures map is ready
 
         const distanceKm = response.routes[0].distance / 1000;
+
+        console.log('obj',{
+          distance: distanceKm,
+          pickupLatitude: pickupCoords.lat,
+          pickupLongitude: pickupCoords.lng,
+          dropoffLatitude: destinationCoords.lat,
+          dropoffLongitude: destinationCoords.lng,
+        })
 
         // ✅ Update distance in priceSignal
         this.priceSignal.updateState({

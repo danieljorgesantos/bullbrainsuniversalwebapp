@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
-    // apiBaseUrl: 'http://localhost:5015',
-    apiBaseUrl: 'https://flotransportsapi-gmgsc5feeqbebwag.westeurope-01.azurewebsites.net',
+    apiBaseUrl: 'http://localhost:5015',
+    // apiBaseUrl: 'https://flotransportsapi-gmgsc5feeqbebwag.westeurope-01.azurewebsites.net',
 
     googleClientId: '273478331479-pmld2ebi9ah730jbo4r433r8atg4bo8p.apps.googleusercontent.com',
 
