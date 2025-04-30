@@ -1,8 +1,10 @@
 // translation.ts
 export const homeTranslations: any = {
     "pt-PT": {
-        meta_title: 'Mudanças Lisboa - Escritórios e Residenciais a qualquer hora! | Flo and Go',
-        meta_description: 'Mudanças em Lisboa com orçamento grátis! Peça as suas mudanças residenciais e de escritórios de forma fácil, com a Flo Mudanças!',
+        // meta_title: 'Mudanças Lisboa - Escritórios e Residenciais a qualquer hora! | Flo and Go',
+        // meta_description: 'Mudanças em Lisboa com orçamento grátis! Peça as suas mudanças residenciais e de escritórios de forma fácil, com a Flo Mudanças!',
+        meta_title: 'Mudanças Lisboa a Partir de 10€/h | Profissionais Rápidos e Fiáveis',
+        meta_description: 'Serviço de mudanças em Lisboa com preços desde 10€/h. Mudanças residenciais e comerciais, locais e nacionais. Peça já o seu orçamento gratuito e sem compromisso!',
         headline_melhores_transportadores: 'Os melhores transportadores em Lisboa',
         headline_melhores_avaliacoes: 'com as melhores avaliações.',
         paragraph_facilitamos_vida_1: 'Facilitamos a sua vida com serviços de mudanças, transporte de cargas e recolha de equipamentos pesados.',
