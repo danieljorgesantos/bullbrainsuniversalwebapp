@@ -31,6 +31,19 @@ export class HomeComponent {
   // Language
   currentLanguage: any = 'pt-PT';
 
+  marketData = [
+    { symbol: 'AAPL', change: 1.24 },
+    { symbol: 'TSLA', change: -2.18 },
+    { symbol: 'GOOGL', change: 0.87 },
+    { symbol: 'AMZN', change: 1.92 },
+    { symbol: 'NVDA', change: -0.43 },
+    { symbol: 'META', change: 0.61 },
+    { symbol: 'MSFT', change: 0.33 },
+    { symbol: 'NFLX', change: -1.05 },
+    { symbol: 'INTC', change: 0.22 }
+  ];
+
+
   //Injectors
   private route = inject(ActivatedRoute);
   private leaflet = inject(LeafletService);

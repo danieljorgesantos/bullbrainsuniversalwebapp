@@ -1,705 +1,137 @@
-<section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 pt-24">
-    <div class="text-left">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-2">
-            {{ getTranslation('headline_melhores_transportadores') }} — <br class="hidden sm:inline">{{ getTranslation('headline_melhores_avaliacoes') }}
-        </h1>
+<div class="min-h-screen bg-black">
+    <div class="max-w-4xl mx-auto text-white font-sans px-12 py-16 space-y-24">
 
-        <p class="text-base sm:text-lg md:text-xl text-gray-600">
-            {{ getTranslation('paragraph_facilitamos_vida_1') }}
-        </p>
-    </div>
-</section>
+        <!-- Header -->
+        <header class="flex justify-end space-x-10 text-sm text-white font-semibold uppercase">
+            <a href="#about" class="hover:text-orange-500">About</a>
+            <a href="#features" class="hover:text-orange-500">Features</a>
+            <a href="#pricing" class="hover:text-orange-500">Pricing</a>
+            <a href="#contact" class="hover:text-orange-500">Contact</a>
+        </header>
 
-<app-landing-page-cta />
-
-<!-- ====== Services Section Start -->
-<section id="hero" class="overflow-hidden pt-8 pb-8 dark:bg-black max-w-3xl mx-auto">
-    <div class="flex flex-wrap lg:flex-nowrap items-center bg-white dark:bg-neutral-900 rounded-2xl p-6">
-        <div class="w-full lg:w-1/2 flex justify-center lg:justify-start mb-6 lg:mb-0 lg:pr-8">
-            <img src="moving-company-workers-flat-illustration.webp" alt="moving company workers flat illustration"
-                class="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[500px] rounded-xl" />
+        <!-- Ad Block -->
+        <div class="bg-gray-700 text-center text-white py-4 rounded">
+            Ad Placeholder (Header Banner)
         </div>
 
-        <div class="w-full lg:w-1/2 text-center lg:text-left">
-            <span class="block text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
-                {{ getTranslation('serviços_de_mudanca') }}
-            </span>
-
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4 leading-snug">
-                {{ getTranslation('transporte_seguro') }}
-            </h2>
-
-            <p class="text-sm text-gray-700 dark:text-gray-300 font-normal leading-relaxed mb-6">
-                {{ getTranslation('ligue_se_a_motoristas') }}
-            </p>
-
-            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0">
-                <a routerLink="/login"
-                    class="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-gray-900 transition cursor-pointer">
-                    {{ getTranslation('pedir_transporte') }}
-                </a>
-                <a routerLink="/how-it-works"
-                    class="inline-flex items-center justify-center rounded-full bg-gray-100 px-6 py-3 text-sm font-medium text-gray-900 hover:bg-gray-200 transition cursor-pointer">
-                    {{ getTranslation('como_funciona') }}
-                </a>
+        <!-- Hero Section -->
+        <section class="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+                <img src="bull-logo.png" alt="Bull Brains Logo" class="w-full max-w-xl rounded-xl" />
             </div>
-        </div>
-    </div>
-</section>
-<!-- ====== Services Section End -->
-
-<section class="overflow-hidden pb-8 dark:bg-black max-w-3xl mx-auto">
-    <div class="flex flex-wrap lg:flex-nowrap items-center bg-white dark:bg-neutral-900 rounded-2xl p-6">
-
-        <div class="w-full lg:w-1/2 text-center lg:text-left lg:order-1">
-            <span class="block text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">
-                {{ getTranslation('transporte_em_tempo_real') }}
-            </span>
-
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white mb-4 leading-snug">
-                {{ getTranslation('como_a_uber') }}
-            </h2>
-
-            <p class="text-sm text-gray-700 dark:text-gray-300 font-normal leading-relaxed mb-6">
-                {{ getTranslation('paragraph_conecte_se_motoristas_1') }}
-            </p>
-
-            <ul class="space-y-4 mb-6 text-sm text-gray-700 dark:text-gray-300">
-                <li class="flex items-start">
-                    <svg class="w-5 h-5 text-black dark:text-white mt-1 mr-3 shrink-0" fill="none" stroke="currentColor"
-                        stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                    </svg>
-                    <div>
-                        <span class="font-semibold text-gray-900 dark:text-white">{{
-                            getTranslation('feature_pedido_instantaneo_title') }}:</span>
-                        {{ getTranslation('feature_pedido_instantaneo_description') }}
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <svg class="w-5 h-5 text-black dark:text-white mt-1 mr-3 shrink-0" fill="none" stroke="currentColor"
-                        stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M17.657 16.657L13.414 12.414a4 4 0 10-1.414 1.414l4.243 4.243a1 1 0 001.414-1.414z" />
-                    </svg>
-                    <div>
-                        <span class="font-semibold text-gray-900 dark:text-white">{{
-                            getTranslation('feature_localizacao_tempo_real_title') }}:</span>
-                        {{ getTranslation('feature_localizacao_tempo_real_description') }}
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <svg class="w-5 h-5 text-black dark:text-white mt-1 mr-3 shrink-0" fill="none" stroke="currentColor"
-                        stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
-                    </svg>
-                    <div>
-                        <span class="font-semibold text-gray-900 dark:text-white">{{
-                            getTranslation('feature_comunicacao_direta_title') }}:</span>
-                        {{ getTranslation('feature_comunicacao_direta_description') }}
-                    </div>
-                </li>
-                <li class="flex items-start">
-                    <svg class="w-5 h-5 text-black dark:text-white mt-1 mr-3 shrink-0" fill="none" stroke="currentColor"
-                        stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 00-5-5.917V5a1 1 0 10-2 0v.083A6 6 0 006 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1h6z" />
-                    </svg>
-                    <div>
-                        <span class="font-semibold text-gray-900 dark:text-white">{{
-                            getTranslation('feature_notificacoes_vivo_title') }}:</span>
-                        {{ getTranslation('feature_notificacoes_vivo_description') }}
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-6 lg:mt-0 lg:pl-8 lg:order-2">
-            <img src="house-moving-app-phone.webp" alt="house moving app phone"
-                class="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[500px] rounded-xl" />
-        </div>
-
-    </div>
-</section>
-
-<!-- ====== Services Section Start -->
-<section class="pb-8 dark:bg-black max-w-3xl mx-auto p-6">
-
-    <div class="flex flex-col lg:flex-row items-center gap-10 pb-8">
-        <div class="w-full lg:w-1/2 text-left">
-            <span class="block text-xs font-medium uppercase text-gray-500 tracking-widest mb-3">
-                {{ getTranslation('section_mudese_sem_esforco') }}
-            </span>
-
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white leading-snug mb-4">
-                {{ getTranslation('headline_o_que_precisa_transportar_1') }}<br class="hidden sm:inline" />
-                {{ getTranslation('headline_o_que_precisa_transportar_2') }}
-            </h2>
-
-            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
-                {{ getTranslation('paragraph_em_poucas_horas_1') }}
-            </p>
-        </div>
-
-        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <img src="moving-a-sofa-with-laughing-people.webp" alt="{{ getTranslation('alt_imagem_mudanca_pessoas') }}"
-                class="w-full max-w-xs sm:max-w-sm md:max-w-md rounded-lg" />
-        </div>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="fast-deliveries.webp" alt="{{ getTranslation('alt_servico_mudancas_24_7') }}"
-                class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                {{ getTranslation('headline_servico_mudancas_24_7') }}
-            </h4>
-            <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                {{ getTranslation('paragraph_empresa_mudancas_qualquer_hora') }}
-            </p>
-            <a [href]="'/' + currentLanguage + '/available-anytime-moving-services'"
-                class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                {{ getTranslation('button_ver_mais') }}
-            </a>
-        </div>
-
-        <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="women-recieving-delivery.webp" alt="{{ getTranslation('alt_mudancas_residenciais_locais') }}"
-                class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                {{ getTranslation('headline_mudancas_residenciais_locais') }}
-            </h4>
-            <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                {{ getTranslation('paragraph_especializados_mudancas_locais') }}
-            </p>
-            <a [href]="'/' + currentLanguage + '/local-changes'"
-                class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                {{ getTranslation('button_ver_mais') }}
-            </a>
-        </div>
-
-        <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="long-distance-transport.webp" alt="{{ getTranslation('alt_mudancas_longa_distancia') }}"
-                class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                {{ getTranslation('headline_mudancas_longa_distancia') }}
-            </h4>
-            <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                {{ getTranslation('paragraph_lisboa_qualquer_cidade') }}
-            </p>
-            <a [href]="'/' + currentLanguage + '/long-distance'"
-                class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                {{ getTranslation('button_ver_mais') }}
-            </a>
-        </div>
-
-        <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="office-moving.webp" alt="{{ getTranslation('alt_mudancas_escritorios') }}"
-                class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                {{ getTranslation('headline_mudancas_escritorios') }}
-            </h4>
-            <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                {{ getTranslation('paragraph_mudamos_escritorios') }}
-            </p>
-            <a [href]="'/' + currentLanguage + '/office-changes'"
-                class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                {{ getTranslation('button_ver_mais') }}
-            </a>
-        </div>
-
-        <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="small-moving.webp" alt="{{ getTranslation('alt_pequenas_mudancas') }}"
-                class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                {{ getTranslation('headline_pequenas_mudancas') }}
-            </h4>
-            <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                {{ getTranslation('paragraph_servico_transportar_objetos') }}
-            </p>
-            <a [href]="'/' + currentLanguage + '/small-changes'"
-                class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                {{ getTranslation('button_ver_mais') }}
-            </a>
-        </div>
-
-        <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="last-minute-changes.webp" alt="{{ getTranslation('alt_mudancas_ultima_hora') }}"
-                class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                {{ getTranslation('headline_mudancas_ultima_hora') }}
-            </h4>
-            <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                {{ getTranslation('paragraph_mudancas_urgentes_sem_complicacoes') }}
-            </p>
-            <a [href]="'/' + currentLanguage + '/last-minute-changes'"
-                class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                {{ getTranslation('button_ver_mais') }}
-            </a>
-        </div>
-
-        <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="cleaning-house.webp" alt="{{ getTranslation('alt_despejos_casas_armazens') }}"
-                class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                {{ getTranslation('headline_despejos_casas_armazens') }}
-            </h4>
-            <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                {{ getTranslation('paragraph_realizamos_despejos_rapidos') }}
-            </p>
-            <a [href]="'/' + currentLanguage + '/house-removals'"
-                class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                {{ getTranslation('button_ver_mais') }}
-            </a>
-        </div>
-
-        <div class="bg-gray-100 dark:bg-neutral-900 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <img src="moving-low-cost.webp" alt="{{ getTranslation('alt_transporte_low_cost') }}"
-                class="w-32 h-32 object-contain rounded-md mx-auto mb-4" />
-            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                {{ getTranslation('headline_transporte_low_cost_barato') }}
-            </h4>
-            <p class="text-sm text-gray-700 dark:text-gray-400 text-center">
-                {{ getTranslation('paragraph_oferecemos_transporte_low_cost') }}
-            </p>
-            <a [href]="'/' + currentLanguage + '/low-cost-cheap-transport'"
-                class="mt-6 inline-block w-full text-center bg-black text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-900 transition">
-                {{ getTranslation('button_ver_mais') }}
-            </a>
-        </div>
-
-    </div>
-</section>
-<!-- ====== Services Section End -->
-
-<!-- ====== Mudanças Simplificadas Section Start -->
-<section class="pb-8 overflow-hidden dark:bg-black">
-    <div class="max-w-3xl mx-auto bg-white dark:bg-neutral-900 p-6 rounded-2xl">
-
-        <div class="flex flex-wrap items-center lg:flex-nowrap gap-10">
-
-            <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
-                <img src="moving-furniture.webp" alt="{{ getTranslation('alt_moving_furniture') }}"
-                    class="w-full max-w-xs sm:max-w-sm lg:max-w-md rounded-lg" />
-            </div>
-
-            <div class="w-full lg:w-1/2 text-center lg:text-left">
-                <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white leading-tight">
-                    {{ getTranslation('headline_mudancas_simplificadas') }}
-                </h2>
-
-                <h3 class="text-lg sm:text-xl font-medium text-gray-700 dark:text-gray-300 mt-3">
-                    {{ getTranslation('headline_o_que_esta_incluido_1') }} <span
-                        class="text-black dark:text-white font-semibold">{{
-                        getTranslation('headline_o_que_esta_incluido_2') }}</span>
-                </h3>
-
-                <p class="mt-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    {{ getTranslation('paragraph_com_presenca_em') }}
+            <div class="space-y-6">
+                <h1 class="text-5xl font-extrabold text-orange-500 leading-tight">
+                    FREE<br />AI<br />STOCK<br />MARKET<br />MODEL
+                </h1>
+                <p class="text-gray-300 max-w-md mx-auto text-lg">
+                    We create cutting-edge algorithms for high-frequency trading, optimizing your strategies and
+                    maximizing profits.
                 </p>
+            </div>
+        </section>
 
-                <div class="mt-6">
-                    <a routerLink="/login"
-                        class="inline-flex items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-900">
-                        {{ getTranslation('button_obtenha_orcamento_gratuito') }}
-                    </a>
+        <!-- Ad Block -->
+        <div class="bg-gray-700 text-center text-white py-4 rounded">
+            Ad Placeholder (Between Hero and Ticker)
+        </div>
+
+        <!-- Ticker Section -->
+        <section class="bg-black text-white text-sm font-mono py-3 px-6 overflow-hidden">
+            <div class="flex justify-between items-center mb-3">
+                <span class="font-bold text-2xl text-gray-100">BullBrains</span>
+                <a href="/algo" class="bg-orange-500 hover:bg-orange-600 text-black font-bold py-2 px-4 rounded transition">
+                    Open The Algorithm
+                </a>
+            </div>
+            <div class="overflow-hidden w-full">
+                <div class="ticker-track flex space-x-12 w-max">
+                    <!-- Market ticker would be rendered dynamically -->
+                    <div class="text-gray-400">Market data scrolling placeholder</div>
                 </div>
             </div>
+        </section>
+
+        <style>
+            @keyframes scrollLeft {
+                0% {
+                    transform: translateX(0%);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
+
+            .ticker-track {
+                animation: scrollLeft 30s linear infinite;
+            }
+        </style>
+
+        <!-- Ad Block -->
+        <div class="bg-gray-700 text-center text-white py-4 rounded">
+            Ad Placeholder (Between Ticker and About/Features)
         </div>
 
-    </div>
-</section>
-<!-- ====== Mudanças Simplificadas Section End -->
-
-<!-- ====== Acordian What come swith each request Section Start -->
-<!-- <section>
-        <div class="w-full max-w-3xl mx-auto pb-4">
-            <div class="space-y-4">
-                <div class="rounded-lg">
-                    <button
-                        class="w-full bg-white flex justify-between items-center px-4 py-3 text-sm font-medium text-left bg-gray-100 dark:bg-neutral-900 text-gray-900 dark:text-white rounded-md transition dark:hover:bg-neutral-800 focus:outline-none"
-                        (click)="toggleAccordion('item1')">
-                        Embalagem e embrulho personalizados
-    
-                        <span class="transform transition-transform duration-200"
-                            [ngClass]="{ 'rotate-90': openSections['item1'] }">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="w-4 h-4 text-gray-500">
-                                <path fill-rule="evenodd"
-                                    d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </span>
-                    </button>
-    
-    
-                    <div id="item1" [ngClass]="{ 'hidden': !openSections['item1'], 'block': openSections['item1'] }"
-                        class="px-4 py-4 bg-white dark:bg-neutral-900 text-sm text-gray-700 dark:text-gray-300 rounded-b-md">
-                        <ul class="space-y-3 text-left">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Colchões</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Telas planas</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Sofás e cadeiras</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Computadores e eletrônicos</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Lâmpadas e lâmpadas</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Pendurar roupas</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Pinturas e pequenos espelhos</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Tampo de mesa de vidro padrão</span>
-                            </li>
-                        </ul>
-                    </div>
-    
-                </div>
-    
-                <div class="rounded-lg">
-                    <button
-                        class="w-full bg-white flex justify-between items-center px-4 py-3 text-sm font-medium text-left bg-gray-100 dark:bg-neutral-900 text-gray-900 dark:text-white rounded-md transition dark:hover:bg-neutral-800 focus:outline-none"
-                        (click)="toggleAccordion('item2')">
-                        Desmontagem/Montagem
-                        <span class="transform transition-transform duration-200"
-                            [ngClass]="{ 'rotate-90': openSections['item2'] }">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="w-4 h-4 text-gray-500">
-                                <path fill-rule="evenodd"
-                                    d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </span>
-                    </button>
-    
-                    <div id="item2" [ngClass]="{ 'hidden': !openSections['item2'], 'block': openSections['item2'] }"
-                        class="px-4 py-4 bg-white dark:bg-neutral-900 text-sm text-gray-700 dark:text-gray-300 rounded-b-md">
-                        <ul class="space-y-3 text-left">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Mesas</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Armários</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Armários de porcelana</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Prateleiras</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Lustres</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>TVs de tela plana</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-    
-    
-                <div class="rounded-lg">
-                    <button
-                        class="w-full bg-white flex justify-between items-center px-4 py-3 text-sm font-medium text-left bg-gray-100 dark:bg-neutral-900 text-gray-900 dark:text-white rounded-md transition dark:hover:bg-neutral-800 focus:outline-none"
-                        (click)="toggleAccordion('item3')">
-                        Proteção de pisos, cantos e paredes
-                        <span class="transform transition-transform duration-200"
-                            [ngClass]="{ 'rotate-90': openSections['item3'] }">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="w-4 h-4 text-gray-500">
-                                <path fill-rule="evenodd"
-                                    d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </span>
-                    </button>
-    
-                    <div id="item3" [ngClass]="{ 'hidden': !openSections['item3'], 'block': openSections['item3'] }"
-                        class="px-4 py-4 bg-white dark:bg-neutral-900 text-sm text-gray-700 dark:text-gray-300 rounded-b-md">
-                        <ul class="space-y-3 text-left">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Tapetes personalizados para proteger pisos</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Proteção de canto contra arranhões</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Sofás e cadeiras</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Proteção para corredores e portas</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-    
-    
-                <div class="rounded-lg">
-                    <button
-                        class="w-full bg-white flex justify-between items-center px-4 py-3 text-sm font-medium text-left bg-gray-100 dark:bg-neutral-900 text-gray-900 dark:text-white rounded-md transition dark:hover:bg-neutral-800 focus:outline-none"
-                        (click)="toggleAccordion('item4')">
-                        Mão de obra, transporte, gás e pedágios, tudo incluído.
-                        <span class="transform transition-transform duration-200"
-                            [ngClass]="{ 'rotate-90': openSections['item4'] }">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="w-4 h-4 text-gray-500">
-                                <path fill-rule="evenodd"
-                                    d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </span>
-                    </button>
-    
-                    <div [ngClass]="{ 'hidden': !openSections['item4'], 'block': openSections['item4'] }"
-                        class="px-4 py-4 bg-white dark:bg-neutral-900 text-sm text-gray-700 dark:text-gray-300 rounded-b-md">
-                        <p>
-                            Você pode contar com nossa equipe profissional para cuidar de todos os aspectos da sua mudança,
-                            sem custos inesperados. <br />
-                            <span class="text-gray-500 dark:text-gray-400 italic">Gorjetas não estão incluídas, mas são
-                                recomendadas.</span>
-                        </p>
-                    </div>
-                </div>
-    
-    
-    
-                <div class="rounded-lg">
-                    <button
-                        class="w-full bg-white flex justify-between items-center px-4 py-3 text-sm font-medium text-left bg-gray-100 dark:bg-neutral-900 text-gray-900 dark:text-white rounded-md transition dark:hover:bg-neutral-800 focus:outline-none"
-                        (click)="toggleAccordion('item5')">
-                        Medidas de segurança que tomamos
-                        <span class="transform transition-transform duration-200"
-                            [ngClass]="{ 'rotate-90': openSections['item5'] }">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="w-4 h-4 text-gray-500">
-                                <path fill-rule="evenodd"
-                                    d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </span>
-                    </button>
-    
-                    <div [ngClass]="{ 'hidden': !openSections['item5'], 'block': openSections['item5'] }"
-                        class="px-4 py-4 bg-white dark:bg-neutral-900 text-sm text-gray-700 dark:text-gray-300 rounded-b-md">
-                        <ul class="space-y-3 text-left">
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Treinamento para embalagem e transporte seguro</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Inspeções de rotina de equipamentos</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Equipamentos de proteção para a equipe</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span>Cobertura de proteção de valor total</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-    
-    
+        <!-- About + Features -->
+        <section class="grid md:grid-cols-2 gap-20">
+            <div id="about">
+                <h2 class="text-3xl font-bold text-orange-500 mb-4">About Us</h2>
+                <p class="text-gray-300 text-base">Bull Brains is dedicated to revolutionizing the trading landscape...</p>
             </div>
-        </div>
-    </section> -->
-<!-- ====== Acordian What come swith each request Section END -->
-
-<!-- ====== Login Section 1 Start -->
-<section class="pb-8 dark:bg-black">
-    <div class="max-w-3xl mx-auto text-center px-6 rounded-xl bg-transparent bg-white py-12">
-
-        <!-- Headline -->
-        <h1 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">
-            Inicie sessão para ver as suas encomendas
-        </h1>
-
-        <!-- Subtext -->
-        <p class="mt-4 text-sm sm:text-base text-gray-600 dark:text-gray-400">
-            Veja pedidos anteriores, sugestões personalizadas, recursos de apoio e muito mais.
-        </p>
-
-        <!-- Buttons -->
-        <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <a href="https://auth.uber.com/login-redirect?next_url=https://www.uber.com"
-                class="inline-flex items-center justify-center bg-black text-white text-sm font-medium rounded-full px-6 py-3 transition hover:bg-gray-900 w-full sm:w-auto">
-                Inicie sessão na sua conta
-            </a>
-
-            <a href="https://accounts.google.com/signin"
-                class="inline-flex items-center justify-center bg-white text-black border border-gray-300 text-sm font-medium rounded-full px-6 py-3 transition hover:bg-gray-100 w-full sm:w-auto">
-
-                <svg class="w-4 h-4" height="800px" width="800px" version="1.1" id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
-                    xml:space="preserve">
-                    <path style="fill:#167EE6;"
-                        d="M492.668,211.489l-208.84-0.01c-9.222,0-16.697,7.474-16.697,16.696v66.715
-	c0,9.22,7.475,16.696,16.696,16.696h117.606c-12.878,33.421-36.914,61.41-67.58,79.194L384,477.589
-	c80.442-46.523,128-128.152,128-219.53c0-13.011-0.959-22.312-2.877-32.785C507.665,217.317,500.757,211.489,492.668,211.489z" />
-                    <path style="fill:#12B347;" d="M256,411.826c-57.554,0-107.798-31.446-134.783-77.979l-86.806,50.034
-	C78.586,460.443,161.34,512,256,512c46.437,0,90.254-12.503,128-34.292v-0.119l-50.147-86.81
-	C310.915,404.083,284.371,411.826,256,411.826z" />
-                    <path style="fill:#0F993E;" d="M384,477.708v-0.119l-50.147-86.81c-22.938,13.303-49.48,21.047-77.853,21.047V512
-	C302.437,512,346.256,499.497,384,477.708z" />
-                    <path style="fill:#FFD500;" d="M100.174,256c0-28.369,7.742-54.91,21.043-77.847l-86.806-50.034C12.502,165.746,0,209.444,0,256
-	s12.502,90.254,34.411,127.881l86.806-50.034C107.916,310.91,100.174,284.369,100.174,256z" />
-                    <path style="fill:#FF4B26;" d="M256,100.174c37.531,0,72.005,13.336,98.932,35.519c6.643,5.472,16.298,5.077,22.383-1.008
-	l47.27-47.27c6.904-6.904,6.412-18.205-0.963-24.603C378.507,23.673,319.807,0,256,0C161.34,0,78.586,51.557,34.411,128.119
-	l86.806,50.034C148.202,131.62,198.446,100.174,256,100.174z" />
-                    <path style="fill:#D93F21;"
-                        d="M354.932,135.693c6.643,5.472,16.299,5.077,22.383-1.008l47.27-47.27
-	c6.903-6.904,6.411-18.205-0.963-24.603C378.507,23.672,319.807,0,256,0v100.174C293.53,100.174,328.005,113.51,354.932,135.693z" />
-                </svg>
-                Inicie sessão com Google
-            </a>
-
-            <a href="https://get.uber.com/sign-up"
-                class="inline-flex items-center justify-center bg-gray-100 text-gray-800 text-sm font-medium rounded-full px-6 py-3 transition hover:bg-gray-200 w-full sm:w-auto">
-                Não tem uma conta Flo? Registe-se
-            </a>
-        </div>
-
-        <!-- Image -->
-        <div class="mt-10">
-            <img src="moving_company_banner.webp" alt="Mudança Flo" class="w-full max-w-lg mx-auto rounded-lg" />
-        </div>
-    </div>
-</section>
-<!-- ====== Login Section 1 END -->
-
-<!-- ====== What We Do Section Start -->
-<section class="pb-12 bg-transparent dark:bg-black">
-    <div class="max-w-3xl mx-auto rounded-xl">
-
-        <div class="relative z-10 overflow-hidden rounded-xl bg-black px-6 py-10 sm:px-8 sm:py-12 md:px-12 md:py-16">
-            <div class="flex flex-col lg:flex-row items-center lg:justify-between gap-8">
-
-                <!-- Text Section -->
-                <div class="lg:w-1/2 text-center lg:text-left">
-                    <span class="block text-sm font-medium text-gray-400 mb-3">
-                        Transforme o seu transporte agora
-                    </span>
-                    <h2 class="text-2xl sm:text-3xl font-semibold text-white leading-snug">
-                        Conecte-se com <br class="sm:hidden" />
-                        motoristas confiáveis em segundos
-                    </h2>
-                </div>
-
-                <!-- Buttons Section -->
-                <div class="lg:w-1/2 w-full flex flex-col sm:flex-row justify-center lg:justify-end gap-3">
-                    <a routerLink="/login"
-                        class="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 text-sm font-medium transition hover:bg-gray-200 w-full sm:w-auto text-center">
-                        Solicite um Transporte
-                    </a>
-                    <a routerLink="/register"
-                        class="inline-flex items-center justify-center rounded-full bg-gray-800 text-white px-6 py-3 text-sm font-medium transition hover:bg-gray-700 w-full sm:w-auto text-center">
-                        Comece Agora
-                    </a>
-                </div>
-
+            <div id="features">
+                <h2 class="text-3xl font-bold text-orange-500 mb-4">Our Features</h2>
+                <ul class="space-y-2 text-base">
+                    <li class="flex space-x-2 items-start"><span class="text-orange-500">&#10003;</span><span>Advanced Algorithms</span></li>
+                    <li class="flex space-x-2 items-start"><span class="text-orange-500">&#10003;</span><span>Real-Time Data</span></li>
+                    <li class="flex space-x-2 items-start"><span class="text-orange-500">&#10003;</span><span>Scalability</span></li>
+                    <li class="flex space-x-2 items-start"><span class="text-orange-500">&#10003;</span><span>Risk Management</span></li>
+                </ul>
             </div>
+        </section>
+
+        <!-- Ad Block -->
+        <div class="bg-gray-700 text-center text-white py-4 rounded">
+            Ad Placeholder (Between Features and FAQ)
         </div>
 
-    </div>
-</section>
-<!-- ====== What We Do Section End -->
+        <!-- FAQ Section -->
+        <section id="faq" class="grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="text-3xl font-bold text-orange-500 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-300 text-base">
+                    Here are answers to some common questions...
+                </p>
+            </div>
+            <div class="space-y-6">
+                <div class="border border-orange-500 p-4 rounded-md">
+                    <h3 class="text-lg font-semibold text-white mb-2">What is Bull Brains?</h3>
+                    <p class="text-gray-300 text-sm">Bull Brains is an AI-powered platform...</p>
+                </div>
+                <div class="border border-orange-500 p-4 rounded-md">
+                    <h3 class="text-lg font-semibold text-white mb-2">Is it really free?</h3>
+                    <p class="text-gray-300 text-sm">Yes! Our base model and tools are completely free...</p>
+                </div>
+                <div class="border border-orange-500 p-4 rounded-md">
+                    <h3 class="text-lg font-semibold text-white mb-2">Can I customize the algorithms?</h3>
+                    <p class="text-gray-300 text-sm">Yes, our system allows you to tweak core logic...</p>
+                </div>
+            </div>
+        </section>
 
-<app-footer/>
+        <!-- Ad Block -->
+        <div class="bg-gray-700 text-center text-white py-4 rounded">
+            Ad Placeholder (Before Final CTA)
+        </div>
+
+        <!-- CTA Section -->
+        <section class="text-center bg-orange-500 text-black py-16 px-8 rounded-md">
+            <h2 class="text-4xl font-extrabold mb-4">Ready to See the Algorithm in Action?</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">
+                Explore our free AI stock market model...
+            </p>
+            <a href="/algo"
+                class="inline-block bg-black hover:bg-gray-900 text-orange-500 font-bold py-3 px-6 rounded shadow-lg transition duration-200">
+                Start Using Now
+            </a>
+        </section>
+    </div>
+</div>
